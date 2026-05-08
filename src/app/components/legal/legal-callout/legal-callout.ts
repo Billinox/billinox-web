@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrl: './legal-callout.css',
 })
 export class LegalCallout implements OnInit {
-  @Input() tone: 'warning' | 'success' = 'warning';
+  @Input() tone: 'warning' | 'success' | 'info' = 'warning';
   @Input() title?: string;
   public styles!: string;
 

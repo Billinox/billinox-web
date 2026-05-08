@@ -1,1 +1,153 @@
-<p>terms works!</p>
+<app-legal-layout
+  eyebrow="Terms of Service"
+  [title]="'Terms of Service'"
+  intro="These Terms govern your access to and use of Billinox. They cover subscriptions, acceptable use, intellectual property, liability, and termination."
+  lastUpdated="May 8, 2026"
+  version="1.0"
+>
+  <app-legal-section id="agreement" [title]="'1. Agreement'">
+    <app-p>
+      These Terms of Service ("Terms") form a binding agreement between you and
+      Billinox, Inc. ("Billinox") governing your access to and use of the
+      Billinox apps, websites, and APIs (the "Service"). By creating an account
+      or using the Service, you accept these Terms.
+    </app-p>
+  </app-legal-section>
+
+  <app-legal-section id="eligibility" [title]="'2. Eligibility'">
+    <app-p>
+      You must be at least 18 years old and able to enter into a binding
+      contract. If you use Billinox on behalf of an organization, you represent
+      that you have authority to bind that organization to these Terms.
+    </app-p>
+  </app-legal-section>
+
+  <app-legal-section id="accounts" [title]="'3. Account Responsibilities'">
+    <app-ul>
+      <li>Provide accurate, current, and complete information.</li>
+      <li>Keep your password and recovery codes confidential.</li>
+      <li>Notify us promptly of any unauthorized access.</li>
+      <li>
+        You are responsible for all activity that occurs under your account.
+      </li>
+    </app-ul>
+  </app-legal-section>
+
+  <app-legal-section id="acceptable-use" [title]="'4. Acceptable Use'">
+    <app-p>
+      You agree to use Billinox only for lawful business purposes. You may not:
+    </app-p>
+    <app-ul>
+      <li>Use the Service for fraudulent, deceptive, or illegal invoicing.</li>
+      <li>Attempt to gain unauthorized access to other accounts or systems.</li>
+      <li>Reverse engineer, decompile, or scrape the Service.</li>
+      <li>Distribute malware or interfere with service operation.</li>
+      <li>Resell or sublicense the Service without written permission.</li>
+    </app-ul>
+  </app-legal-section>
+
+  <app-legal-section id="ip" [title]="'5. Intellectual Property'">
+    <app-p>
+      Billinox and its licensors own all rights, title, and interest in the
+      Service, including software, branding, and documentation. You retain
+      ownership of your business data. You grant us a limited license to host,
+      transmit, and back up your content solely to operate the Service for you.
+    </app-p>
+  </app-legal-section>
+
+  <app-legal-section id="subscriptions" [title]="'6. Subscriptions & Billing'">
+    <app-ul>
+      <li>Paid plans renew automatically until cancelled.</li>
+      <li>
+        Fees are billed in advance and are non-refundable except where required
+        by law.
+      </li>
+      <li>We may change pricing with at least 30 days' notice.</li>
+      <li>
+        Taxes are your responsibility unless we collect them on your behalf.
+      </li>
+    </app-ul>
+
+    <app-legal-callout tone="info" title="Free trials">
+      Free trials convert to paid subscriptions at the end of the trial unless
+      cancelled.
+    </app-legal-callout>
+  </app-legal-section>
+
+  <app-legal-section id="availability" [title]="'7. Service Availability'">
+    <app-p>
+      We work hard to keep Billinox available, but the Service is provided on an
+      "as available" basis. Maintenance windows, third-party dependencies, or
+      your own connectivity may affect availability. Offline functionality is
+      designed to keep you working during outages.
+    </app-p>
+  </app-legal-section>
+
+  <app-legal-section id="warranty" [title]="'8. Warranty Disclaimer'">
+    <app-legal-callout tone="warning" title='Provided "as is"'>
+      To the maximum extent permitted by law, the Service is provided "as is"
+      and "as available" without warranties of any kind, whether express or
+      implied, including merchantability, fitness for a particular purpose, and
+      non-infringement. You are responsible for the accuracy of invoices,
+      calculations, and tax filings.
+    </app-legal-callout>
+  </app-legal-section>
+
+  <app-legal-section id="liability" [title]="'9. Limitation of Liability'">
+    <app-p>
+      To the maximum extent permitted by law, Billinox's aggregate liability
+      arising out of or relating to the Service will not exceed the greater of
+      (a) the amounts you paid us in the 12 months preceding the claim or (b)
+      USD 100. We are not liable for indirect, incidental, special,
+      consequential, or punitive damages.
+    </app-p>
+  </app-legal-section>
+
+  <app-legal-section id="indemnification" [title]="'10. Indemnification'">
+    <app-p>
+      You agree to defend and indemnify Billinox against claims arising from
+      your misuse of the Service, your violation of these Terms, or your
+      infringement of third-party rights.
+    </app-p>
+  </app-legal-section>
+
+  <app-legal-section id="termination" [title]="'11. Termination'">
+    <app-p>
+      You may cancel at any time from your account settings. We may suspend or
+      terminate access if you breach these Terms, create risk for us or other
+      users, or fail to pay. On termination you can export your data for 30
+      days.
+    </app-p>
+  </app-legal-section>
+
+  <app-legal-section id="law" [title]="'12. Governing Law & Disputes'">
+    <app-p>
+      These Terms are governed by the laws of the State of Delaware, USA,
+      without regard to conflict of laws. Disputes will be resolved by binding
+      arbitration in Delaware, except that either party may seek injunctive
+      relief in court. Consumers in the EU and Nigeria retain mandatory rights
+      under their local law.
+    </app-p>
+  </app-legal-section>
+
+  <app-legal-section id="changes" [title]="'13. Changes to these Terms'">
+    <app-p>
+      We may update these Terms periodically. Material updates will be announced
+      in-app and by email. Continued use of the Service after changes take
+      effect constitutes acceptance.
+    </app-p>
+  </app-legal-section>
+
+  <app-legal-section id="contact" [title]="'14. Contact Us'">
+    <app-p>
+      Questions? Reach our legal team at&nbsp;
+      <a
+        class="text-foreground underline underline-offset-4"
+        href="mailto:{{ email }}"
+      >
+        {{ email }}
+      </a>
+      .
+    </app-p>
+  </app-legal-section>
+</app-legal-layout>
