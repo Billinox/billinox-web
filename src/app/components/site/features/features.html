@@ -1,0 +1,40 @@
+<section id="features" class="relative py-24">
+  <div class="mx-auto max-w-7xl px-4">
+    <div class="mx-auto max-w-2xl text-center">
+      <span
+        class="inline-block rounded-full bg-muted px-3 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+      >
+        Features
+      </span>
+      <h2 class="mt-4 font-display text-3xl font-bold sm:text-5xl">
+        Everything you need to bill smarter
+      </h2>
+      <p class="mt-4 text-muted-foreground">
+        Billinox unifies invoicing, payments, customers, and analytics in one
+        elegant workspace — designed for modern teams and offline-first by
+        default.
+      </p>
+    </div>
+
+    <div
+      class="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"
+    >
+      @for (f of features; track $index) {
+        <div
+          class="group relative overflow-hidden rounded-2xl border border-border bg-card p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-elevated"
+        >
+          <div
+            class="absolute -right-10 -top-10 h-24 w-24 rounded-full bg-primary/10 blur-2xl transition-opacity duration-300 group-hover:opacity-100 opacity-0"
+          ></div>
+          <div
+            class="relative grid h-11 w-11 place-items-center rounded-xl bg-gold text-secondary shadow-soft"
+          >
+            <svg class="h-5 w-5" strokeWidth="2.2" [lucideIcon]="f.icon"></svg>
+          </div>
+          <h3 class="mt-4 text-base font-semibold">{{ f.title }}</h3>
+          <p class="mt-1.5 text-sm text-muted-foreground">{{ f.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

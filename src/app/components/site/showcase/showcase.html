@@ -1,0 +1,101 @@
+<section
+  id="showcase"
+  class="relative overflow-hidden bg-secondary py-24 text-secondary-foreground"
+>
+  <div class="pointer-events-none absolute inset-0">
+    <div
+      class="absolute -top-40 left-1/4 h-80 w-80 rounded-full bg-primary/30 blur-3xl"
+    ></div>
+    <div
+      class="absolute bottom-0 right-1/4 h-80 w-80 rounded-full bg-primary/10 blur-3xl"
+    ></div>
+  </div>
+  <div class="relative mx-auto max-w-7xl px-4">
+    <div class="mx-auto max-w-2xl text-center">
+      <span
+        class="inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary"
+      >
+        Product
+      </span>
+      <h2 class="mt-4 font-display text-3xl font-bold sm:text-5xl">
+        A workspace built for clarity
+      </h2>
+      <p class="mt-4 text-white/70">
+        From the first invoice to the year-end report — every screen is crafted
+        to make running your business feel effortless.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-6 lg:grid-cols-5">
+      <div class="lg:col-span-3">
+        <div
+          class="overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-3 backdrop-blur-xl"
+        >
+          <div class="rounded-2xl bg-card p-4 text-card-foreground">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-xs text-muted-foreground">
+                  Monthly revenue
+                </div>
+                <div class="font-display text-2xl font-bold">$128,420</div>
+              </div>
+              <div
+                class="rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-semibold text-emerald-700"
+              >
+                +24.6%
+              </div>
+            </div>
+            <div class="mt-4 grid grid-cols-12 items-end gap-1.5">
+              @for (h of chartData; track $index) {
+                <div class="flex flex-col items-center gap-1">
+                  <div
+                    class="w-full rounded-md bg-gold"
+                    [style.height.px]="h * 1.6"
+                  ></div>
+                  <span class="text-[8px] text-muted-foreground">{{
+                    $index + 1
+                  }}</span>
+                </div>
+              }
+            </div>
+            <div class="mt-5 grid gap-2 sm:grid-cols-3">
+              @for (s of stats; track $index) {
+                <div class="rounded-xl bg-muted/60 p-3">
+                  <div class="flex items-center gap-2">
+                    <span class="h-2 w-2 rounded-full" [class]="s.c"></span>
+                    <span class="text-[11px] text-muted-foreground">{{
+                      s.l
+                    }}</span>
+                  </div>
+                  <div class="mt-1 text-sm font-bold">{{ s.v }}</div>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid gap-4 lg:col-span-2">
+        @for (it of items; track $index) {
+          <div
+            class="group rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur transition hover:bg-white/10"
+          >
+            <div class="flex items-start gap-3">
+              <div
+                class="grid h-10 w-10 place-items-center rounded-xl bg-gold text-secondary"
+              >
+                <svg class="h-5 w-5" [lucideIcon]="it.icon" />
+              </div>
+              <div>
+                <h3 class="font-display text-base font-semibold">
+                  {{ it.title }}
+                </h3>
+                <p class="mt-1 text-sm text-white/70">{{ it.desc }}</p>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

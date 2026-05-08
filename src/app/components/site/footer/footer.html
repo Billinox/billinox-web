@@ -1,0 +1,66 @@
+<footer class="border-t border-border bg-surface">
+  <div class="mx-auto max-w-7xl px-4 py-16">
+    <div class="grid gap-10 lg:grid-cols-6">
+      <div class="lg:col-span-2">
+        <a href="#top" class="flex items-center gap-2">
+          <span
+            class="grid h-9 w-9 place-items-center rounded-xl bg-gold shadow-soft"
+          >
+            <ng-icon name="logo" size="2em"></ng-icon>
+          </span>
+          <span class="font-display text-lg font-bold">Billinox</span>
+        </a>
+        <p class="mt-4 max-w-xs text-sm text-muted-foreground">
+          Run your business anywhere, anytime. Smart, offline-first invoicing
+          built for modern teams.
+        </p>
+        <a
+          href="mailto:hello@billinox.com"
+          class="mt-4 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
+        >
+          <svg class="h-4 w-4" lucideMail></svg>
+          <span>support@billinox.com</span>
+        </a>
+        <div class="mt-5 flex gap-2">
+          @for (s of socials; track $index) {
+            <a
+              [href]="s.link"
+              class="grid h-9 w-9 place-items-center rounded-xl border border-border bg-card text-muted-foreground transition hover:border-primary/50 hover:text-foreground"
+            >
+              <ng-icon class="h-4 w-4" [svg]="s.icon"></ng-icon>
+            </a>
+          }
+        </div>
+      </div>
+
+      @for (c of cols; track $index) {
+        <div>
+          <h4
+            class="text-xs font-bold uppercase tracking-wider text-foreground"
+          >
+            {{ c.title }}
+          </h4>
+          <ul class="mt-4 space-y-2.5">
+            @for (l of c.links; track $index) {
+              <li>
+                <a
+                  href="#"
+                  class="text-sm text-muted-foreground transition hover:text-foreground"
+                >
+                  {{ l }}
+                </a>
+              </li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+
+    <div
+      class="mt-14 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row"
+    >
+      <span>&copy; {{ fullYear }} Billinox, Inc. All rights reserved.</span>
+      <span>Crafted with care for businesses everywhere.</span>
+    </div>
+  </div>
+</footer>

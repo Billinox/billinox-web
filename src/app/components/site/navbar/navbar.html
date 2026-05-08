@@ -1,0 +1,85 @@
+<header
+  class="fixed inset-x-0 top-0 z-50 transition-all duration-300"
+  [ngClass]="{ 'py-2': scrolled, 'py-4': !scrolled }"
+>
+  <div class="mx-auto max-w-7xl px-4">
+    <nav
+      class="flex items-center justify-between rounded-2xl px-4 py-2.5 transition-all"
+      [ngClass]="{ 'glass shadow-soft': scrolled, 'bg-transparent': !scrolled }"
+    >
+      <a href="#top" class="flex items-center gap-2">
+        <span
+          class="grid h-9 w-9 place-items-center rounded-xl bg-gold shadow-soft"
+        >
+          <ng-icon name="logo" size="2em"></ng-icon>
+        </span>
+        <span class="font-display text-lg font-bold tracking-tight">
+          Billinox
+        </span>
+      </a>
+
+      <div class="hidden items-center gap-1 md:flex">
+        @for (l of links; track $index) {
+          <a
+            [href]="l.href"
+            class="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+          >
+            {{ l.label }}
+          </a>
+        }
+      </div>
+
+      <div class="hidden items-center gap-2 md:flex">
+        <button hlmBtn variant="ghost" size="sm">Sign in</button>
+        <button
+          hlmBtn
+          size="sm"
+          class="bg-secondary text-secondary-foreground hover:bg-secondary/90"
+        >
+          Get started
+        </button>
+      </div>
+
+      <button
+        hlmBtn
+        (click)="setOpen(!open)"
+        class="grid h-10 w-10 place-items-center rounded-xl border border-border md:hidden"
+        aria-label="Toggle menu"
+      >
+        @if (open) {
+          <svg class="h-5 w-5" lucideX></svg>
+        } @else {
+          <svg class="h-5 w-5" lucideMenu></svg>
+        }
+      </button>
+    </nav>
+
+    @if (open) {
+      <div class="glass mt-2 rounded-2xl p-3 shadow-soft md:hidden">
+        <div class="flex flex-col">
+          @for (l of links; track $index) {
+            <a
+              [href]="l.href"
+              (click)="setOpen(false)"
+              class="rounded-lg px-3 py-2.5 text-sm font-medium text-foreground hover:bg-muted"
+            >
+              {{ l.label }}
+            </a>
+          }
+          <div class="mt-2 flex gap-2">
+            <button hlmBtn variant="outline" size="sm" class="flex-1">
+              Sign in
+            </button>
+            <button
+              hlmBtn
+              size="sm"
+              class="flex-1 bg-secondary text-secondary-foreground"
+            >
+              Get started
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</header>

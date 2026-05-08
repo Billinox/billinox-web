@@ -1,0 +1,36 @@
+<section id="faq" class="py-24">
+  <div class="mx-auto max-w-3xl px-4">
+    <div class="text-center">
+      <span
+        class="inline-block rounded-full bg-muted px-3 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+      >
+        FAQ
+      </span>
+      <h2 class="mt-4 font-display text-3xl font-bold sm:text-5xl">
+        Questions, answered
+      </h2>
+    </div>
+
+    <div hlmAccordion class="mt-10 w-full space-y-3">
+      @for (f of faqs; track $index) {
+        <div
+          hlmAccordionItem
+          class="overflow-hidden rounded-2xl border border-border bg-card px-5 shadow-soft"
+        >
+          <hlm-accordion-trigger>
+            <div
+              class="text-left text-base font-semibold"
+            >
+              {{ f.q }}
+            </div>
+          </hlm-accordion-trigger>
+          <hlm-accordion-content>
+            <div class="pb-5 text-sm text-muted-foreground">
+              {{ f.a }}
+            </div>
+          </hlm-accordion-content>
+        </div>
+      }
+    </div>
+  </div>
+</section>

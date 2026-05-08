@@ -1,0 +1,89 @@
+<section id="pricing" class="py-24">
+  <div class="mx-auto max-w-7xl px-4">
+    <div class="mx-auto max-w-2xl text-center">
+      <span
+        class="inline-block rounded-full bg-muted px-3 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+      >
+        Pricing
+      </span>
+      <h2 class="mt-4 font-display text-3xl font-bold sm:text-5xl">
+        Simple pricing that grows with you
+      </h2>
+      <p class="mt-4 text-muted-foreground">
+        Start free. Upgrade anytime. Cancel whenever. No hidden fees.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-5 lg:grid-cols-3">
+      @for (t of tiers; track $index) {
+        <div
+          class="relative flex flex-col rounded-3xl border p-7 transition"
+          [ngClass]="{
+            'border-primary/40 bg-secondary text-secondary-foreground shadow-glow':
+              t.highlighted,
+            'border-border bg-card shadow-soft hover:shadow-elevated':
+              !t.highlighted,
+          }"
+        >
+          @if (t.highlighted) {
+            <div
+              class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gold px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-secondary shadow-soft"
+            >
+              <svg class="mr-1 inline h-3 w-3" lucideSparkles /> Most popular
+            </div>
+          }
+          <h3 class="font-display text-xl font-bold">{{ t.name }}</h3>
+          <p
+            class="mt-1 text-sm"
+            [ngClass]="
+              t.highlighted ? 'text-white/90' : 'text-muted-foreground'
+            "
+          >
+            {{ t.desc }}
+          </p>
+          <div class="mt-5 flex items-baseline gap-1.5">
+            <span class="font-display text-5xl font-bold">{{ t.price }}</span>
+            <span
+              class="text-sm"
+              [ngClass]="
+                t.highlighted ? 'text-white/60' : 'text-muted-foreground'
+              "
+            >
+              / {{ t.period }}
+            </span>
+          </div>
+          <ul class="mt-6 flex-1 space-y-3">
+            @for (f of t.features; track $index) {
+              <li key="{f}" class="flex items-start gap-2.5 text-sm">
+                <span
+                  class="mt-0.5 grid h-4 w-4 place-items-center rounded-full"
+                  [ngClass]="
+                    t.highlighted
+                      ? 'bg-gold text-secondary'
+                      : 'bg-primary/20 text-secondary'
+                  "
+                >
+                  <svg class="h-3 w-3" strokeWidth="3" lucideCheck />
+                </span>
+                <span [ngClass]="t.highlighted ? 'text-white/90' : ''">{{
+                  f
+                }}</span>
+              </li>
+            }
+          </ul>
+          <button
+            hlmBtn
+            class="mt-7 h-11 rounded-xl"
+            [ngClass]="
+              t.highlighted
+                ? 'bg-gold text-secondary hover:opacity-90'
+                : 'bg-secondary text-secondary-foreground hover:bg-secondary/90'
+            "
+          >
+            {{ t.cta }}
+          </button>
+        </div>
+      }
+    </div>
+  </div>
+</section>
