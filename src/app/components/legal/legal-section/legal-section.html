@@ -1,0 +1,22 @@
+<ng-template #content>
+  <section
+    [id]="id"
+    class="scroll-mt-28 border-b border-border py-8 first:pt-0 last:border-0"
+  >
+    <h2
+      class="group mb-4 flex items-baseline gap-2 font-display text-2xl font-semibold tracking-tight"
+    >
+      <a
+        [href]="'#' + id"
+        class="text-muted-foreground/40 opacity-0 transition group-hover:opacity-100"
+        [attr.aria-label]="'Anchor for ' + title"
+      >
+        #
+      </a>
+      {{ title }}
+    </h2>
+    <div class="prose-legal space-y-4">
+      <ng-content />
+    </div>
+  </section>
+</ng-template>

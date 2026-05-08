@@ -1,0 +1,183 @@
+<div class="min-h-screen bg-background text-foreground">
+  <app-navbar />
+  <!-- Reading progress  -->
+  <div class="fixed left-0 right-0 top-0 z-[60] h-0.5 bg-transparent">
+    <div
+      class="h-full bg-gold transition-[width] duration-150"
+      [style.width.%]="progress"
+    ></div>
+  </div>
+
+  <main class="mx-auto max-w-7xl px-4 pt-28 pb-20 print:pt-6">
+    <!-- Breadcrumb -->
+    <nav
+      aria-label="Breadcrumb"
+      class="mb-6 flex items-center gap-1.5 text-xs text-muted-foreground print:hidden"
+    >
+      <a routerLink="/" class="hover:text-foreground">Home</a>
+      <svg class="h-3.5 w-3.5" lucideChevronRight />
+      <span class="text-foreground">Legal</span>
+      <svg class="h-3.5 w-3.5" lucideChevronRight />
+      <span class="text-foreground">{{ eyebrow }}</span>
+    </nav>
+
+    <!-- Header  -->
+    <header class="mb-10 max-w-3xl">
+      <div
+        class="mb-4 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium text-muted-foreground"
+      >
+        <svg class="h-3.5 w-3.5" lucideFileText /> {{ eyebrow }} · v{{
+          version
+        }}
+      </div>
+      <h1 class="font-display text-4xl font-bold tracking-tight sm:text-5xl">
+        {{ title }}
+      </h1>
+      <p class="mt-4 text-lg leading-relaxed text-muted-foreground">
+        {{ intro }}
+      </p>
+
+      <div class="mt-6 flex flex-wrap items-center gap-2 text-xs">
+        <span class="rounded-full bg-muted px-2.5 py-1 text-muted-foreground">
+          Last updated {{ lastUpdated }}
+        </span>
+        <span
+          class="inline-flex items-center gap-1 rounded-full border border-border bg-surface px-2.5 py-1 text-muted-foreground"
+        >
+          <svg class="h-3 w-3 text-primary" lucideShieldCheck /> GDPR Ready
+        </span>
+        <span
+          class="inline-flex items-center gap-1 rounded-full border border-border bg-surface px-2.5 py-1 text-muted-foreground"
+        >
+          <svg class="h-3 w-3 text-primary" lucideShieldCheck /> NDPA Compliant
+        </span>
+        <span
+          class="inline-flex items-center gap-1 rounded-full border border-border bg-surface px-2.5 py-1 text-muted-foreground"
+        >
+          <svg class="h-3 w-3 text-primary" lucideGlobe2 /> EU DSA
+        </span>
+      </div>
+
+      <div class="mt-6 flex flex-wrap gap-2 print:hidden">
+        <Button size="sm" variant="outline" (click)="print()">
+          <svg class="h-4 w-4" lucidePrinter /> Print
+        </Button>
+        <Button size="sm" variant="outline" (click)="print()">
+          <svg class="h-4 w-4" lucideDownload /> Download PDF
+        </Button>
+      </div>
+    </header>
+
+    <div class="grid gap-12 lg:grid-cols-[260px_minmax(0,1fr)]">
+      <!-- TOC -->
+      <aside class="hidden lg:block print:hidden">
+        <div class="sticky top-28">
+          <div class="relative mb-4">
+            <svg
+              class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
+              lucideSearch
+            />
+            <input
+              type="text"
+              placeholder="Search sections…"
+              [value]="query"
+              (input)="search($event.target.value)"
+              class="w-full rounded-lg border border-border bg-surface py-2 pl-9 pr-3 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
+              aria-label="Search sections"
+            />
+          </div>
+          <p
+            class="mb-3 text-xs font-bold uppercase tracking-wider text-muted-foreground"
+          >
+            On this page
+          </p>
+          <nav class="space-y-0.5">
+            @for (s of filteredSections; track $index) {
+              <a
+                routerLink="./"
+                [fragment]="s.id"
+                class="block rounded-md border-l-2 py-1.5 pl-3 pr-2 text-sm transition"
+                [ngClass]="
+                  activeId === s.id
+                    ? 'border-primary bg-primary/5 text-foreground'
+                    : 'border-transparent text-muted-foreground hover:border-border hover:text-foreground'
+                "
+              >
+                {{ s.title }}
+              </a>
+            }
+            @if (filteredSections.length === 0) {
+              <p class="px-3 py-2 text-xs text-muted-foreground">No matches.</p>
+            }
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Article  -->
+      <article
+        #articleRef
+        class="max-w-2xl text-[15.5px] leading-7 text-foreground/90"
+      >
+        <ng-content />
+
+        <!-- Mobile TOC at bottom -->
+        <div
+          class="mt-8 rounded-xl border border-border bg-surface p-4 lg:hidden"
+        >
+          <p
+            class="mb-3 text-xs font-bold uppercase tracking-wider text-muted-foreground"
+          >
+            Jump to section
+          </p>
+          <ul class="grid gap-1 sm:grid-cols-2">
+            @for (s of sections; track $index) {
+              <li>
+                <a
+                  [href]="'#' + s.id"
+                  class="text-sm text-muted-foreground hover:text-foreground"
+                >
+                  {{ s.title }}
+                </a>
+              </li>
+            }
+          </ul>
+        </div>
+      </article>
+    </div>
+
+    <!-- Cross-links  -->
+    <div class="mt-16 grid gap-4 sm:grid-cols-3 print:hidden">
+      @for (l of links; track $index) {
+        <a
+          [routerLink]="l.to"
+          class="group rounded-xl border border-border bg-surface p-5 transition hover:border-primary/40 hover:shadow-soft"
+        >
+          <p class="text-xs uppercase tracking-wider text-muted-foreground">
+            Legal
+          </p>
+          <p
+            class="mt-1 flex items-center justify-between font-display text-lg font-semibold"
+          >
+            {{ l.label }}
+            <svg
+              lucideChevronRight
+              class="h-4 w-4 text-muted-foreground transition group-hover:translate-x-1 group-hover:text-foreground"
+            />
+          </p>
+        </a>
+      }
+    </div>
+  </main>
+
+  @if (showTop) {
+    <button
+      (click)="scrollToTop()"
+      aria-label="Back to top"
+      class="fixed bottom-6 right-6 z-50 grid h-11 w-11 place-items-center rounded-full border border-border bg-surface-elevated text-foreground shadow-elevated transition hover:bg-primary hover:text-primary-foreground print:hidden"
+    >
+      <svg lucideArrowUp class="h-4 w-4" />
+    </button>
+  }
+
+  <app-footer />
+</div>

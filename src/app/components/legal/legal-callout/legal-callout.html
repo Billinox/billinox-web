@@ -1,0 +1,8 @@
+<aside class="my-6 rounded-xl border p-5" [ngClass]="styles">
+  @if (title) {
+    <p class="mb-1 text-sm font-semibold text-foreground">{{ title }}</p>
+  }
+  <div class="text-sm leading-relaxed text-muted-foreground">
+    <ng-content />
+  </div>
+</aside>

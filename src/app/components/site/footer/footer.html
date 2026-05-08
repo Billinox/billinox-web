@@ -44,10 +44,10 @@
             @for (l of c.links; track $index) {
               <li>
                 <a
-                  href="#"
+                  [routerLink]="l.link"
                   class="text-sm text-muted-foreground transition hover:text-foreground"
                 >
-                  {{ l }}
+                  {{ l.label }}
                 </a>
               </li>
             }

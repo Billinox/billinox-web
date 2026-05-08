@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { LucideMail } from '@lucide/angular';
 import { NgIcon } from '@ng-icons/core';
 import {
@@ -10,7 +11,7 @@ import {
 
 @Component({
   selector: 'app-footer',
-  imports: [LucideMail, NgIcon],
+  imports: [LucideMail, NgIcon, RouterLink],
   templateUrl: './footer.html',
   styleUrl: './footer.css',
 })
@@ -18,19 +19,33 @@ export class Footer {
   public cols = [
     {
       title: 'Product',
-      links: ['Features', 'Pricing', 'Integrations', 'Changelog', 'Roadmap'],
+      links: [
+        { label: 'Features', link: '/features' },
+        { label: 'Pricing', link: '/pricing' },
+      ],
     },
     {
       title: 'Company',
-      links: ['About', 'Customers', 'Careers', 'Press', 'Contact'],
+      links: [
+        { label: 'About', link: '/about' },
+        { label: 'Contact', link: '/contact' },
+      ],
     },
     {
       title: 'Resources',
-      links: ['Blog', 'Help Center', 'Guides', 'API Docs', 'Status'],
+      links: [
+        { label: 'Blog', link: '/blog' },
+        { label: 'Help Center', link: '/help-center' },
+        { label: 'Guides', link: '/guides' },
+      ],
     },
     {
       title: 'Legal',
-      links: ['Privacy', 'Terms', 'Security', 'Cookies', 'DPA'],
+      links: [
+        { label: 'Privacy', link: '/privacy' },
+        { label: 'Terms', link: '/terms' },
+        { label: 'Use Of Service', link: '/use-of-service' },
+      ],
     },
   ];
 
