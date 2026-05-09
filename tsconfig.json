@@ -27,6 +27,15 @@
       ],
       "@spartan-ng/helm/button": [
         "./src/app/components/uis/button/src/index.ts"
+      ],
+      "@spartan-ng/helm/input": [
+        "./src/app/components/uis/input/src/index.ts"
+      ],
+      "@spartan-ng/helm/textarea": [
+        "./src/app/components/uis/textarea/src/index.ts"
+      ],
+      "@spartan-ng/helm/select": [
+        "./src/app/components/uis/select/src/index.ts"
       ]
     }
   },

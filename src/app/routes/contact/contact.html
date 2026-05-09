@@ -1,0 +1,426 @@
+<div class="min-h-screen bg-background">
+  <app-navbar />
+
+  <!-- Hero -->
+  <section class="bg-hero noise relative overflow-hidden pt-32 pb-16 sm:pt-36">
+    <div
+      class="pointer-events-none absolute -top-40 left-1/2 h-96 w-[60rem] -translate-x-1/2 rounded-full bg-primary/30 blur-3xl"
+    ></div>
+    <div class="relative mx-auto max-w-4xl px-4 text-center">
+      <div
+        class="animate-fade-up mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface-elevated px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-soft"
+      >
+        <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-primary"></span>
+        Contact us
+      </div>
+      <h1
+        class="animate-fade-up font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl"
+      >
+        We'd love to <span class="text-gradient-gold">hear from you</span>
+      </h1>
+      <p
+        class="animate-fade-up mt-6 text-base text-muted-foreground sm:text-lg"
+        [style.animationDelay]="'120ms'"
+      >
+        Whether you have a question about a feature, need help with your
+        account, or want to partner with us — our team is here.
+      </p>
+    </div>
+  </section>
+
+  <!-- Methods  -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        @for (m of methods; track $index) {
+          <div
+            class="group rounded-2xl border border-border bg-surface-elevated p-6 shadow-soft transition hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md"
+          >
+            <span
+              class="grid h-11 w-11 place-items-center rounded-xl bg-primary/15 text-secondary"
+            >
+              <svg [lucideIcon]="m.icon" class="h-5 w-5" />
+            </span>
+            <h3 class="mt-4 font-display text-lg font-semibold">
+              {{ m.title }}
+            </h3>
+            <p class="mt-1.5 text-sm text-muted-foreground">{{ m.desc }}</p>
+            <a
+              [href]="m.href"
+              class="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-foreground hover:text-primary"
+            >
+              {{ m.action }}
+            </a>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Form + Response expectations -->
+  <section class="bg-surface py-20">
+    <div class="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-[1.4fr_1fr]">
+      <div
+        class="rounded-3xl border border-border bg-surface-elevated p-6 shadow-soft sm:p-8"
+      >
+        <h2 class="font-display text-2xl font-bold tracking-tight sm:text-3xl">
+          Send us a message
+        </h2>
+        <p class="mt-2 text-sm text-muted-foreground">
+          Fill in the form and a team member will get back to you within 1
+          business day.
+        </p>
+
+        @if (status === "success") {
+          <div
+            class="mt-6 flex items-start gap-3 rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-4 text-sm"
+          >
+            <svg lucideCheckCircle2 class="mt-0.5 h-5 w-5 text-emerald-600" />
+            <div>
+              <p class="font-semibold text-foreground">Message sent</p>
+              <p class="text-muted-foreground">
+                Thanks — we'll be in touch shortly.
+              </p>
+            </div>
+          </div>
+        }
+
+        <form
+          data-netlify="true"
+          (ngSubmit)="onSubmit()"
+          class="mt-6 grid gap-4 sm:grid-cols-2"
+          [formGroup]="contactForm"
+        >
+          <div class="sm:col-span-1">
+            <label
+              for="name"
+              class="text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+            >
+              Name
+            </label>
+            <input
+              hlmInput
+              id="name"
+              name="name"
+              formControlName="name"
+              placeholder="Jane Doe"
+              class="mt-1.5 h-11 rounded-xl"
+            />
+            @if (fc.name.touched) {
+              @if (fc.name.errors?.["required"]) {
+                <p class="mt-1 text-xs text-destructive">
+                  {{ errors.nameRequired }}
+                </p>
+              }
+              @if (fc.name.errors?.["minlength"]) {
+                <p class="mt-1 text-xs text-destructive">
+                  {{ errors.nameMin }}
+                </p>
+              }
+              @if (fc.name.errors?.["maxlength"]) {
+                <p class="mt-1 text-xs text-destructive">
+                  {{ errors.nameMax }}
+                </p>
+              }
+            }
+          </div>
+          <div class="sm:col-span-1">
+            <label
+              for="email"
+              class="text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+            >
+              Email
+            </label>
+            <input
+              hlmInput
+              id="email"
+              name="email"
+              formControlName="email"
+              type="email"
+              placeholder="jane@company.com"
+              class="mt-1.5 h-11 rounded-xl"
+            />
+            @if (fc.email.touched) {
+              @if (fc.email.errors?.["required"]) {
+                <p class="mt-1 text-xs text-destructive">
+                  {{ errors.emailRequired }}
+                </p>
+              }
+              @if (fc.email.errors?.["email"]) {
+                <p class="mt-1 text-xs text-destructive">
+                  {{ errors.emailInvalid }}
+                </p>
+              }
+            }
+          </div>
+          <div class="sm:col-span-1">
+            <label
+              for="subject"
+              class="text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+            >
+              Subject
+            </label>
+            <input
+              hlmInput
+              id="subject"
+              name="subject"
+              formControlName="subject"
+              placeholder="How can we help?"
+              class="mt-1.5 h-11 rounded-xl"
+            />
+            @if (fc.subject.touched) {
+              @if (fc.subject.errors?.["required"]) {
+                <p class="mt-1 text-xs text-destructive">
+                  {{ errors.subjectRequired }}
+                </p>
+              }
+              @if (fc.subject.errors?.["minlength"]) {
+                <p class="mt-1 text-xs text-destructive">
+                  {{ errors.subjectMin }}
+                </p>
+              }
+              @if (fc.subject.errors?.["maxlength"]) {
+                <p class="mt-1 text-xs text-destructive">
+                  {{ errors.subjectMax }}
+                </p>
+              }
+            }
+          </div>
+          <div class="sm:col-span-1">
+            <label
+              for="category"
+              class="text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+            >
+              Category
+            </label>
+
+            <hlm-select
+              [itemToString]="categoriesToString"
+              formControlName="category"
+               
+            >
+              <hlm-select-trigger class="!h-11 w-full appearance-none rounded-xl mt-1.5">
+                <hlm-select-value placeholder="Select a fruit" />
+              </hlm-select-trigger>
+              <hlm-select-content *hlmSelectPortal>
+                <hlm-select-group>
+                  <hlm-select-label>Categories</hlm-select-label>
+                  @for (item of categories; track $index) {
+                    <hlm-select-item [value]="item">{{ item }}</hlm-select-item>
+                  }
+                </hlm-select-group>
+              </hlm-select-content>
+            </hlm-select>
+
+            <!-- <div class="relative mt-1.5">
+              <select
+              hlmSelect
+                id="category"
+                name="category"
+                formControlName="category"
+                class="h-11 w-full appearance-none rounded-xl border border-input bg-transparent px-3 pr-9 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+              >
+                @for (c of categories; track $index) {
+                  <option [value]="c">{{ c }}</option>
+                }
+              </select>
+              <svg
+                lucideChevronDown
+                class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
+              />
+            </div> -->
+          </div>
+          <div class="sm:col-span-2">
+            <label
+              for="message"
+              class="text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+            >
+              Message
+            </label>
+            <textarea
+              hlmTextarea
+              id="message"
+              name="message"
+              formControlName="message"
+              rows="{6}"
+              placeholder="Tell us a bit about what you need…"
+              class="mt-1.5 rounded-xl resize-none"
+            ></textarea>
+            @if (fc.message.touched) {
+              @if (fc.message.errors?.["required"]) {
+                <p class="mt-1 text-xs text-destructive">
+                  {{ errors.messageRequired }}
+                </p>
+              }
+              @if (fc.message.errors?.["minlength"]) {
+                <p class="mt-1 text-xs text-destructive">
+                  {{ errors.messageMin }}
+                </p>
+              }
+              @if (fc.message.errors?.["maxlength"]) {
+                <p class="mt-1 text-xs text-destructive">
+                  {{ errors.messageMax }}
+                </p>
+              }
+            }
+          </div>
+          <div class="sm:col-span-2">
+            <button
+              hlmBtn
+              type="submit"
+              [disabled]="status === 'submitting'"
+              class="h-11 rounded-xl bg-secondary px-6 text-secondary-foreground hover:bg-secondary/90"
+            >
+              @if (status === "submitting") {
+                Sending…
+              } @else {
+                Send message
+              }
+              <svg lucideSend class="ml-1 h-4 w-4" />
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="space-y-5">
+        <div
+          class="rounded-2xl border border-border bg-surface-elevated p-6 shadow-soft"
+        >
+          <div class="flex items-center gap-2">
+            <svg lucideClock class="h-4 w-4 text-primary" />
+            <h3 class="font-display text-lg font-semibold">Response times</h3>
+          </div>
+          <ul class="mt-4 space-y-3 text-sm">
+            @for (
+              item of [
+                ["General", "< 24 hours"],
+                ["Technical", "< 12 hours"],
+                ["Sales", "Same day"],
+                ["Partnerships", "1–2 business days"],
+              ];
+              track $index
+            ) {
+              <li
+                class="flex items-center justify-between border-b border-border/60 pb-2 last:border-none"
+              >
+                <span class="text-muted-foreground">{{ item[0] }}</span>
+                <span class="font-medium">{{ item[1] }}</span>
+              </li>
+            }
+          </ul>
+          <p class="mt-4 text-xs text-muted-foreground">
+            Hours: Mon–Fri, 9:00 – 18:00 UTC. Critical issues are monitored
+            24/7.
+          </p>
+        </div>
+
+        <div
+          class="rounded-2xl border border-border bg-surface-elevated p-6 shadow-soft"
+        >
+          <h3 class="font-display text-lg font-semibold">Follow Billinox</h3>
+          <div class="mt-4 grid grid-cols-5 gap-2">
+            @for (s of socials; track $index) {
+              <a
+                href="#"
+                [attr.aria-label]="s.label"
+                class="grid h-11 place-items-center rounded-xl border border-border text-muted-foreground transition hover:border-primary/50 hover:text-foreground"
+              >
+                <ng-icon [svg]="s.icon" class="h-4 w-4" />
+              </a>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ preview  -->
+  <section class="py-20">
+    <div class="mx-auto max-w-4xl px-4">
+      <div class="text-center">
+        <p class="text-xs font-bold uppercase tracking-wider text-primary">
+          Quick help
+        </p>
+        <h2
+          class="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl"
+        >
+          Common questions before reaching out
+        </h2>
+      </div>
+      <div
+        class="mt-10 divide-y divide-border rounded-2xl border border-border bg-surface-elevated shadow-soft"
+      >
+        @for (f of faqs; track $index) {
+          <button
+            (click)="setOpenFaq(openFaq === $index ? -1 : $index)"
+            class="flex w-full flex-col items-start gap-2 px-6 py-5 text-left"
+            [attr.aria-expanded]="openFaq === $index"
+          >
+            <div class="flex w-full items-center justify-between gap-4">
+              <span class="font-medium">{{ f.q }}</span>
+              <svg
+                lucideChevronDown
+                class="h-4 w-4 text-muted-foreground transition-transform"
+                [ngClass]="{ 'rotate-180': openFaq === $index }"
+              />
+            </div>
+            @if (openFaq === $index) {
+              <p class="mt-2 text-sm text-muted-foreground">{{ f.a }}</p>
+            }
+          </button>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Map / office placeholder  -->
+  <section class="bg-surface py-20">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="grid gap-6 lg:grid-cols-2 lg:items-stretch">
+        <div
+          class="rounded-3xl border border-border bg-surface-elevated p-8 shadow-soft"
+        >
+          <div class="flex items-center gap-2">
+            <svg lucideMapPin class="h-4 w-4 text-primary" />
+            <h3 class="font-display text-lg font-semibold">Our office</h3>
+          </div>
+          <p class="mt-4 text-2xl font-display font-bold">Billinox HQ</p>
+          <p class="mt-1 text-sm text-muted-foreground">
+            12 Innovation Way, Suite 400<br />
+            Lagos · Lisbon · Remote-first
+          </p>
+          <p class="mt-6 text-sm text-muted-foreground">
+            We're a globally distributed team. Drop by for coffee if you're in
+            town — just email us first.
+          </p>
+        </div>
+        <div
+          class="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-primary/15 via-surface-elevated to-surface-elevated shadow-soft"
+        >
+          <div
+            class="absolute inset-0 opacity-60 [background-image:linear-gradient(to_right,oklch(0.9_0.008_90/0.6)_1px,transparent_1px),linear-gradient(to_bottom,oklch(0.9_0.008_90/0.6)_1px,transparent_1px)] [background-size:32px_32px]"
+          ></div>
+          <div
+            class="relative grid h-full min-h-[260px] place-items-center p-8 text-center"
+          >
+            <div>
+              <span
+                class="grid h-12 w-12 mx-auto place-items-center rounded-2xl bg-primary/20 text-secondary"
+              >
+                <svg lucideMapPin class="h-5 w-5" />
+              </span>
+              <p class="mt-3 font-display text-lg font-semibold">
+                Visit us on the map
+              </p>
+              <p class="mt-1 text-sm text-muted-foreground">
+                Interactive map coming soon
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <app-footer />
+</div>
