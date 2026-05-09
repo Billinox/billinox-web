@@ -3,20 +3,30 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LucideMenu, LucideX } from '@lucide/angular';
 import { HlmButton } from '@spartan-ng/helm/button';
 import { NgIconComponent } from '@ng-icons/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
-  imports: [NgClass, LucideMenu, LucideX, HlmButton, NgIconComponent],
+  imports: [
+    NgClass,
+    LucideMenu,
+    LucideX,
+    HlmButton,
+    NgIconComponent,
+    RouterLink,
+    RouterLinkActive,
+  ],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
 export class Navbar implements OnInit, OnDestroy {
   public links = [
-    { href: '#features', label: 'Features' },
-    { href: '#showcase', label: 'Product' },
-    { href: '#pricing', label: 'Pricing' },
-    { href: '#testimonials', label: 'Testimonials' },
-    { href: '#faq', label: 'FAQ' },
+    { route: '/', fragment: 'features', label: 'Features' },
+    { route: '/', fragment: 'showcase', label: 'Product' },
+    { route: '/', fragment: 'pricing', label: 'Pricing' },
+    { route: '/guides', label: 'Guides' },
+    { route: '/about', label: 'About' },
+    { route: '/contact', label: 'Contact' },
   ];
 
   public scrolled = false;

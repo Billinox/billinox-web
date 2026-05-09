@@ -1,0 +1,344 @@
+<div class="min-h-screen bg-background">
+  <app-navbar />
+
+  <!-- Hero  -->
+  <section class="bg-hero noise relative overflow-hidden pt-32 pb-20 sm:pt-36">
+    <div
+      class="pointer-events-none absolute -top-40 left-1/2 h-96 w-[60rem] -translate-x-1/2 rounded-full bg-primary/30 blur-3xl"
+    ></div>
+    <div class="relative mx-auto max-w-4xl px-4 text-center">
+      <div
+        class="animate-fade-up mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface-elevated px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-soft"
+      >
+        <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-primary"></span>
+        About Billinox
+      </div>
+      <h1
+        class="animate-fade-up font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl"
+      >
+        Built to&nbsp;
+        <span class="relative inline-block">
+          <span class="text-gradient-gold">Simplify Business Billing</span>
+          <span
+            class="absolute -inset-x-2 -bottom-1 h-3 rounded-full bg-primary/20 blur-md"
+          ></span>
+        </span>
+      </h1>
+      <p
+        class="animate-fade-up mt-6 text-base text-muted-foreground sm:text-lg"
+        [style.animationDelay]="'120ms'"
+      >
+        Billinox is an offline-first invoice and billing platform crafted for
+        freelancers, small businesses, agencies, and entrepreneurs. Our mission
+        is simple — help every modern business run its billing without friction,
+        anywhere, anytime.
+      </p>
+    </div>
+  </section>
+
+  <!-- Mission  -->
+  <section class="py-20 sm:py-24">
+    <div
+      class="mx-auto grid max-w-7xl gap-12 px-4 lg:grid-cols-2 lg:items-center"
+    >
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wider text-primary">
+          Our mission
+        </p>
+        <h2
+          class="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl"
+        >
+          Billing software that respects your time and your data.
+        </h2>
+        <p class="mt-5 text-muted-foreground">
+          Billinox was created because traditional billing tools were heavy,
+          expensive, and demanded constant connectivity. We believed every
+          business — from a one-person consultancy to a growing agency —
+          deserves a tool that is calm, fast, and works the way they do.
+        </p>
+        <p class="mt-4 text-muted-foreground">
+          Offline-first is not a feature for us — it's a philosophy. Your
+          business shouldn't stop because your network does.
+        </p>
+      </div>
+      <div class="relative">
+        <div
+          class="absolute -inset-6 -z-10 rounded-3xl bg-primary/15 blur-3xl"
+        ></div>
+        <div
+          class="rounded-3xl border border-border bg-surface-elevated p-8 shadow-soft"
+        >
+          <div class="grid grid-cols-2 gap-4">
+            @for (
+              s of [
+                { k: "Offline", v: "First-class" },
+                { k: "Devices", v: "Unlimited" },
+                { k: "Backups", v: "Encrypted" },
+                { k: "Privacy", v: "By default" },
+              ];
+              track $index
+            ) {
+              <div class="rounded-xl border border-border bg-surface p-4">
+                <div
+                  class="text-xs uppercase tracking-wider text-muted-foreground"
+                >
+                  {{ s.k }}
+                </div>
+                <div class="mt-1 font-display text-lg font-semibold">
+                  {{ s.v }}
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values  -->
+  <section class="bg-surface py-20 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-xs font-bold uppercase tracking-wider text-primary">
+          Core values
+        </p>
+        <h2
+          class="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl"
+        >
+          The principles behind every decision.
+        </h2>
+      </div>
+      <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        @for (v of values; track $index) {
+          <div
+            class="group rounded-2xl border border-border bg-surface-elevated p-6 shadow-soft transition hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md"
+          >
+            <span
+              class="grid h-11 w-11 place-items-center rounded-xl bg-primary/15 text-secondary transition group-hover:bg-primary/25"
+            >
+              <svg [lucideIcon]="v.icon" class="h-5 w-5" />
+            </span>
+            <h3 class="mt-4 font-display text-lg font-semibold">
+              {{ v.title }}
+            </h3>
+            <p class="mt-1.5 text-sm text-muted-foreground">{{ v.desc }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy  -->
+  <section class="py-20 sm:py-24">
+    <div class="mx-auto max-w-5xl px-4">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-xs font-bold uppercase tracking-wider text-primary">
+          Philosophy
+        </p>
+        <h2
+          class="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl"
+        >
+          Local-first. Human-centered. Built for momentum.
+        </h2>
+      </div>
+      <div class="mt-12 grid gap-4 sm:grid-cols-2">
+        @for (
+          p of [
+            {
+              t: "Local-first data ownership",
+              d: "Your data lives on your device. The cloud is a backup, not a dependency.",
+            },
+            {
+              t: "Fast invoice generation",
+              d: "Create, customize, and send invoices in seconds — not minutes.",
+            },
+            {
+              t: "Clean user experience",
+              d: "No clutter. Every screen earns its place.",
+            },
+            {
+              t: "Minimal learning curve",
+              d: "If you can run a business, you can run Billinox in five minutes.",
+            },
+          ];
+          track $index
+        ) {
+          <div
+            class="rounded-2xl border border-border bg-surface-elevated p-6 shadow-soft"
+          >
+            <h3 class="font-display text-lg font-semibold">{{ p.t }}</h3>
+            <p class="mt-2 text-sm text-muted-foreground">{{ p.d }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline  -->
+  <section class="bg-surface py-20 sm:py-24">
+    <div class="mx-auto max-w-5xl px-4">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-xs font-bold uppercase tracking-wider text-primary">
+          Our journey
+        </p>
+        <h2
+          class="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl"
+        >
+          From an idea to a global billing platform.
+        </h2>
+      </div>
+      <ol class="relative mt-14 space-y-8 border-l border-border pl-8">
+        @for (m of milestones; track m.year) {
+          <li class="relative">
+            <span
+              class="absolute -left-[40px] top-0 grid h-4 w-4 place-items-center rounded-full border-2 border-primary bg-background"
+            >
+              <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+            </span>
+            <div
+              class="rounded-2xl border border-border bg-surface-elevated p-5 shadow-soft"
+            >
+              <div
+                class="font-display text-xs font-semibold uppercase tracking-wider text-primary"
+              >
+                {{ m.year }}
+              </div>
+              <h3 class="mt-1 font-display text-lg font-semibold">
+                {{ m.title }}
+              </h3>
+              <p class="mt-1 text-sm text-muted-foreground">{{ m.desc }}</p>
+            </div>
+          </li>
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- Team  -->
+  <section class="py-20 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-xs font-bold uppercase tracking-wider text-primary">
+          Team
+        </p>
+        <h2
+          class="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl"
+        >
+          The people building Billinox.
+        </h2>
+      </div>
+      <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        @for (p of team; track p.name) {
+          <div
+            class="rounded-2xl border border-border bg-surface-elevated p-6 text-center shadow-soft transition hover:-translate-y-0.5 hover:shadow-md"
+          >
+            <div
+              class="mx-auto grid h-16 w-16 place-items-center rounded-full bg-gradient-to-br from-primary to-primary-glow font-display text-lg font-bold text-secondary"
+            >
+              {{ p.initials }}
+            </div>
+            <h3 class="mt-4 font-display text-base font-semibold">
+              {{ p.name }}
+            </h3>
+            <p class="text-xs text-muted-foreground">{{ p.role }}</p>
+            <div class="mt-4 flex justify-center gap-2">
+              @for (
+                icon of [lucideTwitter, lucideLinkedin, lucideGithub];
+                track $index
+              ) {
+                <a
+                  href="#"
+                  aria-label="Social link"
+                  class="grid h-8 w-8 place-items-center rounded-lg border border-border text-muted-foreground transition hover:border-primary/50 hover:text-foreground"
+                >
+                  <ng-icon [svg]="icon" class="h-3.5 w-3.5" />
+                </a>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats  -->
+  <section class="bg-surface py-20 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-xs font-bold uppercase tracking-wider text-primary">
+          By the numbers
+        </p>
+        <h2
+          class="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl"
+        >
+          Trusted by businesses around the world.
+        </h2>
+      </div>
+      <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <app-counter
+          [target]="120000"
+          [suffix]="'+'"
+          [label]="'Invoices generated'"
+        />
+        <app-counter
+          [target]="4500"
+          [suffix]="'+'"
+          [label]="'Businesses supported'"
+        />
+        <app-counter [target]="42" [label]="'Countries reached'" />
+        <app-counter [target]="86000" [suffix]="'+'" [label]="'Hours saved'" />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA  -->
+  <section class="py-24">
+    <div class="mx-auto max-w-4xl px-4">
+      <div
+        class="relative overflow-hidden rounded-3xl border border-border bg-secondary p-10 text-center text-secondary-foreground shadow-soft sm:p-14"
+      >
+        <div
+          class="pointer-events-none absolute -top-24 left-1/2 h-72 w-[40rem] -translate-x-1/2 rounded-full bg-primary/30 blur-3xl"
+        ></div>
+        <div class="relative">
+          <div
+            class="mx-auto mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium"
+          >
+            <svg lucideHeart class="h-3.5 w-3.5 text-primary" />
+            Made for modern businesses
+          </div>
+          <h2
+            class="font-display text-3xl font-bold tracking-tight sm:text-5xl"
+          >
+            Start using Billinox today
+          </h2>
+          <p class="mx-auto mt-4 max-w-xl text-secondary-foreground/70">
+            Join thousands of businesses simplifying their billing with
+            Billinox.
+          </p>
+          <div
+            class="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          >
+            <Button
+              size="lg"
+              class="h-12 rounded-xl bg-primary px-6 text-primary-foreground hover:bg-primary/90"
+            >
+              Get started
+              <svg lucideArrowRight class="ml-1 h-4 w-4" />
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              class="h-12 rounded-xl border-white/20 bg-white/5 px-6 text-secondary-foreground hover:bg-white/10"
+            >
+              <svg lucidePlay class="mr-1 h-4 w-4 fill-current" />
+              Watch demo
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <app-footer />
+</div>

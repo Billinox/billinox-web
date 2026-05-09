@@ -1,5 +1,5 @@
 <header
-  class="fixed inset-x-0 top-0 z-50 transition-all duration-300"
+  class="fixed inset-x-0 top-0 z-50 transition-all duration-300 print:hidden"
   [ngClass]="{ 'py-2': scrolled, 'py-4': !scrolled }"
 >
   <div class="mx-auto max-w-7xl px-4">
@@ -21,7 +21,17 @@
       <div class="hidden items-center gap-1 md:flex">
         @for (l of links; track $index) {
           <a
-            [href]="l.href"
+            [routerLink]="l.route"
+            [fragment]="l.fragment"
+            [routerLinkActive]="
+              'text-foreground bg-muted'
+            "
+            [routerLinkActiveOptions]="{
+              paths: 'exact',
+              fragment: 'exact',
+              queryParams: 'ignored',
+              matrixParams: 'ignored',
+            }"
             class="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
           >
             {{ l.label }}
@@ -59,7 +69,11 @@
         <div class="flex flex-col">
           @for (l of links; track $index) {
             <a
-              [href]="l.href"
+              [routerLink]="l.route"
+              [fragment]="l.fragment"
+              [routerLinkActive]="
+                'rounded-lg px-3 py-2 text-sm font-medium text-foreground bg-muted'
+              "
               (click)="setOpen(false)"
               class="rounded-lg px-3 py-2.5 text-sm font-medium text-foreground hover:bg-muted"
             >
