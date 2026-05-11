@@ -204,7 +204,7 @@ export class Contact {
     formData.append('g-recaptcha-response', captcha);
 
     this.status = 'submitting';
-    fetch('/', {
+    fetch('/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(formData as any).toString(),
