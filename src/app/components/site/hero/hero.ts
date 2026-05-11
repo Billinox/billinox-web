@@ -8,6 +8,7 @@ import {
 } from '@lucide/angular';
 import { DashboardMockup } from '../dashboard-mockup/dashboard-mockup';
 import { HlmButton } from '@spartan-ng/helm/button';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-hero',
@@ -19,6 +20,7 @@ import { HlmButton } from '@spartan-ng/helm/button';
     LucideShieldCheck,
     LucideWifiOff,
     LucideRefreshCw,
+    RouterLink,
   ],
   templateUrl: './hero.html',
   styleUrl: './hero.css',

@@ -12,7 +12,7 @@ import { HlmButton } from '@spartan-ng/helm/button';
 export class Pricing {
   public tiers = [
     {
-      name: 'Starter',
+      name: 'Free',
       price: '$0',
       period: 'free forever',
       desc: 'For freelancers and small teams getting started.',
@@ -27,8 +27,8 @@ export class Pricing {
       highlighted: false,
     },
     {
-      name: 'Business',
-      price: '$19',
+      name: 'Premium',
+      price: '$1',
       period: 'per month',
       desc: 'Everything growing businesses need to scale billing.',
       features: [
@@ -42,21 +42,21 @@ export class Pricing {
       cta: 'Start 14-day trial',
       highlighted: true,
     },
-    {
-      name: 'Enterprise',
-      price: '$49',
-      period: 'per month',
-      desc: 'Advanced controls for multi-branch operations.',
-      features: [
-        'Unlimited everything',
-        'Multi-branch support',
-        'Role-based access',
-        'Custom branding',
-        'Dedicated success manager',
-        'Priority 24/7 support',
-      ],
-      cta: 'Contact sales',
-      highlighted: false,
-    },
+    // {
+    //   name: 'Enterprise',
+    //   price: '$49',
+    //   period: 'per month',
+    //   desc: 'Advanced controls for multi-branch operations.',
+    //   features: [
+    //     'Unlimited everything',
+    //     'Multi-branch support',
+    //     'Role-based access',
+    //     'Custom branding',
+    //     'Dedicated success manager',
+    //     'Priority 24/7 support',
+    //   ],
+    //   cta: 'Contact sales',
+    //   highlighted: false,
+    // },
   ];
 }

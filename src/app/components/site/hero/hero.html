@@ -1,74 +1,94 @@
-<section id="top" class="bg-hero noise relative overflow-hidden pt-32 pb-20 sm:pt-36">
-      <div class="pointer-events-none absolute -top-40 left-1/2 h-96 w-[60rem] -translate-x-1/2 rounded-full bg-primary/30 blur-3xl"></div>
-      <div class="relative mx-auto max-w-7xl px-4">
-        <div class="mx-auto max-w-3xl text-center">
-          <div class="animate-fade-up mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface-elevated px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-soft">
-            <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-primary"></span>
-            New · Offline-first invoicing for modern businesses
-          </div>
-          <h1 class="animate-fade-up font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
-            The smartest way to&nbsp;
-            <span class="relative inline-block">
-              <span class="text-gradient-gold">run your business</span>
-              <span class="absolute -inset-x-2 -bottom-1 h-3 rounded-full bg-primary/20 blur-md"></span>
-            </span>
-          </h1>
-          <p
-            class="animate-fade-up mt-6 text-base text-muted-foreground sm:text-lg"
-            [style.animationDelay]="'120ms'"
-          >
-            Create professional invoices, track payments, manage customers, and streamline your
-            billing workflow from one powerful platform. Offline-first and built for modern
-            businesses.
-          </p>
-          <div
-            class="animate-fade-up mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
-            [style.animationDelay]="'220ms'"
-          >
-            <button
-              hlmBtn
-              size="lg"
-              class="group h-12 rounded-xl bg-secondary px-6 text-secondary-foreground shadow-soft hover:bg-secondary/90"
-            >
-              Get started
-              <svg class="ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5" lucideArrowRight></svg>
-            </button>
-            <button
-            hlmBtn
-              size="lg"
-              variant="outline"
-              class="h-12 rounded-xl border-border bg-surface-elevated px-6 hover:bg-muted"
-            >
-              <svg class="mr-1 h-4 w-4 fill-current" lucidePlay></svg>
-              Watch demo
-            </button>
-          </div>
-
-          <div
-            class="animate-fade-up mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-muted-foreground"
-            [style.animationDelay]="'320ms'"
-          >
-            <span class="inline-flex items-center gap-1.5">
-              <svg class="h-4 w-4 text-primary" lucideShieldCheck></svg>
-              Secure backups
-            </span>
-            <span class="inline-flex items-center gap-1.5">
-              <svg class="h-4 w-4 text-primary" lucideWifiOff></svg>
-              Offline support
-            </span>
-            <span class="inline-flex items-center gap-1.5">
-              <svg class="h-4 w-4 text-primary" lucideRefreshCw></svg>
-              Multi-device sync
-            </span>
-          </div>
-        </div>
-
-        <div
-          class="animate-fade-up relative mx-auto mt-16 max-w-6xl"
-          [style.animationDelay]="'420ms'"
-        >
-          <div class="absolute -inset-4 -z-10 rounded-3xl bg-primary/20 blur-3xl"></div>
-          <app-dashboard-mockup />
-        </div>
+<section
+  id="top"
+  class="bg-hero noise relative overflow-hidden pt-32 pb-20 sm:pt-36"
+>
+  <div
+    class="pointer-events-none absolute -top-40 left-1/2 h-96 w-[60rem] -translate-x-1/2 rounded-full bg-primary/30 blur-3xl"
+  ></div>
+  <div class="relative mx-auto max-w-7xl px-4">
+    <div class="mx-auto max-w-3xl text-center">
+      <div
+        class="animate-fade-up mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface-elevated px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-soft"
+      >
+        <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-primary"></span>
+        New · Offline-first invoicing for modern businesses
       </div>
-    </section>
+      <h1
+        class="animate-fade-up font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl"
+      >
+        The smartest way to&nbsp;
+        <span class="relative inline-block">
+          <span class="text-gradient-gold">run your business</span>
+          <span
+            class="absolute -inset-x-2 -bottom-1 h-3 rounded-full bg-primary/20 blur-md"
+          ></span>
+        </span>
+      </h1>
+      <p
+        class="animate-fade-up mt-6 text-base text-muted-foreground sm:text-lg"
+        [style.animationDelay]="'120ms'"
+      >
+        Create professional invoices, track payments, manage customers, and
+        streamline your billing workflow from one powerful platform.
+        Offline-first and built for modern businesses.
+      </p>
+      <div
+        class="animate-fade-up mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
+        [style.animationDelay]="'220ms'"
+      >
+        <button
+          hlmBtn
+          size="lg"
+          class="group h-12 rounded-xl bg-secondary p-0 text-secondary-foreground shadow-soft hover:bg-secondary/90"
+        >
+          <a routerLink="/get-started" class="h-12 px-6 flex items-center justify-center">
+            Get started
+            <svg
+              class="ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5 inline"
+              lucideArrowRight
+            ></svg>
+          </a>
+        </button>
+        <button
+          hlmBtn
+          size="lg"
+          variant="outline"
+          class="h-12 rounded-xl border-border bg-surface-elevated hover:bg-muted"
+        >
+          <a routerLink="/guides" class="h-12 px-6 flex items-center justify-center">
+            <svg class="mr-1 h-4 w-4 fill-current inline" lucidePlay></svg>
+            Watch demo
+          </a>
+        </button>
+      </div>
+
+      <div
+        class="animate-fade-up mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-muted-foreground"
+        [style.animationDelay]="'320ms'"
+      >
+        <span class="inline-flex items-center gap-1.5">
+          <svg class="h-4 w-4 text-primary" lucideShieldCheck></svg>
+          Secure backups
+        </span>
+        <span class="inline-flex items-center gap-1.5">
+          <svg class="h-4 w-4 text-primary" lucideWifiOff></svg>
+          Offline support
+        </span>
+        <span class="inline-flex items-center gap-1.5">
+          <svg class="h-4 w-4 text-primary" lucideRefreshCw></svg>
+          Multi-device sync
+        </span>
+      </div>
+    </div>
+
+    <div
+      class="animate-fade-up relative mx-auto mt-16 max-w-6xl"
+      [style.animationDelay]="'420ms'"
+    >
+      <div
+        class="absolute -inset-4 -z-10 rounded-3xl bg-primary/20 blur-3xl"
+      ></div>
+      <app-dashboard-mockup />
+    </div>
+  </div>
+</section>

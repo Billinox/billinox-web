@@ -33,7 +33,7 @@ export class Faq {
     },
     {
       q: 'Can multiple devices connect to the same workspace?',
-      a: 'Yes. Sign in on phone, tablet, and web. Changes sync in real time across all your devices.',
+      a: 'Yes. Sign in on phone and tablet. Changes sync in real time across all your devices.',
     },
     {
       q: 'Is my business data secure?',
