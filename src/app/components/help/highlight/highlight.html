@@ -1,0 +1,9 @@
+@for (p of parts; track $index) {
+  @if (p.toLowerCase() === query.toLowerCase()) {
+    <mark class="rounded bg-primary/30 px-0.5 text-foreground">
+      {{ p }}
+    </mark>
+  } @else {
+    <span>{{ p }}</span>
+  }
+}

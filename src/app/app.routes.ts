@@ -24,6 +24,10 @@ export const routes: Routes = [
       import('./routes/get-started/get-started').then((m) => m.GetStartedPage),
   },
   {
+    path: 'help-center',
+    loadComponent: () => import('./routes/help/help').then((m) => m.HelpPage),
+  },
+  {
     path: 'about',
     loadComponent: () => import('./routes/about/about').then((m) => m.About),
   },
