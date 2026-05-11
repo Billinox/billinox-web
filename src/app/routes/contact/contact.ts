@@ -34,6 +34,7 @@ import { NgIconComponent } from '@ng-icons/core';
 import { HlmButton } from '@spartan-ng/helm/button';
 import { HlmSelect, HlmSelectImports } from '@spartan-ng/helm/select';
 import { SeoService } from '../../services/seo.service';
+import { socials } from '../../constants/socials.constant';
 
 @Component({
   selector: 'app-contact',
@@ -125,13 +126,7 @@ export class ContactPage {
     },
   ];
 
-  public socials = [
-    { icon: lucideYoutube, label: 'YouTube' },
-    { icon: lucideTwitter, label: 'Twitter / X' },
-    { icon: lucideLinkedin, label: 'LinkedIn' },
-    { icon: lucideFacebook, label: 'Facebook' },
-    { icon: lucideInstagram, label: 'Instagram' },
-  ];
+  public socials = socials;
 
   public contactForm = new FormGroup({
     name: new FormControl<string>('', [

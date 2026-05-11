@@ -2,12 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LucideMail } from '@lucide/angular';
 import { NgIcon } from '@ng-icons/core';
-import {
-  lucideGithub,
-  lucideInstagram,
-  lucideLinkedin,
-  lucideTwitter,
-} from '@ng-icons/lucide';
+import { socials } from '../../../constants/socials.constant';
 
 @Component({
   selector: 'app-footer',
@@ -49,12 +44,6 @@ export class Footer {
     },
   ];
 
-  public socials = [
-    { link: '', icon: lucideTwitter },
-    { link: '', icon: lucideGithub },
-    { link: '', icon: lucideLinkedin },
-    { link: '', icon: lucideInstagram },
-  ];
-
+  public socials = socials;
   public fullYear = new Date().getFullYear();
 }

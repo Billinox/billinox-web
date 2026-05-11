@@ -1,21 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import {
-  firstValueFrom,
-  lastValueFrom,
-  map,
-  Observable,
-  shareReplay,
-} from 'rxjs';
+import { firstValueFrom, map, Observable, shareReplay } from 'rxjs';
 import { BlogPost } from '../models/blog.model';
-import { UrlService } from './url.service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BlogService {
   private http = inject(HttpClient);
-  private urlService = inject(UrlService);
   private cache?: Observable<BlogPost[]>;
 
   public getFeaturedPost(): Observable<BlogPost | undefined> {
@@ -25,7 +18,7 @@ export class BlogService {
   public getPosts(): Observable<BlogPost[]> {
     if (this.cache == undefined) {
       this.cache = this.http
-        .get<BlogPost[]>(`${this.urlService.baseUrl}/data/blog.json`)
+        .get<BlogPost[]>(`${environment.baseUrl}/data/blog.json`)
         .pipe(shareReplay(1000));
     }
     return this.cache!;
@@ -33,7 +26,7 @@ export class BlogService {
 
   public getPostBySlug(slug: string): Observable<BlogPost> {
     return this.http.get<BlogPost>(
-      `${this.urlService.baseUrl}/data/blog/${slug}.json`,
+      `${environment.baseUrl}/data/blog/${slug}.json`,
     );
   }
 

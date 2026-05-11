@@ -24,10 +24,13 @@
         <div class="mt-5 flex gap-2">
           @for (s of socials; track $index) {
             <a
+              target="_blank"
               [href]="s.link"
+              [attr.aria-label]="s.label"
               class="grid h-9 w-9 place-items-center rounded-xl border border-border bg-card text-muted-foreground transition hover:border-primary/50 hover:text-foreground"
             >
               <ng-icon class="h-4 w-4" [svg]="s.icon"></ng-icon>
+              <span class="sr-only">{{ s.label }}</span>
             </a>
           }
         </div>

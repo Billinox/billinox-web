@@ -26,6 +26,7 @@ import {
   withEventReplay,
 } from '@angular/platform-browser';
 import { UrlService } from './services/url.service';
+import { environment } from '../environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -50,7 +51,7 @@ export const appConfig: ApplicationConfig = {
     provideNgIconLoader((name) => {
       const http = inject(HttpClient);
       const urlService = inject(UrlService);
-      return http.get(`${urlService.baseUrl}/icons/${name}.svg`, {
+      return http.get(`${environment.baseUrl}/icons/${name}.svg`, {
         responseType: 'text',
       });
     }, withCaching()),

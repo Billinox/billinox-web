@@ -13,7 +13,6 @@ import {
   LucidePlay,
 } from '@lucide/angular';
 import { lucideGithub, lucideLinkedin, lucideTwitter } from '@ng-icons/lucide';
-import { NgIconComponent } from '@ng-icons/core';
 import { Counter } from '../../components/shared/counter/counter';
 import { Footer } from '../../components/site/footer/footer';
 import { SeoService } from '../../services/seo.service';
@@ -23,7 +22,6 @@ import { SeoService } from '../../services/seo.service';
   imports: [
     Navbar,
     LucideDynamicIcon,
-    NgIconComponent,
     Counter,
     LucideHeart,
     LucideArrowRight,
@@ -33,7 +31,7 @@ import { SeoService } from '../../services/seo.service';
   templateUrl: './about.html',
   styleUrl: './about.css',
 })
-export class About {
+export class AboutPage {
   public values = [
     {
       icon: LucideSparkles,

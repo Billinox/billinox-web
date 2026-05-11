@@ -222,7 +222,6 @@ export class HelpPage implements OnInit, OnDestroy {
       this.query$.pipe(debounceTime(500)),
       this.active$,
     ]).subscribe(([query, active]) => {
-      console.log('Filter: ', query);
       this.filtered = faqs.filter((f) => {
         const q = query.trim().toLowerCase();
         const matchesCat = q ? true : f.category === active;

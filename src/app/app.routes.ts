@@ -29,7 +29,8 @@ export const routes: Routes = [
   },
   {
     path: 'about',
-    loadComponent: () => import('./routes/about/about').then((m) => m.About),
+    loadComponent: () =>
+      import('./routes/about/about').then((m) => m.AboutPage),
   },
   {
     path: 'contact',

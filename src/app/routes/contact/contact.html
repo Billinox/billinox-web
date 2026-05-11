@@ -284,9 +284,7 @@
             @for (
               item of [
                 ["General", "< 24 hours"],
-                ["Technical", "< 12 hours"],
-                ["Sales", "Same day"],
-                ["Partnerships", "1–2 business days"],
+                ["Technical", "< 12 hours"]
               ];
               track $index
             ) {
@@ -311,11 +309,13 @@
           <div class="mt-4 grid grid-cols-5 gap-2">
             @for (s of socials; track $index) {
               <a
-                href="#"
+                target="_blank"
+                [href]="s.link"
                 [attr.aria-label]="s.label"
                 class="grid h-11 place-items-center rounded-xl border border-border text-muted-foreground transition hover:border-primary/50 hover:text-foreground"
               >
                 <ng-icon [svg]="s.icon" class="h-4 w-4" />
+                <span class="sr-only">{{ s.label }}</span>
               </a>
             }
           </div>
@@ -414,3 +414,6 @@
 
   <app-footer />
 </div>
+
+ <!-- ["Sales", "Same day"],
+                ["Partnerships", "1–2 business days"], -->
