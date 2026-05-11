@@ -51,7 +51,7 @@ import { HlmSelect, HlmSelectImports } from '@spartan-ng/helm/select';
     HlmTextarea,
     NgIconComponent,
     HlmButton,
-    HlmSelectImports
+    HlmSelectImports,
   ],
   templateUrl: './contact.html',
   styleUrl: './contact.css',
@@ -102,7 +102,8 @@ export class Contact {
     // 'Partnership',
     'Legal & Privacy',
   ] as const;
-  public categoriesToString = (value: string) => this.categories.find((item) => item === value) || '';
+  public categoriesToString = (value: string) =>
+    this.categories.find((item) => item === value) || '';
   public openFaq = 0;
   public faqs = [
     {
@@ -184,13 +185,23 @@ export class Contact {
       return;
     }
 
+    let captcha = '';
+    if ('grecaptcha' in globalThis) {
+      captcha = (globalThis as any).grecaptcha.getResponse();
+    }
+
+    if (captcha === '') {
+      console.error('captcha required');
+      return;
+    }
+
     const formData = new FormData();
-    formData.append('form-name', 'Contact');
     formData.append('name', this.fc.name.value!);
     formData.append('email', this.fc.email.value!);
     formData.append('subject', this.fc.subject.value!);
     formData.append('category', this.fc.category.value!);
     formData.append('message', this.fc.message.value!);
+    formData.append('g-recaptcha-response', captcha);
 
     this.status = 'submitting';
     fetch('/', {
