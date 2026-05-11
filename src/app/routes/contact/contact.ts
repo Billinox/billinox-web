@@ -185,6 +185,7 @@ export class Contact {
     }
 
     const formData = new FormData();
+    formData.append('form-name', 'Contact');
     formData.append('name', this.fc.name.value!);
     formData.append('email', this.fc.email.value!);
     formData.append('subject', this.fc.subject.value!);
@@ -192,7 +193,7 @@ export class Contact {
     formData.append('message', this.fc.message.value!);
 
     this.status = 'submitting';
-    fetch('/contact', {
+    fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(formData as any).toString(),
