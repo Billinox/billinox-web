@@ -1,4 +1,11 @@
-import { Component, inject, input, OnDestroy, OnInit, signal } from '@angular/core';
+import {
+  Component,
+  inject,
+  input,
+  OnDestroy,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { BlogPost } from '../../models/blog.model';
 import { isPlatformBrowser, NgClass } from '@angular/common';
 import { PlatformService } from '../../services/platform.service';
@@ -13,13 +20,10 @@ import {
 } from '@lucide/angular';
 import { DateFormatPipe } from '../../pipes/date-format-pipe';
 import { MarkdownComponent } from 'ngx-markdown';
-import {
-  lucideLink,
-  lucideLinkedin,
-  lucideTwitter,
-} from '@ng-icons/lucide';
+import { lucideLink, lucideLinkedin, lucideTwitter } from '@ng-icons/lucide';
 import { NgIconComponent } from '@ng-icons/core';
 import { Footer } from '../../components/site/footer/footer';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-blog-article',
@@ -59,15 +63,28 @@ export class BlogArticle implements OnInit, OnDestroy {
   private blogService = inject(BlogService);
   private platformService = inject(PlatformService);
   private route = inject(ActivatedRoute);
+  private readonly seoService = inject(SeoService);
+
+  constructor() {
+    this.route.data.subscribe((data) => {
+      const post = data['post'];
+      this.post.set(post);
+      this.seoService.optimize({
+        title: `${post.title} — Billinox Blog`,
+        meta: [
+          { name: 'description', content: post.excerpt },
+          { property: 'og:title', content: post.title },
+          { property: 'og:description', content: post.excerpt },
+          { property: 'og:type', content: 'article' },
+        ],
+      });
+    });
+  }
 
   ngOnInit(): void {
     this.platformService.runOnBrowser(() =>
       window.addEventListener('scroll', this.onScroll),
     );
-
-    this.route.data.subscribe((data)=>{
-      this.post.set(data['post']);
-    });
 
     this.author = this.post().author;
     this.initials = this.author

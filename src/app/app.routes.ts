@@ -34,7 +34,7 @@ export const routes: Routes = [
   {
     path: 'contact',
     loadComponent: () =>
-      import('./routes/contact/contact').then((m) => m.Contact),
+      import('./routes/contact/contact').then((m) => m.ContactPage),
   },
   {
     path: 'guides',

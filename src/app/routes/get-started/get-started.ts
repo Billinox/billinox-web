@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   LucideApple,
   LucideCloud,
@@ -25,7 +25,8 @@ import { RouterLink } from '@angular/router';
 import { StoreBadge } from '../../components/shared/store-badge/store-badge';
 import { PhoneMockup } from '../../components/shared/phone-mockup/phone-mockup';
 import { Footer } from '../../components/site/footer/footer';
-import { HlmButton } from "@spartan-ng/helm/button";
+import { HlmButton } from '@spartan-ng/helm/button';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-get-started',
@@ -41,8 +42,8 @@ import { HlmButton } from "@spartan-ng/helm/button";
     LucidePlay,
     LucideArrowRight,
     Footer,
-    HlmButton
-],
+    HlmButton,
+  ],
   templateUrl: './get-started.html',
   styleUrl: './get-started.css',
 })
@@ -139,4 +140,24 @@ export class GetStartedPage {
       rating: '4.9',
     },
   ];
+
+  private seo = inject(SeoService);
+
+  constructor() {
+    this.seo.optimize({
+      title: 'Get Started with Billinox — Download & Onboard in Minutes',
+      meta: [
+        {
+          name: 'description',
+          content:
+            'Download Billinox on Android or iOS and start creating professional invoices in minutes. Step-by-step onboarding for new users.',
+        },
+        { property: 'og:title', content: 'Get Started with Billinox' },
+        {
+          property: 'og:description',
+          content: 'Download the app and start invoicing in minutes.',
+        },
+      ],
+    });
+  }
 }

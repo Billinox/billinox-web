@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   lucideFacebook,
   lucideInstagram,
@@ -33,6 +33,7 @@ import { HlmTextarea } from '@spartan-ng/helm/textarea';
 import { NgIconComponent } from '@ng-icons/core';
 import { HlmButton } from '@spartan-ng/helm/button';
 import { HlmSelect, HlmSelectImports } from '@spartan-ng/helm/select';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-contact',
@@ -56,7 +57,7 @@ import { HlmSelect, HlmSelectImports } from '@spartan-ng/helm/select';
   templateUrl: './contact.html',
   styleUrl: './contact.css',
 })
-export class Contact {
+export class ContactPage {
   public methods = [
     {
       icon: LucideMail,
@@ -171,8 +172,29 @@ export class Contact {
     messageMax: 'message must be less than 2000 characters',
   };
 
+  private readonly seoService = inject(SeoService);
+
   public get fc() {
     return this.contactForm.controls;
+  }
+
+  constructor() {
+    this.seoService.optimize({
+      title: "Contact Billinox — We'd Love to Hear From You",
+      meta: [
+        {
+          name: 'description',
+          content:
+            'Reach the Billinox team for support, sales, partnerships, and privacy questions. Fast, friendly responses from real humans.',
+        },
+        { property: 'og:title', content: 'Contact Billinox' },
+        {
+          property: 'og:description',
+          content:
+            'Talk to the Billinox team — support, sales, and partnerships.',
+        },
+      ],
+    });
   }
 
   setOpenFaq(value: number) {

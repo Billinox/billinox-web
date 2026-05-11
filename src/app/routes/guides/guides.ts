@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   LucideCircleCheck,
   LucideGraduationCap,
@@ -21,9 +21,10 @@ import { Footer } from '../../components/site/footer/footer';
 import { HlmButton } from '@spartan-ng/helm/button';
 import { NgIconComponent } from '@ng-icons/core';
 import { lucideYoutube } from '@ng-icons/lucide';
-import { TutorialDetails } from "../../components/guide/tutorial-details/tutorial-details";
+import { TutorialDetails } from '../../components/guide/tutorial-details/tutorial-details';
 import { GuideCategories, Tutorial } from '../../models/guide.model';
-import { HlmInput } from "@spartan-ng/helm/input";
+import { HlmInput } from '@spartan-ng/helm/input';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-guides',
@@ -42,8 +43,8 @@ import { HlmInput } from "@spartan-ng/helm/input";
     NgIconComponent,
     LucideArrowRight,
     TutorialDetails,
-    HlmInput
-],
+    HlmInput,
+  ],
   templateUrl: './guides.html',
   styleUrl: './guides.css',
 })
@@ -232,6 +233,27 @@ export class Guides implements OnInit {
         this.tutorials.filter((t) => t.id !== this.openVideo?.id).slice(0, 3),
       )
       .slice(0, 3);
+  }
+
+  private readonly seoService = inject(SeoService);
+
+  constructor() {
+    this.seoService.optimize({
+      title: 'Learn Billinox — Tutorials & Guides',
+      meta: [
+        {
+          name: 'description',
+          content:
+            'Step-by-step tutorials, setup guides, and business billing tips to help you get the most out of Billinox.',
+        },
+        { property: 'og:title', content: 'Billinox Guides & Tutorials' },
+        {
+          property: 'og:description',
+          content:
+            'Watch curated YouTube tutorials and master Billinox in minutes.',
+        },
+      ],
+    });
   }
 
   ngOnInit(): void {

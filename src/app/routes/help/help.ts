@@ -1,5 +1,24 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { LucideCloud, LucideCreditCard, LucideDownload, LucideFileText, LucideRefreshCw, LucideShieldCheck, LucideSparkles, LucideUsers, LucideWallet, LucideWrench, LucideChevronRight, LucideCircleQuestionMark, LucideSearch, LucideDynamicIcon, LucideArrowRight, LucideMail, LucideBookOpen, LucideArrowUp } from '@lucide/angular';
+import {
+  LucideCloud,
+  LucideCreditCard,
+  LucideDownload,
+  LucideFileText,
+  LucideRefreshCw,
+  LucideShieldCheck,
+  LucideSparkles,
+  LucideUsers,
+  LucideWallet,
+  LucideWrench,
+  LucideChevronRight,
+  LucideCircleQuestionMark,
+  LucideSearch,
+  LucideDynamicIcon,
+  LucideArrowRight,
+  LucideMail,
+  LucideBookOpen,
+  LucideArrowUp,
+} from '@lucide/angular';
 import { BehaviorSubject, combineLatest, debounceTime } from 'rxjs';
 import { PlatformService } from '../../services/platform.service';
 import { Navbar } from '../../components/site/navbar/navbar';
@@ -8,8 +27,9 @@ import { AsyncPipe, NgClass } from '@angular/common';
 import { HlmAccordionImports } from '@spartan-ng/helm/accordion';
 import { Highlight } from '../../components/help/highlight/highlight';
 import { RouterLink } from '@angular/router';
-import { Footer } from "../../components/site/footer/footer";
-import { HlmButton } from "@spartan-ng/helm/button";
+import { Footer } from '../../components/site/footer/footer';
+import { HlmButton } from '@spartan-ng/helm/button';
+import { SeoService } from '../../services/seo.service';
 
 const categories = [
   { id: 'getting-started', label: 'Getting Started', icon: LucideSparkles },
@@ -144,15 +164,16 @@ const popularTopics = [
     LucideDynamicIcon,
     NgClass,
     HlmAccordionImports,
-    Highlight, RouterLink,
+    Highlight,
+    RouterLink,
     LucideArrowRight,
     LucideMail,
     LucideBookOpen,
     Footer,
     LucideArrowUp,
     AsyncPipe,
-    HlmButton
-],
+    HlmButton,
+  ],
   templateUrl: './help.html',
   styleUrl: './help.css',
 })
@@ -167,10 +188,29 @@ export class HelpPage implements OnInit, OnDestroy {
 
   public onScroll = () => (this.showTop = window.scrollY > 600);
 
-  private platformService = inject(PlatformService);
+  public get activeLabel() {
+    return this.categories.find((c) => c.id === this.active$.value)?.label;
+  }
 
-  get activeLabel(){
-    return this.categories.find((c) => c.id === this.active$.value)?.label
+  private platformService = inject(PlatformService);
+  private seoService = inject(SeoService);
+
+  constructor() {
+    this.seoService.optimize({
+      title: 'Help Center — Billinox Support & FAQs',
+      meta: [
+        {
+          name: 'description',
+          content:
+            'Search the Billinox knowledge base, browse FAQs, and find answers to questions about invoicing, sync, backups, and PDF exports.',
+        },
+        { property: 'og:title', content: 'Billinox Help Center' },
+        {
+          property: 'og:description',
+          content: 'Answers, guides, and support for the Billinox platform.',
+        },
+      ],
+    });
   }
 
   ngOnInit(): void {
@@ -178,8 +218,11 @@ export class HelpPage implements OnInit, OnDestroy {
       window.addEventListener('scroll', this.onScroll),
     );
 
-    combineLatest([this.query$.pipe(debounceTime(500)), this.active$]).subscribe(([query, active]) => {
-      console.log("Filter: ", query)
+    combineLatest([
+      this.query$.pipe(debounceTime(500)),
+      this.active$,
+    ]).subscribe(([query, active]) => {
+      console.log('Filter: ', query);
       this.filtered = faqs.filter((f) => {
         const q = query.trim().toLowerCase();
         const matchesCat = q ? true : f.category === active;
@@ -208,7 +251,7 @@ export class HelpPage implements OnInit, OnDestroy {
     document.getElementById('faqs')?.scrollIntoView({ behavior: 'smooth' });
   }
 
-  scrollToTop(){
-    window.scrollTo({ top: 0, behavior: "smooth" })
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

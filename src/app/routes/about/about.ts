@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Navbar } from '../../components/site/navbar/navbar';
 import {
   LucideAccessibility,
@@ -16,6 +16,7 @@ import { lucideGithub, lucideLinkedin, lucideTwitter } from '@ng-icons/lucide';
 import { NgIconComponent } from '@ng-icons/core';
 import { Counter } from '../../components/shared/counter/counter';
 import { Footer } from '../../components/site/footer/footer';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-about',
@@ -104,4 +105,24 @@ export class About {
   lucideTwitter = lucideTwitter;
   lucideGithub = lucideGithub;
   lucideLinkedin = lucideLinkedin;
+
+  private seoService = inject(SeoService);
+
+  constructor() {
+    this.seoService.optimize({
+      title: 'About Billinox — Built to Simplify Business Billing',
+      meta: [
+        {
+          name: 'description',
+          content:
+            'Billinox is an offline-first invoice and billing platform built to help freelancers, small businesses, and agencies run their billing efficiently.',
+        },
+        { property: 'og:title', content: 'About Billinox' },
+        {
+          property: 'og:description',
+          content: 'Our mission, values, and the journey behind Billinox.',
+        },
+      ],
+    });
+  }
 }
