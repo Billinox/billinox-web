@@ -37,7 +37,11 @@
           hlmBtn
           type="submit"
           class="h-11 bg-secondary text-secondary-foreground hover:bg-secondary/90"
+          [disabled]="processing"
         >
+          @if (processing) {
+            <hlm-spinner />
+          }
           Subscribe
         </button>
       </form>

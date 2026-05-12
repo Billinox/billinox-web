@@ -1,12 +1,5 @@
 import { Component, inject } from '@angular/core';
 import {
-  lucideFacebook,
-  lucideInstagram,
-  lucideLinkedin,
-  lucideTwitter,
-  lucideYoutube,
-} from '@ng-icons/lucide';
-import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
@@ -22,9 +15,7 @@ import {
   LucideMapPin,
   LucideMail,
   LucideShieldCheck,
-  LucideHandshake,
   LucideHeadphones,
-  LucideBriefcase,
 } from '@lucide/angular';
 import { NgClass } from '@angular/common';
 import { Footer } from '../../components/site/footer/footer';
@@ -35,6 +26,9 @@ import { HlmButton } from '@spartan-ng/helm/button';
 import { HlmSelect, HlmSelectImports } from '@spartan-ng/helm/select';
 import { SeoService } from '../../services/seo.service';
 import { socials } from '../../constants/socials.constant';
+import { HlmSpinnerImports } from '@spartan-ng/helm/spinner';
+import { RecaptchaV3Module, ReCaptchaV3Service } from 'ng-recaptcha-2';
+import { toast } from '@spartan-ng/brain/sonner';
 
 @Component({
   selector: 'app-contact',
@@ -54,6 +48,8 @@ import { socials } from '../../constants/socials.constant';
     NgIconComponent,
     HlmButton,
     HlmSelectImports,
+    HlmSpinnerImports,
+    RecaptchaV3Module,
   ],
   templateUrl: './contact.html',
   styleUrl: './contact.css',
@@ -167,11 +163,12 @@ export class ContactPage {
     messageMax: 'message must be less than 2000 characters',
   };
 
-  private readonly seoService = inject(SeoService);
-
   public get fc() {
     return this.contactForm.controls;
   }
+
+  private readonly seoService = inject(SeoService);
+  private recaptchaV3Service = inject(ReCaptchaV3Service);
 
   constructor() {
     this.seoService.optimize({
@@ -202,38 +199,38 @@ export class ContactPage {
       return;
     }
 
-    let captcha = '';
-    if ('grecaptcha' in window) {
-      captcha = (window as any).grecaptcha.getResponse();
-    }
-
-    if (captcha === '') {
-      console.error('captcha required');
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append('name', this.fc.name.value!);
-    formData.append('email', this.fc.email.value!);
-    formData.append('subject', this.fc.subject.value!);
-    formData.append('category', this.fc.category.value!);
-    formData.append('message', this.fc.message.value!);
-    formData.append('g-recaptcha-response', captcha);
-    formData.append('form-name', 'Contact');
-
     this.status = 'submitting';
-    fetch('/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(formData as any).toString(),
-    })
-      .then(() => {
-        this.status = 'success';
-        this.contactForm.reset();
-      })
-      .catch((error) => {
-        console.error('Error submitting contact form:', error);
+    this.recaptchaV3Service.execute('contact_us').subscribe({
+      next: async (token) => {
+        const formData = new FormData();
+        formData.append('name', this.fc.name.value!);
+        formData.append('email', this.fc.email.value!);
+        formData.append('subject', this.fc.subject.value!);
+        formData.append('category', this.fc.category.value!);
+        formData.append('message', this.fc.message.value!);
+        formData.append('g-recaptcha-response', token);
+        formData.append('form-name', 'Contact');
+        try {
+          const response = await fetch(window.location.pathname, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(formData as any).toString(),
+          });
+
+          if (response.status === 200) {
+            this.status = 'success';
+            return;
+          }
+          this.status = 'error';
+        } catch (error) {
+          this.status = 'error';
+          toast.error('Operation failed');
+        }
+      },
+      error: (error) => {
         this.status = 'error';
-      });
+        toast.error('Operation failed, please try again later');
+      },
+    });
   }
 }

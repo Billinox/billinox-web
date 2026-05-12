@@ -251,9 +251,7 @@
               }
             }
           </div>
-          <div class="sm-col-span-3">
-            <div data-netlify-recaptcha="true"></div>
-          </div>
+
           <div class="sm:col-span-2">
             <button
               hlmBtn
@@ -262,7 +260,7 @@
               class="h-11 rounded-xl bg-secondary px-6 text-secondary-foreground hover:bg-secondary/90"
             >
               @if (status === "submitting") {
-                Sending…
+                <hlm-spinner />
               } @else {
                 Send message
               }
@@ -284,7 +282,7 @@
             @for (
               item of [
                 ["General", "< 24 hours"],
-                ["Technical", "< 12 hours"]
+                ["Technical", "< 12 hours"],
               ];
               track $index
             ) {
@@ -415,5 +413,5 @@
   <app-footer />
 </div>
 
- <!-- ["Sales", "Same day"],
+<!-- ["Sales", "Same day"],
                 ["Partnerships", "1–2 business days"], -->

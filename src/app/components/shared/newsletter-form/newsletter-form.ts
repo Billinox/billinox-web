@@ -10,16 +10,25 @@ import { HlmButton } from '@spartan-ng/helm/button';
 import { HlmInput } from '@spartan-ng/helm/input';
 import { LucideMail } from '@lucide/angular';
 import { toast } from '@spartan-ng/brain/sonner';
+import { HlmSpinnerImports } from '@spartan-ng/helm/spinner';
 
 @Component({
   selector: 'app-newsletter-form',
-  imports: [ReactiveFormsModule, HlmButton, HlmInput, LucideMail],
+  imports: [
+    ReactiveFormsModule,
+    HlmButton,
+    HlmInput,
+    LucideMail,
+    HlmSpinnerImports,
+  ],
   templateUrl: './newsletter-form.html',
   styleUrl: './newsletter-form.css',
 })
 export class NewsletterForm {
   public newsletterForm = new FormGroup({
-    email: new FormControl('', { validators: [Validators.email, Validators.required] }),
+    email: new FormControl('', {
+      validators: [Validators.email, Validators.required],
+    }),
   });
   public processing = false;
   private recaptchaV3Service = inject(ReCaptchaV3Service);
