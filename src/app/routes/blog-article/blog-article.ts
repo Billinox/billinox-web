@@ -7,11 +7,11 @@ import {
   signal,
 } from '@angular/core';
 import { BlogPost } from '../../models/blog.model';
-import { isPlatformBrowser, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { PlatformService } from '../../services/platform.service';
 import { BlogService } from '../../services/blog.service';
 import { Navbar } from '../../components/site/navbar/navbar';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import {
   LucideChevronRight,
   LucideCalendar,
@@ -20,10 +20,17 @@ import {
 } from '@lucide/angular';
 import { DateFormatPipe } from '../../pipes/date-format-pipe';
 import { MarkdownComponent } from 'ngx-markdown';
-import { lucideLink, lucideLinkedin, lucideTwitter } from '@ng-icons/lucide';
+import {
+  lucideFacebook,
+  lucideLink,
+  lucideLinkedin,
+  lucideMessageCircle,
+  lucideTwitter,
+} from '@ng-icons/lucide';
 import { NgIconComponent } from '@ng-icons/core';
 import { Footer } from '../../components/site/footer/footer';
 import { SeoService } from '../../services/seo.service';
+import { toast } from '@spartan-ng/brain/sonner';
 
 @Component({
   selector: 'app-blog-article',
@@ -59,6 +66,8 @@ export class BlogArticle implements OnInit, OnDestroy {
   public lucideTwitter = lucideTwitter;
   public lucideLinkedin = lucideLinkedin;
   public lucideLink = lucideLink;
+  public lucideFacebook = lucideFacebook;
+  public lucideWhatsapp = lucideMessageCircle;
 
   private blogService = inject(BlogService);
   private platformService = inject(PlatformService);
@@ -132,9 +141,40 @@ export class BlogArticle implements OnInit, OnDestroy {
     );
   }
 
-  copy(label: string) {
-    if (label === 'Copy link' && typeof navigator !== 'undefined') {
+  copy() {
+    if (typeof navigator !== 'undefined') {
       navigator.clipboard?.writeText(window.location.href);
+      toast.success('Copied');
+      return;
     }
+
+    toast.error('Not suppported');
+  }
+
+  share(label: string) {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent(this.post().title);
+    let shareUrl = '';
+
+    switch (label.toLowerCase()) {
+      case 'twitter':
+        shareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+        break;
+      case 'linkedin':
+        shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+        break;
+      case 'facebook':
+        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}&p=${text}`;
+        break;
+      case 'whatsapp':
+        shareUrl = `https://api.whatsapp.com/send?text=${text + ' ' + url}`;
+        break;
+      case 'copy link':
+        return this.copy();
+      default:
+        return this.copy();
+    }
+
+    const tab = window.open(shareUrl, '_blank');
   }
 }

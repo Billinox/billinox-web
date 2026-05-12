@@ -103,13 +103,15 @@
                 s of [
                   { icon: lucideTwitter, label: "Twitter" },
                   { icon: lucideLinkedin, label: "LinkedIn" },
+                  { icon: lucideFacebook, label: "Facebook" },
+                  { icon: lucideWhatsapp, label: "WhatsApp" },
                   { icon: lucideLink, label: "Copy link" },
                 ];
                 track $index
               ) {
                 <button
                   [attr.aria-label]="s.label"
-                  (click)="copy(s.label)"
+                  (click)="share(s.label)"
                   class="grid h-9 w-9 place-items-center rounded-xl border border-border bg-card text-muted-foreground transition hover:border-primary/40 hover:text-foreground"
                 >
                   <ng-icon [svg]="s.icon" class="h-4 w-4" />
