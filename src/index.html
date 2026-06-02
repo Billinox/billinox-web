@@ -22,6 +22,59 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Rating scheme -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org/",
+        "@type": "SoftwareApplication",
+        "name": "Billinox.com",
+        "image": "https://billinox.com/icons/logo.svg",
+        "applicationCategory": "BusinessApplication",
+        "applicationSubCategory": "Invoicing & Billing Software",
+        "operatingSystem": "Android, iOS, Online",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.5",
+          "bestRating": "5",
+          "ratingCount": "762"
+        }
+      }
+    </script>
+
+    <!-- Organisation Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Billinox",
+        "url": "https://billinox.com",
+        "logo": "https://billinox.com/favicon.ico",
+        "sameAs": [
+          "https://web.facebook.com/BillinoxHQ",
+          "https://twitter.com/billinox",
+          "https://www.youtube.com/@Billinox",
+          "https://www.linkedin.com/in/billinox"
+        ],
+
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+2349035770549",
+            "contactType": "customer service",
+            "contactOption": "TollFree",
+            "areaServed": ["US", "NG", "DE"],
+            "availableLanguage": ["en"]
+          }
+        ]
+      }
+    </script>
+    <!-- Organisation Schema -->
   </head>
   <body>
     <app-root></app-root>
