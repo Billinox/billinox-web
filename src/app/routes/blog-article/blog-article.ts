@@ -1,5 +1,6 @@
 import {
   Component,
+  effect,
   inject,
   input,
   OnDestroy,
@@ -19,7 +20,12 @@ import {
   LucideSparkles,
 } from '@lucide/angular';
 import { DateFormatPipe } from '../../pipes/date-format-pipe';
-import { MarkdownComponent } from 'ngx-markdown';
+import {
+  MarkdownComponent,
+  MARKED_EXTENSIONS,
+  MARKED_OPTIONS,
+  provideMarkdown,
+} from 'ngx-markdown';
 import {
   lucideFacebook,
   lucideLink,
@@ -31,6 +37,7 @@ import { NgIconComponent } from '@ng-icons/core';
 import { Footer } from '../../components/site/footer/footer';
 import { SeoService } from '../../services/seo.service';
 import { toast } from '@spartan-ng/brain/sonner';
+import { gfmHeadingId } from 'marked-gfm-heading-id';
 
 @Component({
   selector: 'app-blog-article',
@@ -47,11 +54,28 @@ import { toast } from '@spartan-ng/brain/sonner';
     NgClass,
     Footer,
   ],
+  providers: [
+    provideMarkdown({
+      markedOptions: {
+        provide: MARKED_OPTIONS,
+        useValue: {
+          gfm: true,
+          breaks: true,
+        },
+      },
+      markedExtensions: [
+        {
+          provide: MARKED_EXTENSIONS,
+          useFactory: gfmHeadingId,
+          multi: true,
+        },
+      ],
+    }),
+  ],
   templateUrl: './blog-article.html',
   styleUrl: './blog-article.css',
 })
 export class BlogArticle implements OnInit, OnDestroy {
-  // public post = input.required<BlogPost>();
   public post = signal<BlogPost>({} as BlogPost);
   public related: BlogPost[] = [];
   public progress = 0;
@@ -74,6 +98,10 @@ export class BlogArticle implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
   private readonly seoService = inject(SeoService);
 
+  get content() {
+    return this.post().content.replace(/\n/g, '<br>\n\n');
+  }
+
   constructor() {
     this.route.data.subscribe((data) => {
       const post = data['post'];
@@ -88,33 +116,35 @@ export class BlogArticle implements OnInit, OnDestroy {
         ],
       });
     });
+
+    effect(() => {
+      this.author = this.post().author;
+      this.initials = this.author
+        .split(' ')
+        .map((s) => s[0])
+        .join('')
+        .slice(0, 2)
+        .toUpperCase();
+
+      const lines = this.post().content.split('\n');
+      this.toc = lines
+        .filter((l) => l.startsWith('## ') || l.startsWith('### '))
+        .map((l) => {
+          const level = l.startsWith('### ') ? 3 : 2;
+          const text = l.replace(/^#+\s/, '').trim();
+          const id = text
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/(^-|-$)/g, '');
+          return { level, text, id };
+        });
+    });
   }
 
   ngOnInit(): void {
     this.platformService.runOnBrowser(() =>
       window.addEventListener('scroll', this.onScroll),
     );
-
-    this.author = this.post().author;
-    this.initials = this.author
-      .split(' ')
-      .map((s) => s[0])
-      .join('')
-      .slice(0, 2)
-      .toUpperCase();
-
-    const lines = this.post().content.split('\n');
-    this.toc = lines
-      .filter((l) => l.startsWith('## ') || l.startsWith('### '))
-      .map((l) => {
-        const level = l.startsWith('### ') ? 3 : 2;
-        const text = l.replace(/^#+\s/, '').trim();
-        const id = text
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g, '-')
-          .replace(/(^-|-$)/g, '');
-        return { level, text, id };
-      });
 
     this.blogService.getPosts().subscribe({
       next: (posts) => {

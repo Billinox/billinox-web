@@ -59,7 +59,7 @@
 --popover-foreground: oklch(0.18 0.01 80);
 
 /* Warm gold #f1c40f */
---primary: oklch(0.83 0.17 88);
+--primary: oklch(82.984% 0.16956 87.971);
 --primary-foreground: oklch(0.16 0.01 80);
 --primary-glow: oklch(0.9 0.18 92);
 
@@ -290,6 +290,21 @@ color-scheme: dark;
 --sidebar-border: oklch(1 0 0 / 10%);
 --sidebar-ring: oklch(0.556 0 0);
 } */
+
+.grecaptcha-badge { visibility: hidden; }
+
+markdown {
+    p {
+      font-size: 0.85rem;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-weight: 700;
+    }
+  }
 
 @layer base {
 * {

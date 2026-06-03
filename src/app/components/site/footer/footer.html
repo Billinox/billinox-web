@@ -38,16 +38,17 @@
 
       @for (c of cols; track $index) {
         <div>
-          <h6
+          <p
             class="text-xs font-bold uppercase tracking-wider text-foreground"
           >
             {{ c.title }}
-          </h6>
+          </p>
           <ul class="mt-4 space-y-2.5">
             @for (l of c.links; track $index) {
               <li>
                 <a
                   [routerLink]="l.link"
+                  [fragment]="l.fragment"
                   class="text-sm text-muted-foreground transition hover:text-foreground"
                 >
                   {{ l.label }}

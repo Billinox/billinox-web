@@ -13,20 +13,14 @@
     <article>
       <!-- Header  -->
       <header class="mx-auto max-w-3xl px-4">
-        <nav
-          class="mb-6 flex items-center gap-2 text-xs text-muted-foreground"
-        >
+        <nav class="mb-6 flex items-center gap-2 text-xs text-muted-foreground">
           <a routerLink="/" class="hover:text-foreground">Home</a>
           <svg lucideChevronRight class="h-3 w-3" />
           <a routerLink="/blog" class="hover:text-foreground">Blog</a>
           <svg lucideChevronRight class="h-3 w-3" />
-          <span class="truncate text-foreground">{{
-            post().category
-          }}</span>
+          <span class="truncate text-foreground">{{ post().category }}</span>
         </nav>
-        <span
-          class="text-xs font-bold uppercase tracking-wider text-primary"
-        >
+        <span class="text-xs font-bold uppercase tracking-wider text-primary">
           {{ post().category }}
         </span>
         <h1
@@ -63,9 +57,7 @@
         <div
           class="relative aspect-[16/8] overflow-hidden rounded-3xl bg-gradient-to-br from-primary/30 via-accent/30 to-secondary/20 shadow-elevated"
         >
-          <div
-            class="absolute inset-0 grid place-items-center text-primary/50"
-          >
+          <div class="absolute inset-0 grid place-items-center text-primary/50">
             <svg lucideSparkles class="h-20 w-20" />
           </div>
         </div>
@@ -78,7 +70,7 @@
         <div
           class="prose prose-neutral dark:prose-invert mx-auto w-full max-w-2xl prose-headings:font-display prose-headings:tracking-tight prose-h2:mt-10 prose-h2:text-2xl prose-h3:text-xl prose-a:text-primary prose-blockquote:border-l-primary prose-blockquote:text-foreground prose-code:rounded prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:text-foreground prose-code:before:content-none prose-code:after:content-none"
         >
-          <markdown [data]="post().content" [disableSanitizer]="true" />
+          <markdown [data]="content" [disableSanitizer]="true" />
 
           <!-- Tags  -->
           <div

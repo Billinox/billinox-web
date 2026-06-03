@@ -11,12 +11,15 @@ import { socials } from '../../../constants/socials.constant';
   styleUrl: './footer.css',
 })
 export class Footer {
-  public cols = [
+  public cols: {
+    title: string;
+    links: { label: string; link: string; fragment?: string }[];
+  }[] = [
     {
       title: 'Product',
       links: [
-        { label: 'Features', link: '/features' },
-        { label: 'Pricing', link: '/pricing' },
+        { label: 'Features', link: '/', fragment: 'features' },
+        { label: 'Pricing', link: '/', fragment: 'pricing' },
       ],
     },
     {
