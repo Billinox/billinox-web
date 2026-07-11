@@ -3,13 +3,13 @@
     <channel>
         <title>Billinox - Invoice App</title>
         <item>
-            <title>Version 1.0.1</title>
+            <title>Version 1.0.0+5</title>
             <!-- <sparkle:tags>
                 <sparkle:criticalUpdate />
             </sparkle:tags> -->
             <description>updates</description>
-            <pubDate>Wed, 08 Jul 2026 06:00:00 +0000</pubDate>
-            <enclosure url="https://play.google.com/store/apps/details?id=com.braindam.billinox" sparkle:version="1.0.1" sparkle:os="android" />
+            <pubDate>Wed, 11 Jul 2026 06:00:00 +0000</pubDate>
+            <enclosure url="https://play.google.com/store/apps/details?id=com.braindam.billinox" sparkle:version="1.0.0+5" sparkle:os="android" />
         </item>
     </channel>
 </rss>
