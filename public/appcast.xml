@@ -7,7 +7,7 @@
             <sparkle:tags>
                 <sparkle:criticalUpdate />
             </sparkle:tags>
-            <sparkle:version>6</sparkle:version>
+            <sparkle:version>1.0.0+6</sparkle:version>
             <sparkle:shortVersionString>1.0.0</sparkle:shortVersionString>
             <description>Reminder and background backup</description>
             <pubDate>Wed, 15 Jul 2026 15:00:00 +0000</pubDate>
