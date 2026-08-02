@@ -1,8 +1,8 @@
 import { NgClass } from '@angular/common';
-import { Component } from '@angular/core';
-import { LucideCheck, LucideSparkles } from "@lucide/angular";
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { LucideCheck, LucideSparkles } from '@lucide/angular';
 import { HlmButton } from '@spartan-ng/helm/button';
-
 @Component({
   selector: 'app-pricing',
   imports: [NgClass, LucideCheck, LucideSparkles, HlmButton],
@@ -17,8 +17,10 @@ export class Pricing {
       period: 'free forever',
       desc: 'For freelancers and small teams getting started.',
       features: [
-        'Up to 20 invoices / month',
-        '1 user',
+        'Up to 2 invoices / month',
+        'Up to 2 quotations / month',
+        'Up to 5 customers / month',
+        'limited business',
         'Basic invoice templates',
         'PDF export',
         'Offline mode',
@@ -33,30 +35,23 @@ export class Pricing {
       desc: 'Everything growing businesses need to scale billing.',
       features: [
         'Unlimited invoices',
-        '5 users',
+        'Unlimited quotations',
+        'Unlimited businesses',
+        'Professional invoice templates',
         'Advanced reports & analytics',
+        'Automated reminders to get paid faster',
         'Cloud backup & sync',
-        'Estimates & quotations',
+        'Export invoices and reports anytime',
         'Priority email support',
       ],
-      cta: 'Start 14-day trial',
+      cta: 'Upgrade now',
       highlighted: true,
     },
-    // {
-    //   name: 'Enterprise',
-    //   price: '$49',
-    //   period: 'per month',
-    //   desc: 'Advanced controls for multi-branch operations.',
-    //   features: [
-    //     'Unlimited everything',
-    //     'Multi-branch support',
-    //     'Role-based access',
-    //     'Custom branding',
-    //     'Dedicated success manager',
-    //     'Priority 24/7 support',
-    //   ],
-    //   cta: 'Contact sales',
-    //   highlighted: false,
-    // },
   ];
+
+  public router = inject(Router);
+
+  getStarted() {
+    this.router.navigateByUrl('/get-started');
+  }
 }
