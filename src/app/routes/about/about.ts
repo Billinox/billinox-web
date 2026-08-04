@@ -120,6 +120,11 @@ export class AboutPage {
           property: 'og:description',
           content: 'Our mission, values, and the journey behind Billinox.',
         },
+        { property: 'twitter:title', content: 'About Billinox' },
+        {
+          property: 'twitter:description',
+          content: 'Our mission, values, and the journey behind Billinox.',
+        },
       ],
     });
   }

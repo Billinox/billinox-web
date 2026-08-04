@@ -113,6 +113,8 @@ export class BlogArticle implements OnInit, OnDestroy {
           { property: 'og:title', content: post.title },
           { property: 'og:description', content: post.excerpt },
           { property: 'og:type', content: 'article' },
+          { property: 'twitter:title', content: post.title },
+          { property: 'twitter:description', content: post.excerpt },
         ],
       });
     });

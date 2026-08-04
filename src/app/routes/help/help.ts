@@ -209,6 +209,11 @@ export class HelpPage implements OnInit, OnDestroy {
           property: 'og:description',
           content: 'Answers, guides, and support for the Billinox platform.',
         },
+        { property: 'twitter:title', content: 'Billinox Help Center' },
+        {
+          property: 'twitter:description',
+          content: 'Answers, guides, and support for the Billinox platform.',
+        },
       ],
     });
   }

@@ -35,5 +35,14 @@ export class UseOfService {
       content:
         'Roles, responsibilities, permitted use, and prohibited activities when you use Billinox.',
     });
+    this.metaService.updateTag({
+      property: 'twitter:title',
+      content: 'Use of Service Agreement — Billinox',
+    });
+    this.metaService.updateTag({
+      property: 'twitter:description',
+      content:
+        'Roles, responsibilities, permitted use, and prohibited activities when you use Billinox.',
+    });
   }
 }

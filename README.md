@@ -1,59 +1,199 @@
-# Billinox
+# Billinox Website
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.5.
+<p align="center">
+  <img src="public/icons/logo.svg" alt="Billinox Logo" width="120">
+</p>
 
-## Development server
+<h3 align="center">
+Modern, blazing-fast website for Billinox – the offline-first invoicing platform for freelancers, entrepreneurs, and small businesses.
+</h3>
 
-To start a local development server, run:
+<p align="center">
+  <a href="https://billinox.com">Website</a> •
+  <a href="https://billinox.com/about">About</a> •
+  <a href="https://billinox.com/get-started">Download</a>
+</p>
 
-```bash
-ng serve
+---
+
+## 🚀 About
+
+The Billinox website showcases the features, philosophy, and ecosystem behind **Billinox**, a modern offline-first invoicing application built for businesses that value speed, simplicity, and privacy.
+
+The website is designed with performance, accessibility, and SEO in mind, providing visitors with an exceptional browsing experience across all devices.
+
+---
+
+## ✨ Features
+
+- ⚡ Lightning-fast page loads
+- 📱 Fully responsive design
+- 🌙 Modern UI & animations
+- 🔍 SEO optimized
+- ♿ Accessibility friendly
+- 📈 Performance optimized
+- 📝 Blog-ready architecture
+- 🌍 Multi-device support
+- 🎨 Beautiful marketing pages
+- 🚀 Optimized Core Web Vitals
+
+---
+
+## 💼 About Billinox
+
+Billinox helps freelancers and businesses:
+
+- Create professional invoices
+- Generate estimates
+- Manage customers
+- Track payments
+- Send PDF invoices
+- Receive payment reminders
+- Sync across devices
+- Work offline
+- Backup securely
+- Manage multiple businesses
+
+Unlike many invoicing tools, Billinox is built with an **offline-first philosophy**, allowing users to continue working even without an internet connection while keeping their data secure. :contentReference[oaicite:0]{index=0}
+
+---
+
+## 🛠 Tech Stack
+
+- Node.js
+- Angular
+- TypeScript
+- Tailwind CSS
+- Lucide Icons
+
+---
+
+## 📂 Project Structure
+
+```
+.
+├── app/
+├────── components/
+├────── models
+├────── pipes
+├────── resolvers
+├────── routes
+├────── services
+├────── utils
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 🚀 Getting Started
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Clone the repository
 
 ```bash
-ng generate --help
+git clone https://github.com/yourusername/billinox-website.git
 ```
 
-## Building
-
-To build the project run:
+### Install dependencies
 
 ```bash
-ng build
+npm install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+or
 
 ```bash
-ng test
+pnpm install
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### Start development server
 
 ```bash
-ng e2e
+npm start
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Open:
 
-## Additional Resources
+```
+http://localhost:4200
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+
+## 📦 Production Build
+
+```bash
+npm run build
+npm start
+```
+
+---
+
+## 🎯 Performance Goals
+
+- 100 Performance
+- 100 Accessibility
+- 100 Best Practices
+- 100 SEO
+
+Measured using Lighthouse (target).
+
+---
+
+## 🔍 SEO
+
+The website is optimized for search engines with:
+
+- Semantic HTML
+- Metadata & Open Graph
+- Structured Data (Schema.org)
+- XML Sitemap
+- Robots.txt
+- Canonical URLs
+- Optimized images
+- Lazy loading
+- Fast loading times
+
+---
+
+## 📱 Browser Support
+
+- Chrome
+- Firefox
+- Safari
+- Edge
+- Brave
+- Opera
+
+---
+
+## 🌍 Deployment
+
+Deploy easily on:
+
+- Vercel
+- Netlify
+- Cloudflare Pages
+
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+## ❤️ About Billinox
+
+Billinox is built for people who want invoicing to be simple—not complicated.
+
+Whether you're a freelancer, consultant, contractor, agency, or growing business, Billinox helps you create invoices in seconds, track payments, manage customers, and keep your business organized without unnecessary complexity.
+
+Learn more at **https://billinox.com**. :contentReference[oaicite:1]{index=1}
+
+---
+
+<p align="center">
+Built with ❤️ by the Billinox Team
+</p>
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5cbc5314-baf7-4a48-9ea3-8660dc9e678b/deploy-status)](https://app.netlify.com/projects/billinox/deploys)

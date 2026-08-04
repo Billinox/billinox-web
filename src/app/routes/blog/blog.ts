@@ -71,6 +71,12 @@ export class Blog {
           content:
             'Insights, tutorials, and product updates for modern small businesses.',
         },
+        { property: 'twitter:title', content: 'Billinox Blog' },
+        {
+          property: 'twitter:description',
+          content:
+            'Insights, tutorials, and product updates for modern small businesses.',
+        },
       ],
     });
     this.blogService.getPosts().subscribe({

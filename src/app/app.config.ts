@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import {
   provideRouter,
+  withComponentInputBinding,
   withInMemoryScrolling,
   withRouterConfig,
 } from '@angular/router';
@@ -31,6 +32,7 @@ export const appConfig: ApplicationConfig = {
         scrollPositionRestoration: 'enabled',
         anchorScrolling: 'enabled',
       }),
+      withComponentInputBinding(),
     ),
     provideHttpClient(withFetch()),
     provideNgIconLoader((name) => {

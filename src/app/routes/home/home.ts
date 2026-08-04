@@ -35,12 +35,12 @@ export class Home {
 
   constructor() {
     this.seoService.optimize({
-      title: 'Billinox — Run your business anywhere, anytime',
+      title: 'Billinox - Invoice Maker, Estimates & Payment Tracking App',
       meta: [
         {
           name: 'description',
           content:
-            'Billinox is a smart, offline-first invoicing and billing platform for small and medium businesses. Create invoices, track payments, manage customers, and grow with confidence.',
+            'Generate invoices, send quotations, track payments, manage customers, and grow your business with Billinox. Available for Android',
         },
         {
           property: 'og:title',
@@ -49,7 +49,16 @@ export class Home {
         {
           property: 'og:description',
           content:
-            'Create professional invoices, track payments, manage customers, and streamline your billing workflow. Offline-first and built for modern businesses.',
+            'Generate invoices, send quotations, track payments, manage customers, and grow your business with Billinox. Available for Android',
+        },
+        {
+          property: 'twitter:title',
+          content: 'Billinox — Smart offline-first business management',
+        },
+        {
+          property: 'twitter:description',
+          content:
+            'Generate invoices, send quotations, track payments, manage customers, and grow your business with Billinox. Available for Android',
         },
       ],
     });

@@ -182,8 +182,12 @@ export class ContactPage {
         { property: 'og:title', content: 'Contact Billinox' },
         {
           property: 'og:description',
-          content:
-            'Talk to the Billinox team — support, sales, and partnerships.',
+          content: 'Talk to the Billinox team — support',
+        },
+        { property: 'twitter:title', content: 'Contact Billinox' },
+        {
+          property: 'twitter:description',
+          content: 'Talk to the Billinox team — support',
         },
       ],
     });

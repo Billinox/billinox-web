@@ -252,6 +252,12 @@ export class Guides implements OnInit {
           content:
             'Watch curated YouTube tutorials and master Billinox in minutes.',
         },
+        { property: 'twitter:title', content: 'Billinox Guides & Tutorials' },
+        {
+          property: 'twitter:description',
+          content:
+            'Watch curated YouTube tutorials and master Billinox in minutes.',
+        },
       ],
     });
   }
