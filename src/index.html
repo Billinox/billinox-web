@@ -2,37 +2,81 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Billinox — Run your business anywhere, anytime</title>
+    <title>Billinox - Invoice Maker, Estimates & Payment Tracking App</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Billinox is a smart, offline-first invoicing and billing platform for small and medium businesses. Create invoices, track payments, manage customers, and grow with confidence."
+      content="Generate invoices in seconds, send professional quotations, record payments, manage customers, and grow your business with Billinox. Available on Android."
     />
+
+    <!-- Open Graph Core (Facebook, LinkedIn, Slack) -->
     <meta
       property="og:title"
-      content="Billinox — Smart offline-first business management"
+      content="Billinox - Invoice Maker, Estimates & Payment Tracking App"
     />
     <meta
       property="og:description"
-      content="Create professional invoices, track payments, manage customers, and streamline your billing workflow. Offline-first and built for modern businesses."
+      content="Generate invoices in seconds, send professional quotations, record payments, manage customers, and grow your business with Billinox. Available on Android."
     />
+    <meta
+      property="og:image"
+      content="https://billinox.com/images/og-image.webp"
+    />
+    <meta property="og:url" content="https://billinox.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter / X Cards Core -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Billinox - Invoice Maker, Estimates & Payment Tracking App"
+    />
+    <meta
+      name="twitter:description"
+      content="Generate invoices in seconds, send professional quotations, record payments, manage customers, and grow your business with Billinox. Available on Android."
+    />
+    <meta
+      name="twitter:image"
+      content="https://billinox.com/images/og-image.webp"
+    />
+    <meta name="twitter:site" content="@billinox" />
+    <meta name="twitter:creator" content="@billinox" />
+
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-WLT6BZDS");
+    </script>
+    <!-- End Google Tag Manager -->
+
     <!-- Rating scheme -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org/",
         "@type": "SoftwareApplication",
-        "name": "Billinox.com",
+        "name": "Billinox - Invoice Maker, Estimates & Payment Tracking App",
+        "url": "https://billinox.com",
         "image": "https://billinox.com/icons/logo.svg",
         "applicationCategory": "BusinessApplication",
         "applicationSubCategory": "Invoicing & Billing Software",
-        "operatingSystem": "Android, iOS, Online",
+        "operatingSystem": "Android",
+        "downloadUrl": "https://play.google.com/store/apps/details?id=com.braindam.billinox",
+        "mainEntityOfPage": "https://billinox.com",
         "offers": [
           {
             "@type": "Offer",
@@ -52,7 +96,8 @@
           "ratingValue": "4.5",
           "bestRating": "5",
           "ratingCount": "762"
-        }
+        },
+        "sameAs": ["https://google.com"]
       }
     </script>
 
@@ -86,6 +131,16 @@
     <!-- Organisation Schema -->
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-WLT6BZDS"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <app-root></app-root>
   </body>
 </html>
