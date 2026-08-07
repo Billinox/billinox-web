@@ -188,7 +188,7 @@ Billinox is built for people who want invoicing to be simple—not complicated.
 
 Whether you're a freelancer, consultant, contractor, agency, or growing business, Billinox helps you create invoices in seconds, track payments, manage customers, and keep your business organized without unnecessary complexity.
 
-Learn more at **https://billinox.com**. :contentReference[oaicite:1]{index=1}
+Learn more at **https://billinox.com**.
 
 ---
 
@@ -196,4 +196,6 @@ Learn more at **https://billinox.com**. :contentReference[oaicite:1]{index=1}
 Built with ❤️ by the Billinox Team
 </p>
 
+<p align="center">
 [![Netlify Status](https://api.netlify.com/api/v1/badges/5cbc5314-baf7-4a48-9ea3-8660dc9e678b/deploy-status)](https://app.netlify.com/projects/billinox/deploys)
+</p>
