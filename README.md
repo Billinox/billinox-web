@@ -192,10 +192,17 @@ Learn more at **https://billinox.com**.
 
 ---
 
+---
+
+## ⚙️ Netlify
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5cbc5314-baf7-4a48-9ea3-8660dc9e678b/deploy-status)](https://app.netlify.com/projects/billinox/deploys)
+
+---
+
 <p align="center">
 Built with ❤️ by the Billinox Team
 </p>
 
-<p align="center">
-[![Netlify Status](https://api.netlify.com/api/v1/badges/5cbc5314-baf7-4a48-9ea3-8660dc9e678b/deploy-status)](https://app.netlify.com/projects/billinox/deploys)
-</p>
+
+
