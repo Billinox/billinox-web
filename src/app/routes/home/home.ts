@@ -44,7 +44,7 @@ export class Home {
         },
         {
           property: 'og:title',
-          content: 'Billinox — Smart offline-first business management',
+          content: 'Billinox - Invoice Maker, Estimates & Payment Tracking App',
         },
         {
           property: 'og:description',
@@ -53,7 +53,7 @@ export class Home {
         },
         {
           property: 'twitter:title',
-          content: 'Billinox — Smart offline-first business management',
+          content: 'Billinox - Invoice Maker, Estimates & Payment Tracking App',
         },
         {
           property: 'twitter:description',
