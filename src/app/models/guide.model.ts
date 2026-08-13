@@ -6,9 +6,9 @@ export const GuideCategories = [
   'Payment Tracking',
   'PDF Export',
   'Cloud Backup',
-  'Multi-device Sync',
-  'Tips & Productivity',
-  'Troubleshooting',
+  // 'Multi-device Sync',
+  // 'Tips & Productivity',
+  // 'Troubleshooting',
 ] as const;
 
 export interface Tutorial {

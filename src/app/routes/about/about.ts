@@ -16,6 +16,8 @@ import { lucideGithub, lucideLinkedin, lucideTwitter } from '@ng-icons/lucide';
 import { Counter } from '../../components/shared/counter/counter';
 import { Footer } from '../../components/site/footer/footer';
 import { SeoService } from '../../services/seo.service';
+import { HlmButton } from '@spartan-ng/helm/button';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-about',
@@ -27,6 +29,8 @@ import { SeoService } from '../../services/seo.service';
     LucideArrowRight,
     LucidePlay,
     Footer,
+    HlmButton,
+    RouterLink,
   ],
   templateUrl: './about.html',
   styleUrl: './about.css',

@@ -39,16 +39,14 @@
             lucideSearch
             class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
           />
-          <input 
-          hlmInput
+          <input
+            hlmInput
             (input)="search($event.target.value)"
             placeholder="Search tutorials…"
             class="h-10 rounded-xl pl-9"
           />
         </div>
-        <div
-          class="-mx-1 flex flex-1 gap-1.5 overflow-x-auto px-1 pb-1 "
-        >
+        <div class="-mx-1 flex flex-1 gap-1.5 overflow-x-auto px-1 pb-1">
           @for (c of categories; track $index) {
             <button
               (click)="setActive(c)"
@@ -133,7 +131,7 @@
                 Save
               }
             </button>
-            <span class="text-xs text-muted-foreground">In progress · 0%</span>
+            <!-- <span class="text-xs text-muted-foreground">In progress · 0%</span> -->
           </div>
         </div>
       </div>
@@ -240,7 +238,7 @@
   </section>
 
   <!-- Learning paths  -->
-  <section class="bg-surface py-20">
+  <!-- <section class="bg-surface py-20">
     <div class="mx-auto max-w-7xl px-4">
       <div class="mx-auto max-w-2xl text-center">
         <p class="text-xs font-bold uppercase tracking-wider text-primary">
@@ -283,7 +281,7 @@
         }
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- Popular  -->
   <section class="py-20">
@@ -345,8 +343,25 @@
               {{ c.title }}
             </h3>
             <p class="mt-1.5 text-sm text-muted-foreground">{{ c.desc }}</p>
-            <button variant="outline" class="mt-5 h-10 rounded-xl">
-              {{ c.cta }} <svg lucideArrowRight class="ml-1 h-4 w-4" />
+            <button hlmBtn variant="outline" class="mt-5 h-10 p-0 rounded-xl">
+              @if (c.link) {
+                <a
+                  [href]="c.link"
+                  target="_blank"
+                  class="flex justify-between items-center h-12 px-6"
+                >
+                  <span>{{ c.cta }}</span>
+                  <svg lucideArrowRight class="ml-1 h-4 w-4" />
+                </a>
+              } @else {
+                <a
+                  [routerLink]="c.route"
+                  class="flex justify-between items-center h-12 px-6"
+                >
+                  <span>{{ c.cta }}</span>
+                  <svg lucideArrowRight class="ml-1 h-4 w-4" />
+                </a>
+              }
             </button>
           </div>
         }
@@ -379,6 +394,7 @@
               hlmBtn
               size="lg"
               class="h-12 rounded-xl bg-primary px-6 text-primary-foreground hover:bg-primary/90"
+              (click)="subscribe()"
             >
               <ng-icon [svg]="lucideYoutube" class="mr-1 h-5 w-5" /> Subscribe
               on YouTube
@@ -388,6 +404,7 @@
               size="lg"
               variant="outline"
               class="h-12 rounded-xl border-white/20 bg-white/5 px-6 text-secondary-foreground hover:bg-white/10"
+              (click)="browseTutorials()"
             >
               Browse tutorials
             </button>

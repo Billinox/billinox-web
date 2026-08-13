@@ -19,6 +19,10 @@ import {
   LucideDynamicIcon,
   LucidePlay,
   LucideArrowRight,
+  LucideReceipt,
+  LucideStickyNote,
+  LucidePackage,
+  LucideReceiptText,
 } from '@lucide/angular';
 import { Navbar } from '../../components/site/navbar/navbar';
 import { RouterLink } from '@angular/router';
@@ -133,12 +137,19 @@ export class GetStartedPage {
       note: 'Optimised for large screens',
       rating: '4.9',
     },
-    {
-      icon: LucideMonitor,
-      name: 'Desktop',
-      note: 'Web app — Chrome, Safari, Edge',
-      rating: '4.9',
-    },
+    // {
+    //   icon: LucideMonitor,
+    //   name: 'Desktop',
+    //   note: 'Web app — Chrome, Safari, Edge',
+    //   rating: '4.9',
+    // },
+  ];
+
+  public quickActions = [
+    LucideReceiptText,
+    LucideStickyNote,
+    LucideUserPlus,
+    LucidePackage,
   ];
 
   private seo = inject(SeoService);

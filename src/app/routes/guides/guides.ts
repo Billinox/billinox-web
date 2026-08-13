@@ -25,6 +25,8 @@ import { TutorialDetails } from '../../components/guide/tutorial-details/tutoria
 import { GuideCategories, Tutorial } from '../../models/guide.model';
 import { HlmInput } from '@spartan-ng/helm/input';
 import { SeoService } from '../../services/seo.service';
+import { RouterLink } from '@angular/router';
+import { PlatformService } from '../../services/platform.service';
 
 @Component({
   selector: 'app-guides',
@@ -44,6 +46,7 @@ import { SeoService } from '../../services/seo.service';
     LucideArrowRight,
     TutorialDetails,
     HlmInput,
+    RouterLink,
   ],
   templateUrl: './guides.html',
   styleUrl: './guides.css',
@@ -54,103 +57,103 @@ export class Guides implements OnInit {
   public tutorials: Tutorial[] = [
     {
       id: 't1',
-      title: 'Billinox in 5 Minutes — Quick Tour',
+      title: 'Billinox in 1 Minutes — Quick Tour',
       description: 'A whirlwind tour of every core feature.',
       category: 'Getting Started',
-      duration: '5:24',
+      duration: '1:28',
       difficulty: 'Beginner',
-      date: 'May 1, 2026',
+      date: 'Aug 5, 2026',
       views: 18420,
-      videoId: 'dQw4w9WgXcQ',
+      videoId: 'uyI7IAOaiUU',
     },
     {
       id: 't2',
       title: 'Create Your First Professional Invoice',
       description: 'From a blank canvas to a sent invoice in minutes.',
       category: 'Invoice Creation',
-      duration: '8:11',
+      duration: '1:41',
       difficulty: 'Beginner',
-      date: 'Apr 22, 2026',
+      date: 'Aug 12, 2026',
       views: 12890,
-      videoId: 'dQw4w9WgXcQ',
+      videoId: 'xL-taTI2YK0',
     },
     {
       id: 't3',
       title: 'Manage Customers Like a Pro',
       description: 'Tags, segments, and reusable billing profiles.',
       category: 'Customer Management',
-      duration: '9:42',
+      duration: '0:41',
       difficulty: 'Intermediate',
-      date: 'Apr 14, 2026',
+      date: 'Aug 12, 2026',
       views: 9210,
-      videoId: 'dQw4w9WgXcQ',
+      videoId: 'OGYzNXTvxug',
     },
     {
       id: 't4',
       title: 'Track Payments and Reconcile Faster',
       description: 'Mark, partial-pay, and follow up automatically.',
       category: 'Payment Tracking',
-      duration: '7:08',
+      duration: '0:08',
       difficulty: 'Intermediate',
-      date: 'Apr 5, 2026',
+      date: 'Aug 12, 2026',
       views: 7340,
-      videoId: 'dQw4w9WgXcQ',
+      videoId: 'odSnkgqAjXw',
     },
     {
       id: 't5',
       title: 'Export Print-Ready PDFs',
       description: 'Custom templates, branding, and bulk export.',
       category: 'PDF Export',
-      duration: '6:31',
+      duration: '0:13',
       difficulty: 'Beginner',
-      date: 'Mar 28, 2026',
+      date: 'Aug 13, 2026',
       views: 8810,
-      videoId: 'dQw4w9WgXcQ',
+      videoId: '_-2TiJNqhzs',
     },
     {
       id: 't6',
       title: 'Set up Encrypted Cloud Backups',
       description: 'Sleep well — your data is safely backed up.',
       category: 'Cloud Backup',
-      duration: '10:02',
+      duration: '0:35',
       difficulty: 'Intermediate',
-      date: 'Mar 18, 2026',
+      date: 'Aug 12, 2026',
       views: 6150,
-      videoId: 'dQw4w9WgXcQ',
+      videoId: 'dEJ6jCnlLWo',
     },
-    {
-      id: 't7',
-      title: 'Sync Across Phone, Tablet & Laptop',
-      description: 'Multi-device workflows without conflict.',
-      category: 'Multi-device Sync',
-      duration: '11:44',
-      difficulty: 'Advanced',
-      date: 'Mar 9, 2026',
-      views: 4980,
-      videoId: 'dQw4w9WgXcQ',
-    },
-    {
-      id: 't8',
-      title: '10 Productivity Tips Power Users Love',
-      description: 'Shortcuts, snippets, and workflow tricks.',
-      category: 'Tips & Productivity',
-      duration: '12:15',
-      difficulty: 'Intermediate',
-      date: 'Feb 27, 2026',
-      views: 11220,
-      videoId: 'dQw4w9WgXcQ',
-    },
-    {
-      id: 't9',
-      title: 'Troubleshooting Sync Issues',
-      description: 'Diagnose and resolve common sync errors.',
-      category: 'Troubleshooting',
-      duration: '8:50',
-      difficulty: 'Advanced',
-      date: 'Feb 18, 2026',
-      views: 3870,
-      videoId: 'dQw4w9WgXcQ',
-    },
+    // {
+    //   id: 't7',
+    //   title: 'Sync Across Phone, Tablet & Laptop',
+    //   description: 'Multi-device workflows without conflict.',
+    //   category: 'Multi-device Sync',
+    //   duration: '11:44',
+    //   difficulty: 'Advanced',
+    //   date: 'Mar 9, 2026',
+    //   views: 4980,
+    //   videoId: 'dQw4w9WgXcQ',
+    // },
+    // {
+    //   id: 't8',
+    //   title: '10 Productivity Tips Power Users Love',
+    //   description: 'Shortcuts, snippets, and workflow tricks.',
+    //   category: 'Tips & Productivity',
+    //   duration: '12:15',
+    //   difficulty: 'Intermediate',
+    //   date: 'Feb 27, 2026',
+    //   views: 11220,
+    //   videoId: 'dQw4w9WgXcQ',
+    // },
+    // {
+    //   id: 't9',
+    //   title: 'Troubleshooting Sync Issues',
+    //   description: 'Diagnose and resolve common sync errors.',
+    //   category: 'Troubleshooting',
+    //   duration: '8:50',
+    //   difficulty: 'Advanced',
+    //   date: 'Feb 18, 2026',
+    //   views: 3870,
+    //   videoId: 'dQw4w9WgXcQ',
+    // },
   ];
 
   public learningPaths = [
@@ -190,21 +193,25 @@ export class Guides implements OnInit {
       title: 'Join the community',
       desc: 'Connect with other Billinox users worldwide.',
       cta: 'Join now',
+      link: 'https://whatsapp.com/channel/0029Vb89iy7GpLHXlFg2kz3G',
     },
     {
       icon: LucideGraduationCap,
       title: 'Request a tutorial',
       desc: "Tell us what you'd like to learn next.",
       cta: 'Suggest topic',
+      route: '/contact',
     },
     {
       icon: LucideSparkles,
       title: 'Share feedback',
       desc: 'Help shape the future of Billinox Academy.',
       cta: 'Send feedback',
+      route: '/contact',
     },
   ];
 
+  public bookmarkKey = 'tutorial-bookmark';
   public active = 'All';
   public openVideo: Tutorial | null = null;
   public bookmarks: Set<string> = new Set();
@@ -218,6 +225,11 @@ export class Guides implements OnInit {
 
   toggleBookmark = (id: string) => {
     this.bookmarks.has(id) ? this.bookmarks.delete(id) : this.bookmarks.add(id);
+
+    localStorage.setItem(
+      this.bookmarkKey,
+      JSON.stringify([...this.bookmarks.values()]),
+    );
   };
 
   public get related(): Tutorial[] {
@@ -235,6 +247,7 @@ export class Guides implements OnInit {
       .slice(0, 3);
   }
 
+  private readonly platformService = inject(PlatformService);
   private readonly seoService = inject(SeoService);
 
   constructor() {
@@ -260,6 +273,12 @@ export class Guides implements OnInit {
         },
       ],
     });
+
+    if (this.platformService.isBrowser) {
+      this.bookmarks = new Set(
+        JSON.parse(localStorage.getItem(this.bookmarkKey) || '[]'),
+      );
+    }
   }
 
   ngOnInit(): void {
@@ -289,5 +308,16 @@ export class Guides implements OnInit {
 
   setOpenVideo(tutorial: Tutorial | null): void {
     this.openVideo = tutorial;
+  }
+
+  subscribe() {
+    window.open(
+      'https://www.youtube.com/channel/UCaCUv3YIIdq_EuG3ltXSHUQ?sub_confirmation=1',
+      '_blank',
+    );
+  }
+
+  browseTutorials() {
+    window.open('https://www.youtube.com/@Billinox/playlists', '_blank');
   }
 }

@@ -319,21 +319,35 @@
           <div
             class="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
-            <Button
+            <button
+              hlmBtn
               size="lg"
-              class="h-12 rounded-xl bg-primary px-6 text-primary-foreground hover:bg-primary/90"
+              class="h-12 rounded-xl bg-primary px-0 text-primary-foreground hover:bg-primary/90"
             >
-              Get started
-              <svg lucideArrowRight class="ml-1 h-4 w-4" />
-            </Button>
-            <Button
+              <a
+                href="https://play.google.com/store/apps/details?id=com.braindam.billinox"
+                target="_blank"
+                class="h-12 px-6 flex items-center justify-center"
+              >
+                Get started
+                <svg lucideArrowRight class="ml-1 h-4 w-4" />
+              </a>
+            </button>
+
+            <button
+              hlmBtn
               size="lg"
               variant="outline"
-              class="h-12 rounded-xl border-white/20 bg-white/5 px-6 text-secondary-foreground hover:bg-white/10"
+              class="h-12 rounded-xl border-white/20 bg-white/5 px-0 text-secondary-foreground hover:bg-white/10"
             >
-              <svg lucidePlay class="mr-1 h-4 w-4 fill-current" />
-              Watch demo
-            </Button>
+              <a
+                routerLink="/guides"
+                class="h-12 px-6 flex items-center justify-center"
+              >
+                <svg lucidePlay class="mr-1 h-4 w-4 fill-current" />
+                Watch demo
+              </a>
+            </button>
           </div>
         </div>
       </div>
