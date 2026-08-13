@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /data/
+Disallow: /icons/
+Disallow: appcast.xml
+
+Sitemap: https://billinox.com/sitemap.xml

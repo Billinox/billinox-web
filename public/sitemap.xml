@@ -1,92 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+<?xml-stylesheet type="text/css" href="https://www.xml-sitemaps.com/css/sitemap.css"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-
-<url>
-  <loc>https://billinox.com/</loc>
-  <lastmod>2026-05-19T08:22:14+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://billinox.com/guides/</loc>
-  <lastmod>2026-05-19T08:22:14+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://billinox.com/about/</loc>
-  <lastmod>2026-05-19T08:22:14+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://billinox.com/contact/</loc>
-  <lastmod>2026-05-19T08:22:14+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://billinox.com/blog/</loc>
-  <lastmod>2026-05-19T08:22:14+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://billinox.com/get-started/</loc>
-  <lastmod>2026-05-19T08:22:14+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://billinox.com/help-center/</loc>
-  <lastmod>2026-05-19T08:22:14+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://billinox.com/privacy/</loc>
-  <lastmod>2026-05-19T08:22:14+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://billinox.com/terms/</loc>
-  <lastmod>2026-05-19T08:22:14+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://billinox.com/use-of-service/</loc>
-  <lastmod>2026-05-19T08:22:14+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://billinox.com/blog/5-ways-to-create-better-invoices/</loc>
-  <lastmod>2026-05-19T08:22:14+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://billinox.com/blog/why-offline-first-software-wins/</loc>
-  <lastmod>2026-05-19T08:22:14+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://billinox.com/blog/how-to-price-your-services/</loc>
-  <lastmod>2026-05-19T08:22:14+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://billinox.com/blog/quotations-vs-invoices/</loc>
-  <lastmod>2026-05-19T08:22:14+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://billinox.com/blog/tax-season-survival-guide/</loc>
-  <lastmod>2026-05-19T08:22:14+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://billinox.com/blog/whats-new-spring-2026/</loc>
-  <lastmod>2026-05-19T08:22:14+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-
-
+  <url>
+       <loc>https://billinox.com/</loc>
+       <lastmod>2026-08-13T06:57:28+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>1.0000</priority>
+  </url>
+  <url>
+       <loc>https://billinox.com/guides</loc>
+       <lastmod>2026-08-13T06:57:28+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://billinox.com/about</loc>
+       <lastmod>2026-08-13T06:57:28+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://billinox.com/contact</loc>
+       <lastmod>2026-08-13T06:57:28+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://billinox.com/blog</loc>
+       <lastmod>2026-08-13T06:57:28+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://billinox.com/get-started</loc>
+       <lastmod>2026-08-13T06:57:28+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://billinox.com/help-center</loc>
+       <lastmod>2026-08-13T06:57:28+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://billinox.com/privacy</loc>
+       <lastmod>2026-08-13T06:57:28+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://billinox.com/terms</loc>
+       <lastmod>2026-08-13T06:57:28+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://billinox.com/use-of-service</loc>
+       <lastmod>2026-08-13T06:57:28+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://billinox.com/blog/5-ways-to-create-better-invoices</loc>
+       <lastmod>2026-08-13T06:57:28+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://billinox.com/blog/why-offline-first-software-wins</loc>
+       <lastmod>2026-08-13T06:57:28+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://billinox.com/blog/how-to-price-your-services</loc>
+       <lastmod>2026-08-13T06:57:28+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://billinox.com/blog/quotations-vs-invoices</loc>
+       <lastmod>2026-08-13T06:57:28+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://billinox.com/blog/tax-season-survival-guide</loc>
+       <lastmod>2026-08-13T06:57:28+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://billinox.com/blog/whats-new-spring-2026</loc>
+       <lastmod>2026-08-13T06:57:28+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
 </urlset>
