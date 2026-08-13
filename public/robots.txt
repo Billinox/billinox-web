@@ -3,6 +3,6 @@ Allow: /
 
 Disallow: /data/
 Disallow: /icons/
-Disallow: appcast.xml
+Disallow: /appcast.xml
 
 Sitemap: https://billinox.com/sitemap.xml
