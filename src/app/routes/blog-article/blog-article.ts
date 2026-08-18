@@ -38,6 +38,8 @@ import { Footer } from '../../components/site/footer/footer';
 import { SeoService } from '../../services/seo.service';
 import { toast } from '@spartan-ng/brain/sonner';
 import { gfmHeadingId } from 'marked-gfm-heading-id';
+import { BlogCard } from '../../components/blog/blog-card/blog-card';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-blog-article',
@@ -53,6 +55,7 @@ import { gfmHeadingId } from 'marked-gfm-heading-id';
     NgIconComponent,
     NgClass,
     Footer,
+    BlogCard,
   ],
   providers: [
     provideMarkdown({
@@ -61,6 +64,7 @@ import { gfmHeadingId } from 'marked-gfm-heading-id';
         useValue: {
           gfm: true,
           breaks: true,
+          pedantic: false,
         },
       },
       markedExtensions: [
@@ -99,7 +103,7 @@ export class BlogArticle implements OnInit, OnDestroy {
   private readonly seoService = inject(SeoService);
 
   get content() {
-    return this.post().content.replace(/\n/g, '<br>\n\n');
+    return this.post().content; //.replace(/\n/g, '<br>\n\n');
   }
 
   constructor() {
@@ -112,9 +116,21 @@ export class BlogArticle implements OnInit, OnDestroy {
           { name: 'description', content: post.excerpt },
           { property: 'og:title', content: post.title },
           { property: 'og:description', content: post.excerpt },
+          {
+            property: 'og:url',
+            content: `${environment.baseUrl}/blog/${post.slug}`,
+          },
+          {
+            property: 'og:image',
+            content: `${environment.baseUrl}${post.coverImage}`,
+          },
           { property: 'og:type', content: 'article' },
           { property: 'twitter:title', content: post.title },
           { property: 'twitter:description', content: post.excerpt },
+          {
+            property: 'twitter:image',
+            content: `${environment.baseUrl}${post.coverImage}`,
+          },
         ],
       });
     });

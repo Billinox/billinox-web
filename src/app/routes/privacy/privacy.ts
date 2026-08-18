@@ -5,6 +5,8 @@ import { LegalCallout } from '../../components/legal/legal-callout/legal-callout
 import { ULComponent } from '../../components/shared/ul-component';
 import { PComponent } from '../../components/shared/p-component';
 import { Meta, Title } from '@angular/platform-browser';
+import { SeoService } from '../../services/seo.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-privacy',
@@ -14,33 +16,40 @@ import { Meta, Title } from '@angular/platform-browser';
 })
 export class Privacy {
   email = 'privacy@billinox.com';
-  public titleService = inject(Title);
-  public metaService = inject(Meta);
+  public seoService = inject(SeoService);
 
   constructor() {
-    this.titleService.setTitle('Privacy Policy — Billinox');
-    this.metaService.updateTag({
-      name: 'description',
-      content:
-        'How Billinox collects, uses, stores, and protects your data. GDPR, EU DSA, and Nigeria NDPA compliant.',
+    this.seoService.optimize({
+      title: 'Privacy Policy — Billinox',
+      meta: [
+        {
+          name: 'description',
+          content:
+            'How Billinox collects, uses, stores, and protects your data. GDPR, EU DSA, and Nigeria NDPA compliant.',
+        },
+        {
+          property: 'og:title',
+          content: 'Privacy Policy — Billinox',
+        },
+        {
+          property: 'og:description',
+          content:
+            'Privacy-first, offline-first invoicing. Read how Billinox handles your data under GDPR, DSA, and NDPA.',
+        },
+        {
+          property: 'twitter:title',
+          content: 'Privacy Policy — Billinox',
+        },
+        {
+          property: 'twitter:description',
+          content:
+            'Privacy-first, offline-first invoicing. Read how Billinox handles your data under GDPR, DSA, and NDPA.',
+        },
+        {
+          property: 'og:url',
+          content: `${environment.baseUrl}/privacy`,
+        },
+      ],
     });
-    this.metaService.updateTag({
-      property: 'og:title',
-      content: 'Privacy Policy — Billinox',
-    });
-    this.metaService.updateTag({
-      property: 'og:description',
-      content:
-        'Privacy-first, offline-first invoicing. Read how Billinox handles your data under GDPR, DSA, and NDPA.',
-    });
-     this.metaService.updateTag({
-       property: 'twitter:title',
-       content: 'Privacy Policy — Billinox',
-     });
-     this.metaService.updateTag({
-       property: 'twitter:description',
-       content:
-         'Privacy-first, offline-first invoicing. Read how Billinox handles your data under GDPR, DSA, and NDPA.',
-     });
   }
 }

@@ -29,6 +29,7 @@ import { socials } from '../../constants/socials.constant';
 import { HlmSpinnerImports } from '@spartan-ng/helm/spinner';
 import { RecaptchaV3Module, ReCaptchaV3Service } from 'ng-recaptcha-2';
 import { toast } from '@spartan-ng/brain/sonner';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-contact',
@@ -183,6 +184,10 @@ export class ContactPage {
         {
           property: 'og:description',
           content: 'Talk to the Billinox team — support',
+        },
+        {
+          property: 'og:url',
+          content: `${environment.baseUrl}/contact`,
         },
         { property: 'twitter:title', content: 'Contact Billinox' },
         {

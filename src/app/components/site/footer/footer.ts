@@ -3,10 +3,11 @@ import { RouterLink } from '@angular/router';
 import { LucideMail } from '@lucide/angular';
 import { NgIcon } from '@ng-icons/core';
 import { socials } from '../../../constants/socials.constant';
+import { StoreBadge } from '../../shared/store-badge/store-badge';
 
 @Component({
   selector: 'app-footer',
-  imports: [LucideMail, NgIcon, RouterLink],
+  imports: [LucideMail, NgIcon, RouterLink, StoreBadge],
   templateUrl: './footer.html',
   styleUrl: './footer.css',
 })

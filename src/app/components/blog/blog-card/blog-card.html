@@ -1,0 +1,45 @@
+<a
+  [routerLink]="'/blog/' + post.slug"
+  class="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-soft transition hover:-translate-y-1 hover:shadow-elevated"
+>
+  <div
+    class="relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-primary/20 via-accent/30 to-secondary/10"
+  >
+    @if (post.coverImage) {
+      <img
+        [src]="post.coverImage"
+        [alt]="post.title"
+        loading="lazy"
+        class="aspect-[16/9]"
+      />
+    } @else {
+      <div class="absolute inset-0 grid place-items-center text-primary/40">
+        <svg lucideTag class="h-12 w-12" />
+      </div>
+    }
+    <span
+      class="absolute left-3 top-3 rounded-full bg-card/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-foreground backdrop-blur"
+    >
+      {{ post.category }}
+    </span>
+  </div>
+  <div class="flex flex-1 flex-col p-5">
+    <h3
+      class="font-display text-lg font-bold leading-snug transition group-hover:text-primary truncate"
+    >
+      {{ post.title }}
+    </h3>
+    <p class="mt-2 line-clamp-2 text-sm text-muted-foreground">
+      {{ post.excerpt }}
+    </p>
+    <div
+      class="mt-auto flex items-center justify-between pt-5 text-xs text-muted-foreground"
+    >
+      <span>{{ post.publishedAt | dateFormat }}</span>
+      <span class="inline-flex items-center gap-1">
+        <svg lucideClock class="h-3 w-3" />
+        {{ post.readingTime }}
+      </span>
+    </div>
+  </div>
+</a>

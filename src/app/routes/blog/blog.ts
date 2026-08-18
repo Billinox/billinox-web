@@ -21,6 +21,9 @@ import { DateFormatPipe } from '../../pipes/date-format-pipe';
 import { SeoService } from '../../services/seo.service';
 import { NewsletterForm } from '../../components/shared/newsletter-form/newsletter-form';
 import { RecaptchaV3Module } from 'ng-recaptcha-2';
+import { BlogCard } from '../../components/blog/blog-card/blog-card';
+import { environment } from '../../../environments/environment';
+
 @Component({
   selector: 'app-blog',
   imports: [
@@ -35,11 +38,11 @@ import { RecaptchaV3Module } from 'ng-recaptcha-2';
     LucideCalendar,
     LucideClock,
     LucideArrowRight,
-    LucideTag,
     HlmInput,
     DateFormatPipe,
     NewsletterForm,
     RecaptchaV3Module,
+    BlogCard,
   ],
   templateUrl: './blog.html',
   styleUrl: './blog.css',
@@ -70,6 +73,10 @@ export class Blog {
           property: 'og:description',
           content:
             'Insights, tutorials, and product updates for modern small businesses.',
+        },
+        {
+          property: 'og:url',
+          content: `${environment.baseUrl}/blog`,
         },
         { property: 'twitter:title', content: 'Billinox Blog' },
         {

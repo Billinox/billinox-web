@@ -27,6 +27,7 @@ import { HlmInput } from '@spartan-ng/helm/input';
 import { SeoService } from '../../services/seo.service';
 import { RouterLink } from '@angular/router';
 import { PlatformService } from '../../services/platform.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-guides',
@@ -264,6 +265,10 @@ export class Guides implements OnInit {
           property: 'og:description',
           content:
             'Watch curated YouTube tutorials and master Billinox in minutes.',
+        },
+        {
+          property: 'og:url',
+          content: `${environment.baseUrl}/guides`,
         },
         { property: 'twitter:title', content: 'Billinox Guides & Tutorials' },
         {

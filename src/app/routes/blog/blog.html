@@ -61,9 +61,21 @@
             <div
               class="relative aspect-[5/3] overflow-hidden rounded-2xl bg-gradient-to-br from-primary/30 via-primary/10 to-secondary/20 md:aspect-auto"
             >
-              <div class="absolute inset-0 grid place-items-center">
-                <svg lucideSparkles class="h-16 w-16 text-primary opacity-40" />
-              </div>
+              @if (featured$.value.coverImage) {
+                <img
+                  [src]="featured$.value.coverImage"
+                  [alt]="featured$.value.title"
+                  loading="lazy"
+                  class="aspect-[5/3]"
+                />
+              } @else {
+                <div class="absolute inset-0 grid place-items-center">
+                  <svg
+                    lucideSparkles
+                    class="h-16 w-16 text-primary opacity-40"
+                  />
+                </div>
+              }
               <span
                 class="absolute left-4 top-4 rounded-full bg-secondary px-3 py-1 text-xs font-bold text-secondary-foreground"
               >
@@ -152,57 +164,20 @@
         } @else {
           <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             @for (p of shown; track p.id) {
-              <a
-                [routerLink]="'/blog/' + p.slug"
-                class="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-soft transition hover:-translate-y-1 hover:shadow-elevated"
-              >
-                <div
-                  class="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-primary/20 via-accent/30 to-secondary/10"
-                >
-                  <div
-                    class="absolute inset-0 grid place-items-center text-primary/40"
-                  >
-                    <svg lucideTag class="h-12 w-12" />
-                  </div>
-                  <span
-                    class="absolute left-3 top-3 rounded-full bg-card/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-foreground backdrop-blur"
-                  >
-                    {{ p.category }}
-                  </span>
-                </div>
-                <div class="flex flex-1 flex-col p-5">
-                  <h3
-                    class="font-display text-lg font-bold leading-snug transition group-hover:text-primary"
-                  >
-                    {{ p.title }}
-                  </h3>
-                  <p class="mt-2 line-clamp-2 text-sm text-muted-foreground">
-                    {{ p.excerpt }}
-                  </p>
-                  <div
-                    class="mt-auto flex items-center justify-between pt-5 text-xs text-muted-foreground"
-                  >
-                    <span>{{ p.publishedAt | dateFormat }}</span>
-                    <span class="inline-flex items-center gap-1">
-                      <svg lucideClock class="h-3 w-3" />
-                      {{ p.readingTime }}
-                    </span>
-                  </div>
-                </div>
-              </a>
+              <app-blog-card [post]="p"></app-blog-card>
             }
           </div>
         }
 
         @if (visible < filtered.length) {
           <div class="mt-12 text-center">
-            <Button
+            <button
               (click)="setVisible(visible + 6)"
               variant="outline"
               size="lg"
             >
               Load more articles
-            </Button>
+            </button>
           </div>
         }
       </div>

@@ -18,6 +18,7 @@ import { Footer } from '../../components/site/footer/footer';
 import { SeoService } from '../../services/seo.service';
 import { HlmButton } from '@spartan-ng/helm/button';
 import { RouterLink } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-about',
@@ -123,6 +124,10 @@ export class AboutPage {
         {
           property: 'og:description',
           content: 'Our mission, values, and the journey behind Billinox.',
+        },
+        {
+          property: 'og:url',
+          content: `${environment.baseUrl}/about`,
         },
         { property: 'twitter:title', content: 'About Billinox' },
         {

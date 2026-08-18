@@ -30,6 +30,7 @@ import { RouterLink } from '@angular/router';
 import { Footer } from '../../components/site/footer/footer';
 import { HlmButton } from '@spartan-ng/helm/button';
 import { SeoService } from '../../services/seo.service';
+import { environment } from '../../../environments/environment';
 
 const categories = [
   { id: 'getting-started', label: 'Getting Started', icon: LucideSparkles },
@@ -208,6 +209,10 @@ export class HelpPage implements OnInit, OnDestroy {
         {
           property: 'og:description',
           content: 'Answers, guides, and support for the Billinox platform.',
+        },
+        {
+          property: 'og:url',
+          content: `${environment.baseUrl}/help-center`,
         },
         { property: 'twitter:title', content: 'Billinox Help Center' },
         {

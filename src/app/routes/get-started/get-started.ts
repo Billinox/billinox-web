@@ -31,6 +31,7 @@ import { PhoneMockup } from '../../components/shared/phone-mockup/phone-mockup';
 import { Footer } from '../../components/site/footer/footer';
 import { HlmButton } from '@spartan-ng/helm/button';
 import { SeoService } from '../../services/seo.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-get-started',
@@ -172,6 +173,10 @@ export class GetStartedPage {
         {
           property: 'twitter:description',
           content: 'Download the app and start invoicing in minutes.',
+        },
+        {
+          property: 'og:url',
+          content: `${environment.baseUrl}/get-started`,
         },
       ],
     });
