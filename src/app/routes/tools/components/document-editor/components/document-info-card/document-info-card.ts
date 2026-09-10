@@ -13,9 +13,9 @@ import { DocumentInfoForm } from '../../modals/document-info-form/document-info-
 export class DocumentInfoCard {
   public lucideChevronRight = lucideChevronRight;
 
-  private hlmDialogService = inject(HlmDialogService);
+  private dialogService = inject(HlmDialogService);
 
   public openForm() {
-    this.hlmDialogService.open(DocumentInfoForm, {closeOnBackdropClick: false});
+    this.dialogService.open(DocumentInfoForm, { closeOnBackdropClick: false });
   }
 }

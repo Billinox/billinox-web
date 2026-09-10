@@ -1,1 +1,27 @@
-<p>document-item-form works!</p>
+<hlm-dialog-header>
+  <h3 hlmDialogTitle>Item Details</h3>
+</hlm-dialog-header>
+
+<form class="mt-3" [formGroup]="itemForm" hlmFieldGroup>
+  <div hlmField>
+    <textarea
+      hlmTextarea
+      placeholder="Description"
+      formControlName="description"
+    ></textarea>
+  </div>
+
+  <div class="grid grid-cols-2 gap-4">
+    <div hlmField>
+      <label for="price" hlmLabel>Price</label>
+      <input hlmInput type="number" placeholder="Price" formControlName="price" id="price" />
+    </div>
+
+    <div hlmField>
+      <label for="quantity" hlmLabel>Quantity</label>
+      <input hlmInput type="number" placeholder="Quantity" formControlName="quantity" />
+    </div>
+  </div>
+
+  <button type="submit" class="w-full" size="lg" hlmBtn>Save</button>
+</form>

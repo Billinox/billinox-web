@@ -7,8 +7,6 @@ import {
 } from '@angular/forms';
 import { HlmDialogHeader } from '@billinox/src/app/components/uis/dialog/src';
 import { HlmFieldImports } from '@billinox/src/app/components/uis/field/src';
-import { NgIcon } from '@ng-icons/core';
-import { lucideCamera } from '@ng-icons/lucide';
 import { HlmButton } from '@spartan-ng/helm/button';
 import { HlmInput } from '@spartan-ng/helm/input';
 import { HlmTextarea } from '@spartan-ng/helm/textarea';
@@ -22,7 +20,6 @@ import { HlmTextarea } from '@spartan-ng/helm/textarea';
     HlmFieldImports,
     HlmDialogHeader,
     HlmButton,
-    NgIcon,
   ],
   templateUrl: './document-customer-form.html',
   styleUrl: './document-customer-form.css',
@@ -34,5 +31,4 @@ export class DocumentCustomerForm {
     phone: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
   });
-  public lucideCamera = lucideCamera;
 }
