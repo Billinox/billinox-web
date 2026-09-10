@@ -9,6 +9,7 @@ import {
 } from '@ng-icons/lucide';
 import { DocumentDiscountForm } from '../../modals/document-discount-form/document-discount-form';
 import { DocumentTaxForm } from '../../modals/document-tax-form/document-tax-form';
+import { DocumentShippingForm } from '../../modals/document-shipping-form/document-shipping-form';
 
 @Component({
   selector: 'app-document-summary-card',
@@ -32,6 +33,12 @@ export class DocumentSummaryCard {
 
   public openTaxForm = () => {
     this.dialogService.open(DocumentTaxForm, {
+      closeOnBackdropClick: false,
+    });
+  };
+
+  public openShippingForm = () => {
+    this.dialogService.open(DocumentShippingForm, {
       closeOnBackdropClick: false,
     });
   };

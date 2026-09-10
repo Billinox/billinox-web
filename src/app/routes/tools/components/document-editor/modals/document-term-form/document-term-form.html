@@ -1,0 +1,17 @@
+<hlm-dialog-header>
+  <h3 hlmDialogTitle>Terms & Conditions</h3>
+</hlm-dialog-header>
+
+<form class="mt-3" [formGroup]="termForm" hlmFieldGroup>
+  <div hlmField>
+    <textarea
+      hlmTextarea
+      placeholder="Description"
+      formControlName="description"
+      id="description"
+      class="resize-none"
+    ></textarea>
+  </div>
+
+  <button type="submit" class="w-full" size="lg" hlmBtn>Save</button>
+</form>

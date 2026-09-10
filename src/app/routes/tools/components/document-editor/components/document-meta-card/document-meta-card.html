@@ -32,7 +32,7 @@
   <ng-container
     [ngTemplateOutlet]="button"
     [ngTemplateOutletContext]="{
-      data: { title: 'Terms', icon: lucideStickyNote },
+      data: { title: 'Terms', icon: lucideNotepadText },
       clicked: toggleTerms,
     }"
   />
@@ -40,7 +40,7 @@
 
 <ng-template let-data="data" let-clicked="clicked" #button>
   <div
-    class="flex justify-between items-center cursor-pointer px-6 py-4"
+    class="flex justify-between items-center cursor-pointer px-6 py-4 select-none"
     role="button"
     aria-role="button"
     (click)="clicked()"

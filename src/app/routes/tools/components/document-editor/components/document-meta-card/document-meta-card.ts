@@ -1,13 +1,17 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { HlmDialogService } from '@billinox/src/app/components/uis/dialog/src';
 import { NgIcon } from '@ng-icons/core';
 import {
   lucideBanknote,
   lucideChevronRight,
   lucideCreditCard,
+  lucideNotepadText,
   lucideSignature,
   lucideStickyNote,
 } from '@ng-icons/lucide';
+import { DocumentPaymentMethodForm } from '../../modals/document-payment-method-form/document-payment-method-form';
+import { DocumentTermForm } from '../../modals/document-term-form/document-term-form';
 
 @Component({
   selector: 'app-document-meta-card',
@@ -19,14 +23,24 @@ export class DocumentMetaCard {
   public lucideBanknote = lucideBanknote;
   public lucideCreditCard = lucideCreditCard;
   public lucideSignature = lucideSignature;
-  public lucideStickyNote = lucideStickyNote;
+  public lucideNotepadText = lucideNotepadText;
   public lucideChevronRight = lucideChevronRight;
 
-  public toggleCurrency() {}
+  private dialogService = inject(HlmDialogService);
 
-  public togglePayment() {}
+  public toggleCurrency = () => {};
 
-  public toggleSignature() {}
+  public togglePayment = () => {
+    this.dialogService.open(DocumentPaymentMethodForm, {
+      closeOnBackdropClick: false,
+    });
+  };
 
-  public toggleTerms() {}
+  public toggleSignature = () => {};
+
+  public toggleTerms = () => {
+    this.dialogService.open(DocumentTermForm, {
+      closeOnBackdropClick: false,
+    });
+  };
 }

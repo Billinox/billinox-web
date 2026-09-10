@@ -1,0 +1,17 @@
+<hlm-dialog-header>
+  <h3 hlmDialogTitle>Shipping Cost</h3>
+</hlm-dialog-header>
+
+<form class="mt-3" [formGroup]="shippingForm" hlmFieldGroup>
+  <div hlmField>
+    <input
+      hlmInput
+      type="number"
+      placeholder="amount"
+      formControlName="amount"
+      id="discount"
+    />
+  </div>
+
+  <button type="submit" class="w-full" size="lg" hlmBtn>Save</button>
+</form>
