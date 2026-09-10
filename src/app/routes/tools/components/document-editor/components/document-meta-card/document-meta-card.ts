@@ -12,6 +12,7 @@ import {
 } from '@ng-icons/lucide';
 import { DocumentPaymentMethodForm } from '../../modals/document-payment-method-form/document-payment-method-form';
 import { DocumentTermForm } from '../../modals/document-term-form/document-term-form';
+import { DocumentSignatureForm } from '../../modals/document-signature-form/document-signature-form';
 
 @Component({
   selector: 'app-document-meta-card',
@@ -36,7 +37,11 @@ export class DocumentMetaCard {
     });
   };
 
-  public toggleSignature = () => {};
+  public toggleSignature = () => {
+    this.dialogService.open(DocumentSignatureForm, {
+      closeOnBackdropClick: false,
+    });
+  };
 
   public toggleTerms = () => {
     this.dialogService.open(DocumentTermForm, {
