@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  ViewChild,
+} from '@angular/core';
 import {
   HlmDialogFooter,
   HlmDialogHeader,
@@ -38,6 +44,17 @@ export class DocumentSignatureForm implements AfterViewInit, OnDestroy {
 
     // 3. Make the pad perfectly responsive using a ResizeObserver
     this.setupResponsiveCanvas(canvas);
+  }
+
+  saveSignature(): void {
+    if (this.signaturePad.isEmpty()) {
+      alert('Please provide a signature first.');
+      return;
+    }
+
+    const base64Image = this.signaturePad.toDataURL('image/png');
+    console.log('Angular Signature String:', base64Image);
+    // You can now emit this string via an @Output() or pass it to an Angular Service
   }
 
   public clear(): void {
