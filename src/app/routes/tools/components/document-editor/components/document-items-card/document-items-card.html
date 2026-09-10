@@ -1,0 +1,57 @@
+<div
+  class="group rounded-2xl border border-border bg-surface-elevated flex flex-col"
+>
+  <!-- Header -->
+  <div
+    class="flex justify-between items-center px-6 py-4 cursor-pointer"
+    role="button"
+    aria-role="button"
+  >
+    <div class="flex gap-3">
+      <div
+        class="rounded-full w-[40px] h-[40px] bg-primary/30 flex items-center justify-center"
+      >
+        <ng-icon [svg]="lucideReceiptText" [size]="'20px'" />
+      </div>
+
+      <div class="flex flex-col">
+        <p class="text-xs text-secondary/50 mb-0">Items</p>
+        <p>Add Items</p>
+      </div>
+    </div>
+
+    <ng-icon [svg]="lucidePlus" size="24px" />
+  </div>
+  <!-- Header -->
+
+  <!-- Content -->
+  <div class="flex flex-col flex-[1_1]">
+    <div
+      class="flex justify-between items-center px-6 py-4 cursor-pointer"
+      role="button"
+      aria-role="button"
+    >
+      <div class="flex items-center gap-3">
+        <div
+          class="rounded-full w-[35px] h-[35px] bg-secondary/10 flex items-center justify-center"
+        >
+          <span class="text-sm">01</span>
+        </div>
+        <p class="text-sm">Company logo design</p>
+      </div>
+
+      <div class="flex flex-col text-right">
+        <p class="text-xs text-secondary/50">1 x $5.00</p>
+        <p class="text-sm bold">$5.00</p>
+      </div>
+    </div>
+  </div>
+  <!-- Content -->
+
+  <!-- Footer -->
+  <div class="flex justify-between px-6 py-4 bg-primary rounded-b-2xl">
+    <p class="text-sm bold">Subtotal</p>
+    <p class="text-sm bold">$0.00</p>
+  </div>
+  <!-- Footer -->
+</div>

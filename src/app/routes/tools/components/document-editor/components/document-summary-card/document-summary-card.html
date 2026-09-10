@@ -1,0 +1,68 @@
+<div
+  class="group rounded-2xl border border-border bg-surface-elevated flex flex-col"
+>
+  <!-- Discount -->
+  <div
+    class="flex justify-between items-center cursor-pointer px-6 py-4"
+    role="button"
+    aria-role="button"
+  >
+    <div class="flex items-center gap-3">
+      <ng-icon [svg]="lucideTicketPercent" size="24px" />
+      <div class="flex flex-col">
+        <p>Discount</p>
+        <p class="text-sm text-secondary/50">0.0%</p>
+      </div>
+    </div>
+
+    <div class="flex gap-2 items-center">
+      <p class="text-sm bold">$0.00</p>
+      <ng-icon [svg]="lucideChevronRight" />
+    </div>
+  </div>
+  <!-- Discount -->
+
+  <!-- Tax -->
+  <div
+    class="flex justify-between items-center cursor-pointer px-6 py-4"
+    role="button"
+    aria-role="button"
+  >
+    <div class="flex items-center gap-3">
+      <ng-icon [svg]="lucideBadgePercent" size="24px" />
+      <div class="flex flex-col">
+        <p>Tax</p>
+        <p class="text-sm text-secondary/50">0.0%</p>
+      </div>
+    </div>
+
+    <div class="flex gap-2 items-center">
+      <p class="text-sm bold">$0.00</p>
+      <ng-icon [svg]="lucideChevronRight" />
+    </div>
+  </div>
+  <!-- Tax -->
+
+  <!-- Shipping -->
+  <div
+    class="flex justify-between items-center cursor-pointer px-6 py-4"
+    role="button"
+    aria-role="button"
+  >
+    <div class="flex items-center gap-3">
+      <ng-icon [svg]="lucideTruck" size="24px" />
+      <p>Shipping</p>
+    </div>
+
+    <div class="flex gap-2 items-center">
+      <p class="text-sm bold">$0.00</p>
+      <ng-icon [svg]="lucideChevronRight" />
+    </div>
+  </div>
+  <!-- Shipping -->
+
+  <div class="flex justify-between px-6 py-4 bg-primary rounded-b-2xl">
+    <p class="text-sm bold">Total</p>
+    <p class="text-sm bold">$0.00</p>
+  </div>
+</div>

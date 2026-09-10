@@ -1,15 +1,17 @@
+import { NgClass } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { NgIcon } from '@ng-icons/core';
 import { lucideApple } from '@ng-icons/lucide';
 
 @Component({
   selector: 'app-store-badge',
-  imports: [NgIcon],
+  imports: [NgIcon, NgClass],
   templateUrl: './store-badge.html',
   styleUrl: './store-badge.css',
 })
 export class StoreBadge {
   @Input() store: 'play' | 'app' = 'play';
+  @Input() size: 'sm' | 'lg' = 'lg';
 
   public lucideApple = lucideApple;
   get isPlay() {

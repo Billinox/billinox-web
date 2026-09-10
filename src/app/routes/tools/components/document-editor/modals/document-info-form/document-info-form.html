@@ -1,0 +1,49 @@
+<hlm-dialog-header>
+  <h3 hlmDialogTitle>Details</h3>
+</hlm-dialog-header>
+
+<form class="flex flex-col mt-3" [formGroup]="infoForm" hlmFieldGroup>
+  <div hlmField>
+    <input
+      hlmInput
+      placeholder="Document No"
+      formControlName="documentNo"
+    />
+  </div>
+
+  <div class="mb-10" hlmField>
+    <input hlmInput placeholder="Title" formControlName="title" />
+  </div>
+
+  <div class="grid grid-cols-2 gap-5 mb-5">
+    <div hlmField>
+      <label hlmFieldLabel for="issue-date"> Issue Date </label>
+      <hlm-date-picker
+        [min]="minDate"
+        [max]="maxDate"
+        formControlName="issueDate"
+        buttonId="issue-date"
+        class="w-full"
+      >
+        Pick a date
+      </hlm-date-picker>
+    </div>
+
+    <div hlmField>
+      <label hlmFieldLabel for="due-date"> Due Date </label>
+      <hlm-date-picker
+        [min]="minDueDate"
+        [max]="maxDueDate"
+        formControlName="dueDate"
+        buttonId="due-date"
+        class="w-full"
+      >
+        Pick a date
+      </hlm-date-picker>
+    </div>
+  </div>
+
+  <button type="submit" class="w-full" size="lg" hlmBtn>
+    Save
+  </button>
+</form>

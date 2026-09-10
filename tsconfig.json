@@ -42,6 +42,31 @@
       ],
       "@spartan-ng/helm/spinner": [
         "./src/app/components/uis/spinner/src/index.ts"
+      ],
+      "@billinox/*": [
+        "./*",
+        "./src/*"
+      ],
+      "@spartan-ng/helm/dialog": [
+        "./src/app/components/uis/dialog/src/index.ts"
+      ],
+      "@spartan-ng/helm/date-picker": [
+        "./src/app/components/uis/date-picker/src/index.ts"
+      ],
+      "@spartan-ng/helm/calendar": [
+        "./src/app/components/uis/calendar/src/index.ts"
+      ],
+      "@spartan-ng/helm/popover": [
+        "./src/app/components/uis/popover/src/index.ts"
+      ],
+      "@spartan-ng/helm/field": [
+        "./src/app/components/uis/field/src/index.ts"
+      ],
+      "@spartan-ng/helm/label": [
+        "./src/app/components/uis/label/src/index.ts"
+      ],
+      "@spartan-ng/helm/separator": [
+        "./src/app/components/uis/separator/src/index.ts"
       ]
     }
   },

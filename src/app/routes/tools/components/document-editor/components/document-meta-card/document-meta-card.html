@@ -1,0 +1,75 @@
+<div
+  class="group rounded-2xl border border-border bg-surface-elevated flex flex-col"
+>
+  <ng-container
+    [ngTemplateOutlet]="button"
+    [ngTemplateOutletContext]="{
+      data: {
+        title: 'Currency',
+        icon: lucideBanknote,
+        content: { type: 'text', value: 'USD' },
+      },
+      clicked: toggleCurrency,
+    }"
+  />
+
+  <ng-container
+    [ngTemplateOutlet]="button"
+    [ngTemplateOutletContext]="{
+      data: { title: 'Payment Method', icon: lucideCreditCard },
+      clicked: togglePayment,
+    }"
+  />
+
+  <ng-container
+    [ngTemplateOutlet]="button"
+    [ngTemplateOutletContext]="{
+      data: { title: 'Signature', icon: lucideSignature },
+      clicked: toggleSignature,
+    }"
+  />
+
+  <ng-container
+    [ngTemplateOutlet]="button"
+    [ngTemplateOutletContext]="{
+      data: { title: 'Terms', icon: lucideStickyNote },
+      clicked: toggleTerms,
+    }"
+  />
+</div>
+
+<ng-template let-data="data" let-clicked="clicked" #button>
+  <div
+    class="flex justify-between items-center cursor-pointer px-6 py-4"
+    role="button"
+    aria-role="button"
+    (click)="clicked()"
+  >
+    <div class="flex items-center gap-3">
+      <ng-icon [svg]="data.icon" size="24px" />
+      <div class="flex flex-col">
+        <p>{{ data.title }}</p>
+        @if (data.subtitle) {
+          <p>{{ data.subtitle }}</p>
+        }
+      </div>
+    </div>
+
+    <div class="flex gap-2 items-center">
+      @switch (data.content?.type) {
+        @case ("text") {
+          <span>{{ data.content.value }}</span>
+        }
+        @case ("image") {
+          <img
+            [src]="data.content.image"
+            [width]="data.content.width"
+            [height]="data.content.height"
+            alt=""
+          />
+        }
+      }
+      <ng-icon [svg]="lucideChevronRight" />
+    </div>
+  </div>
+</ng-template>
