@@ -9,6 +9,7 @@
         title: 'Bill From',
         subtitle: 'Add Business',
       },
+      clicked: openBusinessForm,
     }"
   />
 
@@ -22,15 +23,17 @@
         title: 'Bill To',
         subtitle: 'Add Customer',
       },
+      clicked: openCustomerForm,
     }"
   />
 </div>
 
-<ng-template let-data="data" #button>
+<ng-template let-data="data" let-clicked="clicked" #button>
   <div
-    class="flex justify-between items-center p-6 cursor-pointer"
+    class="flex justify-between items-center p-6 cursor-pointer select-none"
     role="button"
     aria-role="button"
+    (click)="clicked()"
   >
     <div class="flex gap-3">
       <div

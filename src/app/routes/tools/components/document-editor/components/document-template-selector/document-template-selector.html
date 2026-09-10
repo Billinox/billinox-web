@@ -1,0 +1,39 @@
+<div class="grid grid-cols-3 gap-4">
+  @for (item of templates; track $index) {
+    <ng-container
+      [ngTemplateOutlet]="selector"
+      [ngTemplateOutletContext]="{
+        data: item,
+      }"
+    />
+  }
+
+  <div
+    class="group rounded-md border border-border bg-surface-elevated flex flex-col justify-center items-center cursor-pointer text-[10px] select-none"
+    role="button"
+    aria-role="button"
+  >
+    <span>More</span>
+    <span class="font-bold">Templates</span>
+  </div>
+</div>
+
+<!-- Templates -->
+<ng-template let-data="data" let-clicked="clicked" #selector>
+  <div
+    class="group rounded-md border border-border bg-surface-elevated flex justify-between items-center cursor-pointer select-none"
+    role="button"
+    aria-role="button"
+    [ngClass]="{
+      'border-primary': selected?.id == data.id,
+    }"
+  >
+    <img
+      [src]="data.thumbnail"
+      width="1241"
+      height="1754"
+      [alt]="data.name"
+      class="object-fill w-full h-full rounded-md"
+    />
+  </div>
+</ng-template>

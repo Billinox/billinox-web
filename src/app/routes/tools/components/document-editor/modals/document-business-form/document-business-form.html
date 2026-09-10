@@ -1,1 +1,53 @@
-<p>document-business-form works!</p>
+<hlm-dialog-header>
+  <h3 hlmDialogTitle>Business Details</h3>
+</hlm-dialog-header>
+
+<form class="flex flex-col mt-3" [formGroup]="businessForm" hlmFieldGroup>
+  <div class="flex justify-center items-center">
+    <div
+      class="group rounded-full w-[100px] h-[100px] border border-border bg-surface-elevated flex flex-col items-center justify-center"
+    >
+      <label
+        for="logo-browser"
+        class="w-full h-full rounded-full flex flex-col items-center justify-center text-secondary/50 cursor-pointer select-none"
+        role="button"
+        aria-roledescription="select business logo"
+      >
+        <ng-icon [svg]="lucideCamera" size="30px" />
+      </label>
+    </div>
+    <input type="file" [hidden]="true" id="logo-browser" />
+  </div>
+
+  <div hlmField>
+    <input hlmInput formControlName="name" placeholder="Business name" />
+  </div>
+
+  <div hlmField>
+    <input hlmInput formControlName="username" placeholder="Your name" />
+  </div>
+
+  <div hlmField>
+    <input
+      hlmInput
+      formControlName="email"
+      placeholder="yourname@business.com"
+    />
+  </div>
+
+  <div hlmField>
+    <input hlmInput formControlName="phone" placeholder="Phone" />
+  </div>
+
+  <div hlmField>
+    <textarea
+      hlmTextarea
+      formControlName="address"
+      placeholder="Address"
+      rows="3"
+      class="resize-none"
+    ></textarea>
+  </div>
+
+  <button type="submit" class="w-full" size="lg" hlmBtn>Save</button>
+</form>

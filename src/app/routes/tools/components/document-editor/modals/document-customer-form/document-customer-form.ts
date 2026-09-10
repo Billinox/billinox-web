@@ -14,27 +14,25 @@ import { HlmInput } from '@spartan-ng/helm/input';
 import { HlmTextarea } from '@spartan-ng/helm/textarea';
 
 @Component({
-  selector: 'app-document-business-form',
+  selector: 'app-document-customer-form',
   imports: [
-    HlmDialogHeader,
-    HlmButton,
-    HlmFieldImports,
+    ReactiveFormsModule,
     HlmInput,
     HlmTextarea,
+    HlmFieldImports,
+    HlmDialogHeader,
+    HlmButton,
     NgIcon,
-    ReactiveFormsModule,
   ],
-  templateUrl: './document-business-form.html',
-  styleUrl: './document-business-form.css',
+  templateUrl: './document-customer-form.html',
+  styleUrl: './document-customer-form.css',
 })
-export class DocumentBusinessForm {
-  public businessForm = new FormGroup({
+export class DocumentCustomerForm {
+  public customerForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     phone: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
-    username: new FormControl('', [Validators.required]),
-    logo: new FormControl<string | null>(null),
   });
   public lucideCamera = lucideCamera;
 }

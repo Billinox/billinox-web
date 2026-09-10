@@ -1,0 +1,33 @@
+<hlm-dialog-header>
+  <h3 hlmDialogTitle>Customer Details</h3>
+</hlm-dialog-header>
+
+<form class="flex flex-col mt-3" [formGroup]="customerForm" hlmFieldGroup>
+  <div hlmField>
+    <input hlmInput formControlName="name" placeholder="Full Name" />
+  </div>
+
+  <div hlmField>
+    <input
+      hlmInput
+      formControlName="email"
+      placeholder="example@mail.com"
+    />
+  </div>
+
+  <div hlmField>
+    <input hlmInput formControlName="phone" placeholder="Phone" />
+  </div>
+
+  <div hlmField>
+    <textarea
+      hlmTextarea
+      formControlName="address"
+      placeholder="Address"
+      rows="3"
+      class="resize-none"
+    ></textarea>
+  </div>
+
+  <button type="submit" class="w-full" size="lg" hlmBtn>Save</button>
+</form>

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DocumentTemplateListing } from './document-template-listing';
+import { DocumentCustomerForm } from './document-customer-form';
 
-describe('DocumentTemplateListing', () => {
-  let component: DocumentTemplateListing;
-  let fixture: ComponentFixture<DocumentTemplateListing>;
+describe('DocumentCustomerForm', () => {
+  let component: DocumentCustomerForm;
+  let fixture: ComponentFixture<DocumentCustomerForm>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DocumentTemplateListing]
+      imports: [DocumentCustomerForm]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DocumentTemplateListing);
+    fixture = TestBed.createComponent(DocumentCustomerForm);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
