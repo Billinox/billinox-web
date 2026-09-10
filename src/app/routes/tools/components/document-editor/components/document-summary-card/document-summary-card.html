@@ -3,9 +3,10 @@
 >
   <!-- Discount -->
   <div
-    class="flex justify-between items-center cursor-pointer px-6 py-4"
+    class="flex justify-between items-center cursor-pointer px-6 py-4 select-none"
     role="button"
     aria-role="button"
+    (click)="openDiscountForm()"
   >
     <div class="flex items-center gap-3">
       <ng-icon [svg]="lucideTicketPercent" size="24px" />
@@ -24,9 +25,10 @@
 
   <!-- Tax -->
   <div
-    class="flex justify-between items-center cursor-pointer px-6 py-4"
+    class="flex justify-between items-center cursor-pointer px-6 py-4 select-none"
     role="button"
     aria-role="button"
+    (click)="openTaxForm()"
   >
     <div class="flex items-center gap-3">
       <ng-icon [svg]="lucideBadgePercent" size="24px" />
@@ -45,7 +47,7 @@
 
   <!-- Shipping -->
   <div
-    class="flex justify-between items-center cursor-pointer px-6 py-4"
+    class="flex justify-between items-center cursor-pointer px-6 py-4 select-none"
     role="button"
     aria-role="button"
   >
