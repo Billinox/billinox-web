@@ -27,32 +27,46 @@
 
   <!-- Content -->
   <div class="flex flex-col flex-[1_1]">
-    <div
-      class="flex justify-between items-center px-6 py-4 cursor-pointer"
-      role="button"
-      aria-role="button"
-    >
-      <div class="flex items-center gap-3">
-        <div
-          class="rounded-full w-[35px] h-[35px] bg-secondary/10 flex items-center justify-center"
-        >
-          <span class="text-sm">01</span>
+    @for (item of state().items; track $index) {
+      <div
+        class="flex justify-between items-center px-6 py-4 cursor-pointer"
+        role="button"
+        aria-role="button"
+        (click)="addOrEditItem({ item, index: $index })"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="rounded-full w-[35px] h-[35px] bg-secondary/10 flex items-center justify-center"
+          >
+            <span class="text-sm">{{
+              $index + 1 < 10 ? "0" + ($index + 1) : $index + 1
+            }}</span>
+          </div>
+          <p class="text-sm">{{ item.description }}</p>
         </div>
-        <p class="text-sm">Company logo design</p>
-      </div>
 
-      <div class="flex flex-col text-right">
-        <p class="text-xs text-secondary/50">1 x $5.00</p>
-        <p class="text-sm bold">$5.00</p>
+        <div class="flex flex-col text-right">
+          <p class="text-xs text-secondary/50">
+            {{ item.quantity }} x
+            {{ item.price | currency: state().currency.code : "symbol-narrow" }}
+          </p>
+          <p class="text-sm bold">
+            {{
+              item.subtotal | currency: state().currency.code : "symbol-narrow"
+            }}
+          </p>
+        </div>
       </div>
-    </div>
+    }
   </div>
   <!-- Content -->
 
   <!-- Footer -->
   <div class="flex justify-between px-6 py-4 bg-primary rounded-b-2xl">
     <p class="text-sm bold">Subtotal</p>
-    <p class="text-sm bold">$0.00</p>
+    <p class="text-sm bold">
+      {{ state().subtotal | currency: state().currency.code : "symbol-narrow" }}
+    </p>
   </div>
   <!-- Footer -->
 </div>

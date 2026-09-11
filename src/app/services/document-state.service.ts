@@ -4,9 +4,11 @@ import { invoiceTemplates } from '../data/template.data';
 import {
   DocumentBusinessData,
   DocumentCustomerData,
+  DocumentItemData,
   DocumentStateDataModel,
 } from '../models/document.model';
 import generateDocumentNo from '../utils/generate-document-no';
+import { currencies } from '../data/currency.data';
 
 @Injectable({
   providedIn: 'root',
@@ -19,12 +21,13 @@ export class DocumentStateService {
   private _state = signal(
     new DocumentStateDataModel(
       invoiceTemplates[0],
-      'Invoice',
+      'INVOICE',
       DateTime.now().toJSDate(),
       DateTime.now().toJSDate(),
       generateDocumentNo(),
       0,
       0,
+      currencies['USD'],
     ),
   );
 
@@ -54,5 +57,19 @@ export class DocumentStateService {
 
   public saveCustomer(customer: DocumentCustomerData) {
     this._state.update((value) => value.copyWith({ customer }));
+  }
+
+  public saveItem({ item, index }: { item: DocumentItemData; index?: number }) {
+    this._state.update((value) => {
+      let items: DocumentItemData[] = [...value.items];
+
+      if (index !== null && index !== undefined) {
+        items.splice(index, 1, item);
+      } else {
+        items.push(item);
+      }
+
+      return value.copyWith({ items });
+    });
   }
 }

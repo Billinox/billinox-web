@@ -11,6 +11,7 @@ import { DateTime } from 'luxon';
 import { DocumentTemplateSelector } from '../components/document-editor/components/document-template-selector/document-template-selector';
 import { DocumentEditor } from '../components/document-editor/document-editor';
 import { ToolLayout } from '../components/tool-layout/tool-layout';
+import { currencies } from '@billinox/src/app/data/currency.data';
 
 @Component({
   selector: 'app-invoice-generator',
@@ -42,6 +43,7 @@ export class InvoiceGenerator implements OnInit {
         generateDocumentNo(),
         0,
         0,
+        currencies['USD'],
       ),
     );
   }

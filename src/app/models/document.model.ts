@@ -1,3 +1,5 @@
+import { CurrencyModel } from './currency.model';
+
 export interface DocumentTemplateTheme {
   primaryColor: string;
   background: { type: string; value: string };
@@ -53,7 +55,7 @@ export class DocumentTaxData {
 
 export class DocumentItemData {
   public get subtotal() {
-    return 0;
+    return this.quantity * this.price;
   }
 
   constructor(
@@ -85,7 +87,7 @@ export class DocumentStateDataModel {
   }
 
   public get subtotal() {
-    return 0;
+    return this.items.reduce((total, value) => value.subtotal + total, 0);
   }
 
   public get total() {
@@ -100,6 +102,7 @@ export class DocumentStateDataModel {
     public readonly documentNo: string,
     public readonly discount: number,
     public readonly shippingCost: number,
+    public readonly currency: CurrencyModel,
     public readonly business?: DocumentBusinessData,
     public readonly customer?: DocumentCustomerData,
     public readonly signature?: DocumentSignatureData,
@@ -117,7 +120,7 @@ export class DocumentStateDataModel {
     discount,
     documentNo,
     dueDate,
-    issuedDate: issuedAt,
+    issuedDate,
     items,
     paymentAccount,
     shippingCost,
@@ -126,6 +129,7 @@ export class DocumentStateDataModel {
     template,
     terms,
     title,
+    currency,
   }: {
     template?: DocumentTemplateModel;
     title?: string;
@@ -134,6 +138,7 @@ export class DocumentStateDataModel {
     documentNo?: string;
     discount?: number;
     shippingCost?: number;
+    currency?: CurrencyModel;
     business?: DocumentBusinessData;
     customer?: DocumentCustomerData;
     signature?: DocumentSignatureData;
@@ -147,11 +152,12 @@ export class DocumentStateDataModel {
     return new DocumentStateDataModel(
       template ?? this.template,
       title ?? this.title,
-      issuedAt ?? this.issuedDate,
+      issuedDate ?? this.issuedDate,
       dueDate ?? this.dueDate,
       documentNo ?? this.documentNo,
       discount ?? this.discount,
       shippingCost ?? this.shippingCost,
+      currency ?? this.currency,
       business ?? this.business,
       customer ?? this.customer,
       signature ?? this.signature,
