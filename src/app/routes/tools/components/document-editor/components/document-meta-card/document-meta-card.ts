@@ -13,6 +13,7 @@ import {
 import { DocumentPaymentMethodForm } from '../../modals/document-payment-method-form/document-payment-method-form';
 import { DocumentTermForm } from '../../modals/document-term-form/document-term-form';
 import { DocumentSignatureForm } from '../../modals/document-signature-form/document-signature-form';
+import { DocumentCurrencySelector } from '../../modals/document-currency-selector/document-currency-selector';
 
 @Component({
   selector: 'app-document-meta-card',
@@ -29,7 +30,11 @@ export class DocumentMetaCard {
 
   private dialogService = inject(HlmDialogService);
 
-  public toggleCurrency = () => {};
+  public toggleCurrency = () => {
+    this.dialogService.open(DocumentCurrencySelector, {
+      closeOnBackdropClick: false,
+    });
+  };
 
   public togglePayment = () => {
     this.dialogService.open(DocumentPaymentMethodForm, {

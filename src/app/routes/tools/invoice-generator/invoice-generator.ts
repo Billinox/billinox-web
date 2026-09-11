@@ -6,7 +6,7 @@ import { StorePromo } from '@billinox/src/app/components/shared/store-promo/stor
 import { lucideCloudDownload, lucideSend } from '@ng-icons/lucide';
 import { NgIcon } from '@ng-icons/core';
 import { DocumentTemplateSelector } from '../components/document-editor/components/document-template-selector/document-template-selector';
-import { invoiceTemplates } from '@billinox/src/app/datasource/template.datasource';
+import { invoiceTemplates } from '@billinox/src/app/data/template.data';
 
 @Component({
   selector: 'app-invoice-generator',

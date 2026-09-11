@@ -67,6 +67,12 @@
       ],
       "@spartan-ng/helm/separator": [
         "./src/app/components/uis/separator/src/index.ts"
+      ],
+      "@spartan-ng/helm/combobox": [
+        "./src/app/components/uis/combobox/src/index.ts"
+      ],
+      "@spartan-ng/helm/input-group": [
+        "./src/app/components/uis/input-group/src/index.ts"
       ]
     }
   },

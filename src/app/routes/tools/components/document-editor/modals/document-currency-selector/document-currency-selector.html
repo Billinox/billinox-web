@@ -1,0 +1,27 @@
+<hlm-dialog-header>
+  <h3 hlmDialogTitle>Currency</h3>
+</hlm-dialog-header>
+
+<form class="flex flex-col mt-3" [formGroup]="currencyForm" hlmFieldGroup>
+  <div hlmField>
+    <hlm-combobox [itemToString]="itemToString">
+      <hlm-combobox-input placeholder="Select a currency">
+        <hlm-input-group-addon>
+          <ng-icon name="lucideBanknote" />
+        </hlm-input-group-addon>
+      </hlm-combobox-input>
+      <hlm-combobox-content *hlmComboboxPortal>
+        <hlm-combobox-empty>No currency found.</hlm-combobox-empty>
+        <div hlmComboboxList>
+          @for (item of currencies; track $index) {
+            <hlm-combobox-item [value]="item">
+              {{ item.code }} - {{ item.name }}
+            </hlm-combobox-item>
+          }
+        </div>
+      </hlm-combobox-content>
+    </hlm-combobox>
+  </div>
+
+  <button type="submit" class="w-full" size="lg" hlmBtn>Save</button>
+</form>
