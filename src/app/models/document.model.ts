@@ -79,7 +79,7 @@ export class DocumentItemData {
 
 export class DocumentStateDataModel {
   public get discountAmount() {
-    return 0;
+    return Number((this.subtotal * (this.discount / 100)).toFixed(2));
   }
 
   public get taxAmount() {

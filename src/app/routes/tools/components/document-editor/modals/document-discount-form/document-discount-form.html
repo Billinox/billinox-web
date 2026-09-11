@@ -9,9 +9,11 @@
       type="number"
       placeholder="Discount"
       formControlName="percent"
+      min="0"
+      max="100"
       id="discount"
     />
   </div>
 
-  <button type="submit" class="w-full" size="lg" hlmBtn>Save</button>
+  <button type="submit" class="w-full" size="lg" hlmBtn (click)="save()">Save</button>
 </form>

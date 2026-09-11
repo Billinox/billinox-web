@@ -12,12 +12,12 @@
       <ng-icon [svg]="lucideTicketPercent" size="24px" />
       <div class="flex flex-col">
         <p>Discount</p>
-        <p class="text-sm text-secondary/50">0.0%</p>
+        <p class="text-sm text-secondary/50">{{state().discount}}%</p>
       </div>
     </div>
 
     <div class="flex gap-2 items-center">
-      <p class="text-sm bold">$0.00</p>
+      <p class="text-sm bold">{{state().discountAmount | currency : state().currency.code : 'symbol-narrow'}}</p>
       <ng-icon [svg]="lucideChevronRight" />
     </div>
   </div>

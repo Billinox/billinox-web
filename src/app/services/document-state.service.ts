@@ -72,4 +72,8 @@ export class DocumentStateService {
       return value.copyWith({ items });
     });
   }
+
+  public saveDiscount(discount: number) {
+    this._state.update((value) => value.copyWith({ discount }));
+  }
 }
