@@ -12,7 +12,7 @@
   </div>
 
   <div class="mb-10" hlmField>
-    <input hlmInput placeholder="Title" formControlName="title" />
+    <input hlmInput placeholder="Title" formControlName="title" maxlength="10" />
   </div>
 
   <div class="grid grid-cols-2 gap-5 mb-5">
@@ -43,7 +43,7 @@
     </div>
   </div>
 
-  <button type="submit" class="w-full" size="lg" hlmBtn>
+  <button class="w-full" size="lg" hlmBtn (click)="save()">
     Save
   </button>
 </form>

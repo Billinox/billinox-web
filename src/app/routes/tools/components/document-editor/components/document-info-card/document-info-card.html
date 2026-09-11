@@ -5,8 +5,10 @@
   (click)="openForm()"
 >
   <div>
-    <p>123456555</p>
-    <p class="text-sm text-surface-secondary">Due on Sep 09, 2026</p>
+    <p>{{ state().documentNo }}</p>
+    <p class="text-xs text-surface-secondary/100">
+      Due on {{ state().dueDate | date: 'MMM d, y'}}
+    </p>
   </div>
 
   <ng-icon [svg]="lucideChevronRight" class="h-10 w-10" />
