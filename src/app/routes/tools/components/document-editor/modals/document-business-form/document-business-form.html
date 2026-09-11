@@ -3,20 +3,47 @@
 </hlm-dialog-header>
 
 <form class="flex flex-col mt-3" [formGroup]="businessForm" hlmFieldGroup>
-  <div class="flex justify-center items-center">
+  <div class="flex justify-center items-center gap-4">
     <div
-      class="group rounded-full w-[100px] h-[100px] border border-border bg-surface-elevated flex flex-col items-center justify-center"
+      class="group rounded-full w-[100px] h-[100px] p-3 border border-border bg-surface-elevated flex flex-col items-center justify-center"
     >
-      <label
-        for="logo-browser"
-        class="w-full h-full rounded-full flex flex-col items-center justify-center text-secondary/50 cursor-pointer select-none"
-        role="button"
-        aria-roledescription="select business logo"
-      >
-        <ng-icon [svg]="lucideCamera" size="30px" />
-      </label>
+      @if (logo) {
+        <img
+          [src]="logo"
+          alt="Document logo"
+          width="100"
+          height="100"
+          class="rounded-full w-[100px] h-[100px]"
+        />
+      } @else {
+        <label
+          for="logo-browser"
+          class="w-full h-full rounded-full flex flex-col items-center justify-center text-secondary/50 cursor-pointer select-none"
+          role="button"
+          aria-roledescription="select business logo"
+        >
+          <ng-icon [svg]="lucideCamera" size="30px" />
+        </label>
+      }
     </div>
-    <input type="file" [hidden]="true" id="logo-browser" />
+    @if (logo) {
+      <div class="flex justify-center items-center gap-2">
+        <button size="sm" hlmBtn (click)="logoBrowser.click()">Change</button>
+        <button size="sm" variant="destructive" hlmBtn (click)="resetLogo()">
+          Remove
+        </button>
+      </div>
+    }
+    <input
+      type="file"
+      [hidden]="true"
+      id="logo-browser"
+      accept=".png,.jpg,.jpeg"
+      multiple="false"
+      size="500kb"
+      #logoBrowser
+      (change)="updateLogo($event)"
+    />
   </div>
 
   <div hlmField>
@@ -49,5 +76,7 @@
     ></textarea>
   </div>
 
-  <button type="submit" class="w-full" size="lg" hlmBtn>Save</button>
+  <button type="submit" class="w-full" size="lg" hlmBtn (click)="save()">
+    Save
+  </button>
 </form>

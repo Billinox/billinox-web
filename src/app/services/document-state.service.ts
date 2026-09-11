@@ -1,7 +1,11 @@
 import { computed, Injectable, signal } from '@angular/core';
 import { DateTime } from 'luxon';
 import { invoiceTemplates } from '../data/template.data';
-import { DocumentStateDataModel } from '../models/document.model';
+import {
+  DocumentBusinessData,
+  DocumentCustomerData,
+  DocumentStateDataModel,
+} from '../models/document.model';
 import generateDocumentNo from '../utils/generate-document-no';
 
 @Injectable({
@@ -42,5 +46,13 @@ export class DocumentStateService {
     this._state.update((value) =>
       value.copyWith({ documentNo, dueDate, issuedDate, title }),
     );
+  }
+
+  public saveBusiness(business: DocumentBusinessData) {
+    this._state.update((value) => value.copyWith({ business }));
+  }
+
+  public saveCustomer(customer: DocumentCustomerData) {
+    this._state.update((value) => value.copyWith({ customer }));
   }
 }

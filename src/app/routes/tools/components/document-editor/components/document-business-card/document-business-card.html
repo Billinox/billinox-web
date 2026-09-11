@@ -7,7 +7,7 @@
       data: {
         icon: lucideIdCard,
         title: 'Bill From',
-        subtitle: 'Add Business',
+        subtitle: state().business ? state().business?.name : 'Add Business',
       },
       clicked: openBusinessForm,
     }"
@@ -21,7 +21,7 @@
       data: {
         icon: lucideUsers,
         title: 'Bill To',
-        subtitle: 'Add Customer',
+        subtitle: state().customer ? state().customer?.name : 'Add Customer',
       },
       clicked: openCustomerForm,
     }"

@@ -27,9 +27,9 @@ export interface DocumentBusinessData {
 
 export interface DocumentCustomerData {
   name: string;
-  email: string;
-  phone: string;
-  address: string;
+  email: string | null | undefined;
+  phone: string | null | undefined;
+  address: string | null | undefined;
 }
 
 export interface DocumentSignatureData {
