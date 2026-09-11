@@ -5,6 +5,7 @@ import { HlmButton } from '@spartan-ng/helm/button';
 import { NgIconComponent } from '@ng-icons/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { PlatformService } from '../../../services/platform.service';
+import { Dialog } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-navbar',
@@ -32,22 +33,26 @@ export class Navbar implements OnInit, OnDestroy {
 
   public scrolled = false;
   public open = false;
-  private platformService = inject(PlatformService);
 
-  onScroll = () => (this.scrolled = window.scrollY > 12);
+  private _cdkDialog = inject(Dialog);
+  private _platformService = inject(PlatformService);
+
+  onScroll = () =>
+    (this.scrolled =
+      window.scrollY > 12 || this._cdkDialog.openDialogs.length > 0);
 
   setOpen(value: boolean) {
     this.open = value;
   }
 
   ngOnInit(): void {
-    this.platformService.runOnBrowser(() =>
+    this._platformService.runOnBrowser(() =>
       window.addEventListener('scroll', this.onScroll),
     );
   }
 
   ngOnDestroy(): void {
-    this.platformService.runOnBrowser(() =>
+    this._platformService.runOnBrowser(() =>
       window.removeEventListener('scroll', this.onScroll),
     );
   }
