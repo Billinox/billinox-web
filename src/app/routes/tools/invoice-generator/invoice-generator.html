@@ -10,25 +10,16 @@
           <!-- Templates -->
           <div class="mb-10">
             <p class="font-bold mb-3">Templates</p>
-            <app-document-template-selector [templates]="templates" [selected]="templates[0]" />
+            <app-document-template-selector
+              [templates]="templates"
+              [selected]="state().template"
+              (onSelect)="selectTemplate($event)"
+            />
           </div>
 
           <!-- CTA -->
-          <div class="grid grid-cols-2 gap-4 mb-10">
-            <button hlmBtn [size]="'lg'" type="button" class="w-full gap-3">
-              <ng-icon [svg]="lucideSend" size="20px" />
-              <span>Send Invoice</span>
-            </button>
-            <button
-              hlmBtn
-              variant="secondary"
-              [size]="'lg'"
-              type="button"
-              class="w-full gap-3"
-            >
-              <ng-icon [svg]="lucideCloudDownload" size="20px" />
-             <span>Download</span>
-            </button>
+          <div class="mb-10">
+            <app-document-cta />
           </div>
 
           <!-- App Promo -->

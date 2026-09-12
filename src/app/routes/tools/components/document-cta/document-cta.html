@@ -1,0 +1,33 @@
+<div class="grid grid-cols-2 gap-4">
+  <button
+    hlmBtn
+    [size]="'lg'"
+    type="button"
+    class="w-full gap-3"
+    (click)="submit('share')"
+  >
+    @if (processing && selectedContext === "share") {
+      <hlm-spinner />
+    } @else {
+      <ng-icon [svg]="lucideSend" size="20px" />
+    }
+    <span>Send Invoice</span>
+  </button>
+
+  <button
+    hlmBtn
+    variant="secondary"
+    [size]="'lg'"
+    type="button"
+    class="w-full gap-3"
+    (click)="submit()"
+  >
+    @if (processing && selectedContext === "download") {
+      <hlm-spinner />
+    } @else {
+      <ng-icon [svg]="lucideCloudDownload" size="20px" />
+    }
+
+    <span>Download</span>
+  </button>
+</div>

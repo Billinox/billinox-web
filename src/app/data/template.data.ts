@@ -1,7 +1,10 @@
+import { DocumentTemplateModel } from '../models/document.model';
+
 export const invoiceTemplates: DocumentTemplateModel[] = [
   {
     id: '1',
     name: 'standard',
+    type: 'simple',
     theme: {
       primaryColor: '#393938',
       table: {
@@ -20,6 +23,7 @@ export const invoiceTemplates: DocumentTemplateModel[] = [
   {
     id: '2',
     name: 'modern',
+    type: 'modern',
     theme: {
       primaryColor: '#5271ff',
       table: {
@@ -30,7 +34,7 @@ export const invoiceTemplates: DocumentTemplateModel[] = [
       },
       background: {
         type: 'image',
-        value: 'use data uri',
+        value: '/backgrounds/modern/00.png',
       },
     },
     thumbnail: '/thumbnails/invoice/modern_00.jpg',
@@ -41,6 +45,7 @@ export const receiptTemplates: DocumentTemplateModel[] = [
   {
     id: '1',
     name: 'standard',
+    type: 'simple',
     theme: {
       primaryColor: '#393938',
       table: {
@@ -59,6 +64,7 @@ export const receiptTemplates: DocumentTemplateModel[] = [
   {
     id: '2',
     name: 'modern',
+    type: 'modern',
     theme: {
       primaryColor: '#5271ff',
       table: {
@@ -69,7 +75,7 @@ export const receiptTemplates: DocumentTemplateModel[] = [
       },
       background: {
         type: 'image',
-        value: 'use data uri',
+        value: '/backgrounds/modern/01.png',
       },
     },
     thumbnail: '/thumbnails/invoice/modern_00.jpg',
@@ -80,6 +86,7 @@ export const quotationTemplates: DocumentTemplateModel[] = [
   {
     id: '1',
     name: 'standard',
+    type: 'simple',
     theme: {
       primaryColor: '#393938',
       table: {
@@ -98,6 +105,7 @@ export const quotationTemplates: DocumentTemplateModel[] = [
   {
     id: '2',
     name: 'modern',
+    type: 'modern',
     theme: {
       primaryColor: '#5271ff',
       table: {
@@ -108,7 +116,7 @@ export const quotationTemplates: DocumentTemplateModel[] = [
       },
       background: {
         type: 'image',
-        value: 'use data uri',
+        value: '/backgrounds/modern/02.png',
       },
     },
     thumbnail: '/thumbnails/invoice/modern_00.jpg',

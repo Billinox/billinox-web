@@ -8,6 +8,7 @@ import {
   DocumentSignatureData,
   DocumentStateDataModel,
   DocumentTaxData,
+  DocumentTemplateModel,
 } from '../models/document.model';
 import generateDocumentNo from '../utils/generate-document-no';
 import { currencies } from '../data/currency.data';
@@ -36,6 +37,10 @@ export class DocumentStateService {
 
   public reset(state: DocumentStateDataModel) {
     this._state.set(state);
+  }
+
+  public saveTemplate(template: DocumentTemplateModel) {
+    this._state.update((value) => value.copyWith({ template }));
   }
 
   public saveInfo({

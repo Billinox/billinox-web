@@ -3,7 +3,7 @@ import { CurrencyModel } from './currency.model';
 
 export interface DocumentTemplateTheme {
   primaryColor: string;
-  background: { type: string; value: string };
+  background: { type: 'color' | 'image'; value: string };
   table: {
     headerBackgroundColor: string;
     headerTextColor: string;
@@ -17,6 +17,7 @@ export interface DocumentTemplateModel {
   thumbnail: string;
   name: string;
   theme: DocumentTemplateTheme;
+  type: 'modernX' | 'modern' | 'simple';
 }
 
 export interface DocumentBusinessData {

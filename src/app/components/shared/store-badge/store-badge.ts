@@ -1,5 +1,6 @@
 import { NgClass } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { environment } from '@billinox/src/environments/environment';
 import { NgIcon } from '@ng-icons/core';
 import { lucideApple } from '@ng-icons/lucide';
 
@@ -20,7 +21,7 @@ export class StoreBadge {
 
   get link() {
     if (this.isPlay) {
-      return 'https://play.google.com/store/apps/details?id=com.braindam.billinox';
+      return environment.playStore;
     }
 
     // Return appstore URL
