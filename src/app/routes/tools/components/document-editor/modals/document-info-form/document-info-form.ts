@@ -6,7 +6,6 @@ import {
   provideHlmDatePickerConfig,
 } from '@spartan-ng/helm/date-picker';
 import { HlmFieldImports } from '@spartan-ng/helm/field';
-import { DateTime } from 'luxon';
 import {
   FormControl,
   FormGroup,
@@ -16,6 +15,8 @@ import {
 import { HlmButton } from '@spartan-ng/helm/button';
 import { DocumentStateService } from '@billinox/src/app/services/document-state.service';
 import { BrnDialogRef } from '@spartan-ng/brain/dialog';
+import { DatePipe } from '@angular/common';
+import { addYears, subYears } from 'date-fns';
 
 @Component({
   selector: 'app-document-info-form',
@@ -32,21 +33,21 @@ import { BrnDialogRef } from '@spartan-ng/brain/dialog';
   providers: [
     provideHlmDatePickerConfig({
       formatDate: (date: Date) =>
-        DateTime.fromJSDate(date).toLocaleString(DateTime.DATE_MED),
+        new DatePipe('en').transform(date, 'MMM d, y') ?? '',
       // transformDate: (date: Date) =>
       //   DateTime.fromJSDate(date).plus({ days: 1 }).toJSDate(),
     }),
   ],
 })
 export class DocumentInfoForm implements OnInit {
-  public minDate = DateTime.now().minus({ years: 3 }).toJSDate();
-  public maxDate = DateTime.now().toJSDate();
+  public minDate = subYears(new Date(), 3);
+  public maxDate = new Date();
 
   public get minDueDate() {
     return this.minDate;
   }
 
-  public maxDueDate = DateTime.now().plus({ year: 1 }).toJSDate();
+  public maxDueDate = addYears(new Date(), 1);
 
   public infoForm = new FormGroup({
     title: new FormControl('', [Validators.maxLength(10), Validators.required]),

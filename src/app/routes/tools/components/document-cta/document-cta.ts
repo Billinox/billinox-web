@@ -6,11 +6,11 @@ import { lucideCloudDownload, lucideSend } from '@ng-icons/lucide';
 import { HlmButton } from '@spartan-ng/helm/button';
 import { toast } from '@spartan-ng/brain/sonner';
 import { CurrencyPipe } from '@angular/common';
-import { DateTime } from 'luxon';
 import { DocumentService } from '@billinox/src/app/services/document.service';
 import { finalize } from 'rxjs';
 import { HlmSpinnerImports } from '@spartan-ng/helm/spinner';
 import { environment } from '@billinox/src/environments/environment';
+import { formatDate } from 'date-fns';
 
 @Component({
   selector: 'app-document-cta',
@@ -34,7 +34,8 @@ export class DocumentCTA {
   }
 
   private formatDate(date: Date) {
-    return DateTime.fromJSDate(date).toLocaleString(DateTime.DATE_MED);
+    // return DateTime.fromJSDate(date).toLocaleString(DateTime.DATE_MED);
+    return formatDate(date, 'MMM d, y');
   }
 
   private loadBackground(image: string): Promise<string> {
@@ -215,6 +216,8 @@ export class DocumentCTA {
           title: 'Invoice',
           text: 'Here is your invoice. thanks for your patronage.',
         });
+      } else {
+        this.download(data, filename);
       }
     } catch (error) {
       console.error('An error occurred during native sharing:', error);

@@ -1,11 +1,9 @@
-import { DateTime } from 'luxon';
-
 const generateDocumentNo = () => {
-  const now = DateTime.now();
+  const now = new Date();
 
-  const date = `${now.year.toString().substring(2)}${now.month.toString().padEnd(2, '0')}${now.day.toString().padEnd(2, '0')}`;
+  const date = `${now.getFullYear().toString().substring(2)}${now.getMonth().toString().padEnd(2, '0')}${now.getDate().toString().padEnd(2, '0')}`;
 
-  const unique = now.toMillis().toString().substring(9);
+  const unique = now.getTime().toString().substring(9);
 
   return `${date}${unique}`;
 };

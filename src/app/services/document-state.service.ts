@@ -1,5 +1,4 @@
-import { computed, Injectable, signal } from '@angular/core';
-import { DateTime } from 'luxon';
+import { Injectable, signal } from '@angular/core';
 import { invoiceTemplates } from '../data/template.data';
 import {
   DocumentBusinessData,
@@ -26,8 +25,8 @@ export class DocumentStateService {
     new DocumentStateDataModel(
       invoiceTemplates[0],
       'INVOICE',
-      DateTime.now().toJSDate(),
-      DateTime.now().toJSDate(),
+      new Date(),
+      new Date(),
       generateDocumentNo(),
       0,
       0,
@@ -140,7 +139,9 @@ export class DocumentStateService {
   }
 
   public savePaymentAccount(description: string) {
-    this._state.update((value) => value.copyWith({ paymentAccount: { description } }));
+    this._state.update((value) =>
+      value.copyWith({ paymentAccount: { description } }),
+    );
   }
 
   public saveSignature(signature: DocumentSignatureData) {
