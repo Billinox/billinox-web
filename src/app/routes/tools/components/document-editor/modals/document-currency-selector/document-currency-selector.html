@@ -4,7 +4,7 @@
 
 <form class="flex flex-col mt-3" [formGroup]="currencyForm" hlmFieldGroup>
   <div hlmField>
-    <hlm-combobox [itemToString]="itemToString">
+    <hlm-combobox [itemToString]="itemToString" formControlName="currency">
       <hlm-combobox-input placeholder="Select a currency">
         <hlm-input-group-addon>
           <ng-icon name="lucideBanknote" />
@@ -23,5 +23,5 @@
     </hlm-combobox>
   </div>
 
-  <button type="submit" class="w-full" size="lg" hlmBtn>Save</button>
+  <button type="submit" class="w-full" size="lg" hlmBtn (click)="save()">Save</button>
 </form>

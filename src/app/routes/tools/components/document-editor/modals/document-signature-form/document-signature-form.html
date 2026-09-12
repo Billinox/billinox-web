@@ -2,17 +2,23 @@
   <h3 hlmDialogTitle>Signature</h3>
 </hlm-dialog-header>
 
-<div
-  class="w-full h-[200px] border border-border rounded-md bg-surface-elevated my-3"
->
-  <canvas class="w-full h-full touch-none block" #canvasElement></canvas>
-</div>
+<div class="flex flex-col my-3" hlmFieldGroup>
+  <div hlmField>
+    <input type="text" placeholder="Label" hlmInput [formControl]="labelControl" />
+  </div>
 
-<p class="text-xs text-secondary/50 text-center">Sign in the box</p>
+  <div
+    class="w-full h-[200px] border border-border rounded-md bg-surface-elevated"
+  >
+    <canvas class="w-full h-full touch-none block" #canvasElement></canvas>
+  </div>
+
+  <p class="text-xs text-secondary/50 text-center">Sign in the box</p>
+</div>
 
 <hlm-dialog-footer>
   <button hlmBtn variant="secondary" type="button" (click)="clear()">
     Clear
   </button>
-  <button hlmBtn>Save</button>
+  <button class="w-100" hlmBtn (click)="save()">Save</button>
 </hlm-dialog-footer>

@@ -1,3 +1,4 @@
+import { PointGroup } from 'signature_pad';
 import { CurrencyModel } from './currency.model';
 
 export interface DocumentTemplateTheme {
@@ -37,6 +38,7 @@ export interface DocumentCustomerData {
 export interface DocumentSignatureData {
   label: string;
   image: string;
+  points: PointGroup[]
 }
 
 export class DocumentTaxData {
@@ -147,7 +149,7 @@ export class DocumentStateDataModel {
     currency?: CurrencyModel;
     business?: DocumentBusinessData;
     customer?: DocumentCustomerData;
-    signature?: DocumentSignatureData;
+      signature?: DocumentSignatureData | null;
     paymentAccount?: {
       description: string;
     };

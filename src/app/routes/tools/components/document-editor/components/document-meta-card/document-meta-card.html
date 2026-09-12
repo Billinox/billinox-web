@@ -7,7 +7,7 @@
       data: {
         title: 'Currency',
         icon: lucideBanknote,
-        content: { type: 'text', value: 'USD' },
+        content: { type: 'text', value: state().currency.code },
       },
       clicked: toggleCurrency,
     }"
@@ -16,7 +16,11 @@
   <ng-container
     [ngTemplateOutlet]="button"
     [ngTemplateOutletContext]="{
-      data: { title: 'Payment Method', icon: lucideCreditCard },
+      data: {
+        title: 'Payment Method',
+        icon: lucideCreditCard,
+        subtitle: state().paymentAccount?.description,
+      },
       clicked: togglePayment,
     }"
   />
@@ -24,49 +28,85 @@
   <ng-container
     [ngTemplateOutlet]="button"
     [ngTemplateOutletContext]="{
-      data: { title: 'Signature', icon: lucideSignature },
+      data: {
+        title: 'Signature',
+        icon: lucideSignature,
+        content: { type: 'image', value: state().signature?.image },
+      },
       clicked: toggleSignature,
     }"
   />
 
-  <ng-container
+  <!-- <ng-container
     [ngTemplateOutlet]="button"
     [ngTemplateOutletContext]="{
       data: { title: 'Terms', icon: lucideNotepadText },
       clicked: toggleTerms,
     }"
-  />
+  /> -->
+
+  <div
+    class="flex justify-between cursor-pointer px-6 py-4 select-none"
+    [class.items-center]="!state().terms.length"
+    role="button"
+    aria-role="button"
+    (click)="addOrEditTerm()"
+  >
+    <div class="flex gap-3" [class.items-center]="!state().terms.length">
+      <ng-icon [svg]="lucideNotepadText" size="24px" />
+      <div class="flex flex-col">
+        <p>Terms</p>
+        <div class="flex flex-col gap-1">
+          @for (term of state().terms; track $index) {
+            <button
+              class="text-left text-sm text-secondary/80 px-0"
+              (click)="addOrEditTerm({ term, index: $index }); $event.stopPropagation()"
+            >
+              {{ term }}
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+
+    <ng-icon [svg]="lucideChevronRight" />
+  </div>
 </div>
 
 <ng-template let-data="data" let-clicked="clicked" #button>
   <div
-    class="flex justify-between items-center cursor-pointer px-6 py-4 select-none"
+    class="flex justify-between cursor-pointer px-6 py-4 select-none"
+    [class.items-center]="!data.subtitle"
     role="button"
     aria-role="button"
     (click)="clicked()"
   >
-    <div class="flex items-center gap-3">
+    <div class="flex gap-3" [class.items-center]="!data.subtitle">
       <ng-icon [svg]="data.icon" size="24px" />
       <div class="flex flex-col">
         <p>{{ data.title }}</p>
         @if (data.subtitle) {
-          <p>{{ data.subtitle }}</p>
+          <p class="whitespace-pre-line text-sm text-secondary/80">
+            {{ data.subtitle }}
+          </p>
         }
       </div>
     </div>
 
     <div class="flex gap-2 items-center">
-      @switch (data.content?.type) {
-        @case ("text") {
-          <span>{{ data.content.value }}</span>
-        }
-        @case ("image") {
-          <img
-            [src]="data.content.image"
-            [width]="data.content.width"
-            [height]="data.content.height"
-            alt=""
-          />
+      @if (data.content?.value) {
+        @switch (data.content?.type) {
+          @case ("text") {
+            <span>{{ data.content.value }}</span>
+          }
+          @case ("image") {
+            <img
+              [src]="data.content.value"
+              [width]="data.content.width ?? 50"
+              [height]="data.content.height ?? 30"
+              alt=""
+            />
+          }
         }
       }
       <ng-icon [svg]="lucideChevronRight" />

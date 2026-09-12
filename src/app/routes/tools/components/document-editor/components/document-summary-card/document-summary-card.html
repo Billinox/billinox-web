@@ -46,14 +46,13 @@
             @for (item of state().taxes; track $index) {
               <button
                 type="button"
+                class="text-sm text-secondary/50 text-left"
                 (click)="
                   addOrEditTax({ tax: item, index: $index });
                   $event.stopPropagation()
                 "
               >
-                <p class="text-sm text-secondary/50">
-                  {{ item.name }} ({{ item.percentage }}%)
-                </p>
+                {{ item.name }} ({{ item.percentage }}%)
               </button>
             }
           } @else {
@@ -101,9 +100,7 @@
   <div class="flex justify-between px-6 py-4 bg-primary rounded-b-2xl">
     <p class="text-sm bold">Total</p>
     <p class="text-sm bold">
-      {{
-        state().total | currency: state().currency.code : "symbol-narrow"
-      }}
+      {{ state().total | currency: state().currency.code : "symbol-narrow" }}
     </p>
   </div>
 </div>

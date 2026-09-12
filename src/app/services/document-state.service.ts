@@ -5,11 +5,13 @@ import {
   DocumentBusinessData,
   DocumentCustomerData,
   DocumentItemData,
+  DocumentSignatureData,
   DocumentStateDataModel,
   DocumentTaxData,
 } from '../models/document.model';
 import generateDocumentNo from '../utils/generate-document-no';
 import { currencies } from '../data/currency.data';
+import { CurrencyModel } from '../models/currency.model';
 
 @Injectable({
   providedIn: 'root',
@@ -126,5 +128,21 @@ export class DocumentStateService {
     this._state.update((value) =>
       value.copyWith({ terms: value.terms.filter((d, idx) => idx != index) }),
     );
+  }
+
+  public saveCurrency(currency: CurrencyModel) {
+    this._state.update((value) => value.copyWith({ currency }));
+  }
+
+  public savePaymentAccount(description: string) {
+    this._state.update((value) => value.copyWith({ paymentAccount: { description } }));
+  }
+
+  public saveSignature(signature: DocumentSignatureData) {
+    this._state.update((value) => value.copyWith({ signature }));
+  }
+
+  public removeSignature() {
+    this._state.update((value) => value.copyWith({ signature: null }));
   }
 }

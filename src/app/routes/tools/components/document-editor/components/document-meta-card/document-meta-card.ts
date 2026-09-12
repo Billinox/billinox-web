@@ -1,5 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit, Signal } from '@angular/core';
 import { HlmDialogService } from '@billinox/src/app/components/uis/dialog/src';
 import { NgIcon } from '@ng-icons/core';
 import {
@@ -14,6 +14,8 @@ import { DocumentPaymentMethodForm } from '../../modals/document-payment-method-
 import { DocumentTermForm } from '../../modals/document-term-form/document-term-form';
 import { DocumentSignatureForm } from '../../modals/document-signature-form/document-signature-form';
 import { DocumentCurrencySelector } from '../../modals/document-currency-selector/document-currency-selector';
+import { DocumentStateService } from '@billinox/src/app/services/document-state.service';
+import { DocumentStateDataModel } from '@billinox/src/app/models/document.model';
 
 @Component({
   selector: 'app-document-meta-card',
@@ -21,14 +23,16 @@ import { DocumentCurrencySelector } from '../../modals/document-currency-selecto
   templateUrl: './document-meta-card.html',
   styleUrl: './document-meta-card.css',
 })
-export class DocumentMetaCard {
+export class DocumentMetaCard implements OnInit {
   public lucideBanknote = lucideBanknote;
   public lucideCreditCard = lucideCreditCard;
   public lucideSignature = lucideSignature;
   public lucideNotepadText = lucideNotepadText;
   public lucideChevronRight = lucideChevronRight;
+  public state!: Signal<DocumentStateDataModel>;
 
   private dialogService = inject(HlmDialogService);
+  private _documentStateService = inject(DocumentStateService);
 
   public toggleCurrency = () => {
     this.dialogService.open(DocumentCurrencySelector, {
@@ -48,9 +52,14 @@ export class DocumentMetaCard {
     });
   };
 
-  public toggleTerms = () => {
+  public addOrEditTerm = (context?: { term: string, index: number }) => {
     this.dialogService.open(DocumentTermForm, {
       closeOnBackdropClick: false,
+      context
     });
   };
+
+  ngOnInit(): void {
+    this.state = this._documentStateService.state;
+  }
 }
