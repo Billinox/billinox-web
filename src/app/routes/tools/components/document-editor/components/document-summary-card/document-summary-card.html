@@ -12,12 +12,17 @@
       <ng-icon [svg]="lucideTicketPercent" size="24px" />
       <div class="flex flex-col">
         <p>Discount</p>
-        <p class="text-sm text-secondary/50">{{state().discount}}%</p>
+        <p class="text-sm text-secondary/50">{{ state().discount }}%</p>
       </div>
     </div>
 
     <div class="flex gap-2 items-center">
-      <p class="text-sm bold">{{state().discountAmount | currency : state().currency.code : 'symbol-narrow'}}</p>
+      <p class="text-sm bold">
+        {{
+          state().discountAmount
+            | currency: state().currency.code : "symbol-narrow"
+        }}
+      </p>
       <ng-icon [svg]="lucideChevronRight" />
     </div>
   </div>
@@ -25,21 +30,45 @@
 
   <!-- Tax -->
   <div
-    class="flex justify-between items-center cursor-pointer px-6 py-4 select-none"
+    class="flex justify-between cursor-pointer px-6 py-4 select-none"
     role="button"
     aria-role="button"
-    (click)="openTaxForm()"
+    (click)="addOrEditTax()"
+    [class.items-center]="state().taxes.length === 0"
   >
-    <div class="flex items-center gap-3">
+    <div class="flex gap-3" [class.items-center]="state().taxes.length === 0">
       <ng-icon [svg]="lucideBadgePercent" size="24px" />
       <div class="flex flex-col">
         <p>Tax</p>
-        <p class="text-sm text-secondary/50">0.0%</p>
+
+        <div class="flex flex-col gap-1">
+          @if (state().taxes.length > 0) {
+            @for (item of state().taxes; track $index) {
+              <button
+                type="button"
+                (click)="
+                  addOrEditTax({ tax: item, index: $index });
+                  $event.stopPropagation()
+                "
+              >
+                <p class="text-sm text-secondary/50">
+                  {{ item.name }} ({{ item.percentage }}%)
+                </p>
+              </button>
+            }
+          } @else {
+            <p class="text-sm text-secondary/50">0.0%</p>
+          }
+        </div>
       </div>
     </div>
 
     <div class="flex gap-2 items-center">
-      <p class="text-sm bold">$0.00</p>
+      <p class="text-sm bold">
+        {{
+          state().taxAmount | currency: state().currency.code : "symbol-narrow"
+        }}
+      </p>
       <ng-icon [svg]="lucideChevronRight" />
     </div>
   </div>
@@ -58,7 +87,12 @@
     </div>
 
     <div class="flex gap-2 items-center">
-      <p class="text-sm bold">$0.00</p>
+      <p class="text-sm bold">
+        {{
+          state().shippingCost
+            | currency: state().currency.code : "symbol-narrow"
+        }}
+      </p>
       <ng-icon [svg]="lucideChevronRight" />
     </div>
   </div>
@@ -66,6 +100,10 @@
 
   <div class="flex justify-between px-6 py-4 bg-primary rounded-b-2xl">
     <p class="text-sm bold">Total</p>
-    <p class="text-sm bold">$0.00</p>
+    <p class="text-sm bold">
+      {{
+        state().total | currency: state().currency.code : "symbol-narrow"
+      }}
+    </p>
   </div>
 </div>

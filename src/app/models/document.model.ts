@@ -83,7 +83,11 @@ export class DocumentStateDataModel {
   }
 
   public get taxAmount() {
-    return 0;
+    return this.taxes.reduce(
+      (total, value) =>
+        Number((this.subtotal * (value.percentage / 100)).toFixed(2)) + total,
+      0,
+    );
   }
 
   public get subtotal() {
@@ -91,7 +95,9 @@ export class DocumentStateDataModel {
   }
 
   public get total() {
-    return 0;
+    return (
+      this.subtotal + this.shippingCost + this.taxAmount - this.discountAmount
+    );
   }
 
   constructor(

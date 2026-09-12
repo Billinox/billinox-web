@@ -6,6 +6,7 @@ import {
   DocumentCustomerData,
   DocumentItemData,
   DocumentStateDataModel,
+  DocumentTaxData,
 } from '../models/document.model';
 import generateDocumentNo from '../utils/generate-document-no';
 import { currencies } from '../data/currency.data';
@@ -73,7 +74,57 @@ export class DocumentStateService {
     });
   }
 
+  public removeItem(index: number) {
+    this._state.update((value) =>
+      value.copyWith({ items: value.items.filter((d, idx) => idx != index) }),
+    );
+  }
+
   public saveDiscount(discount: number) {
     this._state.update((value) => value.copyWith({ discount }));
+  }
+
+  public saveShipping(shippingCost: number) {
+    this._state.update((value) => value.copyWith({ shippingCost }));
+  }
+
+  public saveTax({ tax, index }: { tax: DocumentTaxData; index?: number }) {
+    this._state.update((value) => {
+      let items: DocumentTaxData[] = [...value.taxes];
+
+      if (index !== null && index !== undefined) {
+        items.splice(index, 1, tax);
+      } else {
+        items.push(tax);
+      }
+
+      return value.copyWith({ taxes: items });
+    });
+  }
+
+  public removeTax(index: number) {
+    this._state.update((value) =>
+      value.copyWith({ taxes: value.taxes.filter((d, idx) => idx != index) }),
+    );
+  }
+
+  public saveTerm({ term, index }: { term: string; index?: number }) {
+    this._state.update((value) => {
+      let terms: string[] = [...value.terms];
+
+      if (index !== null && index !== undefined) {
+        terms.splice(index, 1, term);
+      } else {
+        terms.push(term);
+      }
+
+      return value.copyWith({ terms });
+    });
+  }
+
+  public removeTerm(index: number) {
+    this._state.update((value) =>
+      value.copyWith({ terms: value.terms.filter((d, idx) => idx != index) }),
+    );
   }
 }

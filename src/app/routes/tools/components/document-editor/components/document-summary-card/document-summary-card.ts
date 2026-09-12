@@ -11,7 +11,10 @@ import { DocumentDiscountForm } from '../../modals/document-discount-form/docume
 import { DocumentTaxForm } from '../../modals/document-tax-form/document-tax-form';
 import { DocumentShippingForm } from '../../modals/document-shipping-form/document-shipping-form';
 import { DocumentStateService } from '@billinox/src/app/services/document-state.service';
-import { DocumentStateDataModel } from '@billinox/src/app/models/document.model';
+import {
+  DocumentStateDataModel,
+  DocumentTaxData,
+} from '@billinox/src/app/models/document.model';
 import { CurrencyPipe } from '@angular/common';
 
 @Component({
@@ -36,9 +39,10 @@ export class DocumentSummaryCard implements OnInit {
     });
   };
 
-  public openTaxForm = () => {
+  public addOrEditTax = (context?: { tax: DocumentTaxData; index: number }) => {
     this._dialogService.open(DocumentTaxForm, {
       closeOnBackdropClick: false,
+      context: context,
     });
   };
 
