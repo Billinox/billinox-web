@@ -8,6 +8,7 @@ import {
   provideMarkdown,
 } from 'ngx-markdown';
 import { gfmHeadingId } from 'marked-gfm-heading-id';
+import { FaqItem } from '@billinox/src/app/models/faq.model';
 
 @Component({
   selector: 'app-tool-faq',
@@ -35,9 +36,5 @@ import { gfmHeadingId } from 'marked-gfm-heading-id';
   ],
 })
 export class ToolFaq {
-  @Input({ required: true }) public items!: {
-    value: string;
-    trigger: string;
-    content: string;
-  }[];
+  @Input({ required: true }) public items!: FaqItem[];
 }

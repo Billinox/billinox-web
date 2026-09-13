@@ -1,10 +1,10 @@
 <hlm-accordion type="single" class="rounded-lg border">
-  @for (item of items; track item.value; let i = $index) {
+  @for (item of items; track item.id; let i = $index) {
     <hlm-accordion-item [isOpened]="i === 0" class="border-b px-4 last:border-b-0">
-      <hlm-accordion-trigger>{{ item.trigger }}</hlm-accordion-trigger>
+      <hlm-accordion-trigger>{{ item.question }}</hlm-accordion-trigger>
       <hlm-accordion-content>
         <!-- <div [innerHTML]="item.content | safeHtml"></div> -->
-         <markdown [data]="item.content" />
+         <markdown [data]="item.answer" />
       </hlm-accordion-content>
     </hlm-accordion-item>
   }
