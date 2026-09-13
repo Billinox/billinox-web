@@ -58,7 +58,7 @@
           class="relative aspect-[16/8] overflow-hidden rounded-3xl bg-gradient-to-br from-primary/30 via-accent/30 to-secondary/20 shadow-elevated"
         >
           @if (post().coverImage) {
-           <img class="aspect-[16/8]" [src]="post().coverImage" width="1672" height="941" loading="lazy" />
+           <img class="aspect-[16/8]" [src]="post().coverImage" width="1672" height="941" fetchpriority="high" />
           } @else {
           <div class="absolute inset-0 grid place-items-center text-primary/50">
             <svg lucideSparkles class="h-20 w-20" />

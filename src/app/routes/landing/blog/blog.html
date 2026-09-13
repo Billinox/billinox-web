@@ -65,7 +65,7 @@
                 <img
                   [src]="featured$.value.coverImage"
                   [alt]="featured$.value.title"
-                  loading="lazy"
+                  fetchpriority="high"
                   class="aspect-[5/3]"
                 />
               } @else {

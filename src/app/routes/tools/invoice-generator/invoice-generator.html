@@ -1,14 +1,14 @@
 <app-tool-layout>
   <section class="py-24">
     <div class="mx-auto max-w-7xl px-4">
-      <div class="grid grid-cols-12 lg:gap-10">
+      <div class="grid grid-cols-12 lg:gap-10 mb-10">
         <div class="col-span-12 lg:col-span-8 mb-10 lg:mb-0">
           <app-document-editor />
         </div>
 
         <div class="col-span-12 lg:col-span-4 sticky top-0">
           <!-- Templates -->
-          <div class="mb-10">
+          <div class="mb-15">
             <p class="font-bold mb-3">Templates</p>
             <app-document-template-selector
               [templates]="templates"
@@ -18,13 +18,20 @@
           </div>
 
           <!-- CTA -->
-          <div class="mb-10">
+          <div class="mb-15">
             <app-document-cta />
           </div>
 
           <!-- App Promo -->
-          <app-store-promo />
+          <div>
+            <app-store-promo />
+          </div>
         </div>
+      </div>
+
+      <div class="">
+        <p class="font-bold mb-3">Frequently Asked Questions</p>
+        <app-tool-faq [items]="faqs" />
       </div>
     </div>
   </section>
