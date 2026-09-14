@@ -270,9 +270,9 @@ export class Guides implements OnInit {
           property: 'og:url',
           content: `${environment.baseUrl}/guides`,
         },
-        { property: 'twitter:title', content: 'Billinox Guides & Tutorials' },
+        { name: 'twitter:title', content: 'Billinox Guides & Tutorials' },
         {
-          property: 'twitter:description',
+          name: 'twitter:description',
           content:
             'Watch curated YouTube tutorials and master Billinox in minutes.',
         },

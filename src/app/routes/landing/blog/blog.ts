@@ -76,9 +76,9 @@ export class Blog {
           property: 'og:url',
           content: `${environment.baseUrl}/blog`,
         },
-        { property: 'twitter:title', content: 'Billinox Blog' },
+        { name: 'twitter:title', content: 'Billinox Blog' },
         {
-          property: 'twitter:description',
+          name: 'twitter:description',
           content:
             'Insights, tutorials, and product updates for modern small businesses.',
         },

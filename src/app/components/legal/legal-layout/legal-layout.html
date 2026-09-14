@@ -59,12 +59,12 @@
       </div>
 
       <div class="mt-6 flex flex-wrap gap-2 print:hidden">
-        <Button size="sm" variant="outline" (click)="print()">
+        <button aria-label="Print" size="sm" variant="outline" (click)="print()">
           <svg class="h-4 w-4" lucidePrinter /> Print
-        </Button>
-        <Button size="sm" variant="outline" (click)="print()">
+        </button>
+        <button aria-label="Download PDF" size="sm" variant="outline" (click)="print()">
           <svg class="h-4 w-4" lucideDownload /> Download PDF
-        </Button>
+        </button>
       </div>
     </header>
 

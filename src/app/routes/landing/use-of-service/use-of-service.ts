@@ -36,11 +36,11 @@ export class UseOfService {
         'Roles, responsibilities, permitted use, and prohibited activities when you use Billinox.',
     });
     this.metaService.updateTag({
-      property: 'twitter:title',
+      name: 'twitter:title',
       content: 'Use of Service Agreement — Billinox',
     });
     this.metaService.updateTag({
-      property: 'twitter:description',
+      name: 'twitter:description',
       content:
         'Roles, responsibilities, permitted use, and prohibited activities when you use Billinox.',
     });

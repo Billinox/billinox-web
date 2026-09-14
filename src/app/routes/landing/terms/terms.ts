@@ -34,11 +34,11 @@ export class Terms {
         'Read the Terms of Service that apply when you use Billinox to invoice customers and manage billing.',
     });
     this.metaService.updateTag({
-      property: 'twitter:title',
+      name: 'twitter:title',
       content: 'Terms of Service — Billinox',
     });
     this.metaService.updateTag({
-      property: 'twitter:description',
+      name: 'twitter:description',
       content:
         'Read the Terms of Service that apply when you use Billinox to invoice customers and manage billing.',
     });

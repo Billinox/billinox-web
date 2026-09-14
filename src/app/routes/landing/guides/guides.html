@@ -49,6 +49,7 @@
         <div class="-mx-1 flex flex-1 gap-1.5 overflow-x-auto px-1 pb-1">
           @for (c of categories; track $index) {
             <button
+              [attr.aria-label]="'Category: ' + c"
               (click)="setActive(c)"
               class="whitespace-nowrap rounded-full border px-3.5 py-1.5 text-xs font-medium transition"
               [ngClass]="
@@ -75,6 +76,7 @@
         class="mt-4 grid gap-8 rounded-3xl border border-border bg-surface-elevated p-6 shadow-soft sm:p-8 lg:grid-cols-[1.3fr_1fr] lg:items-center"
       >
         <button
+          aria-label="Open tutorial"
           type="button"
           (click)="setOpenVideo(featured)"
           class="group block text-left"
@@ -108,6 +110,7 @@
               hlmBtn
               (click)="setOpenVideo(featured)"
               class="h-11 rounded-xl bg-secondary px-5 text-secondary-foreground hover:bg-secondary/90"
+              aria-label="Watch tutorial"
             >
               <svg lucidePlay class="mr-1 h-4 w-4 fill-current" /> Watch
               tutorial
@@ -117,6 +120,7 @@
               variant="outline"
               (click)="toggleBookmark(featured.id)"
               class="h-11 rounded-xl"
+              aria-label="Bookmark"
             >
               <svg
                 lucideBookmark
@@ -180,6 +184,7 @@
               <button
                 (click)="setOpenVideo(t)"
                 class="relative block text-left"
+                [attr.aria-label]="'Watch: ' + t.title"
               >
                 <app-thumbnail [videoId]="t.videoId" [alt]="t.title" />
                 <span
@@ -222,6 +227,7 @@
                       />
                     </button>
                     <button
+                      aria-label="Watch tutorial"
                       (click)="setOpenVideo(t)"
                       class="inline-flex items-center gap-1 rounded-lg bg-secondary px-3 py-1.5 text-xs font-semibold text-secondary-foreground hover:bg-secondary/90"
                     >
@@ -305,7 +311,8 @@
         @for (t of popular; track $index) {
           <button
             (click)="setOpenVideo(t)"
-            class="group flex items-start gap-4 rounded-2xl border border-border bg-surface-elevated p-5 text-left shadow-soft transition hover:-translate-y-0.5 hover:border-primary/40"
+            class="group flex items-start gap-4 rounded-2xl border border-border bg-surface-elevated p-5 text-left shadow-soft transition hover:-translate-y-0.5 hover:border-primary/40"Watch
+            aria-label="Watch tutorial"
           >
             <span
               class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/15 font-display text-sm font-bold text-secondary"
@@ -343,7 +350,7 @@
               {{ c.title }}
             </h3>
             <p class="mt-1.5 text-sm text-muted-foreground">{{ c.desc }}</p>
-            <button hlmBtn variant="outline" class="mt-5 h-10 p-0 rounded-xl">
+            <button aria-label="Call to action" hlmBtn variant="outline" class="mt-5 h-10 p-0 rounded-xl">
               @if (c.link) {
                 <a
                   [href]="c.link"
@@ -392,6 +399,7 @@
           >
             <button
               hlmBtn
+              aria-label="Subscribe on YouTube"
               size="lg"
               class="h-12 rounded-xl bg-primary px-6 text-primary-foreground hover:bg-primary/90"
               (click)="subscribe()"
@@ -401,6 +409,7 @@
             </button>
             <button
               hlmBtn
+              aria-label="Browse tutorials"
               size="lg"
               variant="outline"
               class="h-12 rounded-xl border-white/20 bg-white/5 px-6 text-secondary-foreground hover:bg-white/10"

@@ -5,7 +5,7 @@
   <div
     class="flex justify-between items-center px-6 py-4 cursor-pointer"
     role="button"
-    aria-role="button"
+    aria-roledescription="Add item"
     (click)="addOrEditItem()"
   >
     <div class="flex gap-3">
@@ -16,7 +16,7 @@
       </div>
 
       <div class="flex flex-col">
-        <p class="text-xs text-secondary/50 mb-0">Items</p>
+        <p class="text-xs text-muted-foreground mb-0">Items</p>
         <p>Add Items</p>
       </div>
     </div>
@@ -31,7 +31,7 @@
       <div
         class="flex justify-between items-center px-6 py-4 cursor-pointer"
         role="button"
-        aria-role="button"
+        aria-roledescription="Edit item"
         (click)="addOrEditItem({ item, index: $index })"
       >
         <div class="flex items-center gap-3">
@@ -46,7 +46,7 @@
         </div>
 
         <div class="flex flex-col text-right">
-          <p class="text-xs text-secondary/50">
+          <p class="text-xs text-muted-foreground">
             {{ item.quantity }} x
             {{ item.price | currency: state().currency.code : "symbol-narrow" }}
           </p>

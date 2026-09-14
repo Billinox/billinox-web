@@ -125,10 +125,10 @@ export class BlogArticle implements OnInit, OnDestroy {
             content: `${environment.baseUrl}${post.coverImage}`,
           },
           { property: 'og:type', content: 'article' },
-          { property: 'twitter:title', content: post.title },
-          { property: 'twitter:description', content: post.excerpt },
+          { name: 'twitter:title', content: post.title },
+          { name: 'twitter:description', content: post.excerpt },
           {
-            property: 'twitter:image',
+            name: 'twitter:image',
             content: `${environment.baseUrl}${post.coverImage}`,
           },
         ],

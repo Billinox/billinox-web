@@ -52,11 +52,11 @@ export class Home {
             'Generate invoices, send quotations, track payments, manage customers, and grow your business with Billinox. Available for Android',
         },
         {
-          property: 'twitter:title',
+          name: 'twitter:title',
           content: 'Billinox - Invoice Maker, Estimates & Payment Tracking App',
         },
         {
-          property: 'twitter:description',
+          name: 'twitter:description',
           content:
             'Generate invoices, send quotations, track payments, manage customers, and grow your business with Billinox. Available for Android',
         },

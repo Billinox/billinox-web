@@ -129,9 +129,9 @@ export class AboutPage {
           property: 'og:url',
           content: `${environment.baseUrl}/about`,
         },
-        { property: 'twitter:title', content: 'About Billinox' },
+        { name: 'twitter:title', content: 'About Billinox' },
         {
-          property: 'twitter:description',
+          name: 'twitter:description',
           content: 'Our mission, values, and the journey behind Billinox.',
         },
       ],

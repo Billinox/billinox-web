@@ -37,11 +37,11 @@ export class Privacy {
             'Privacy-first, offline-first invoicing. Read how Billinox handles your data under GDPR, DSA, and NDPA.',
         },
         {
-          property: 'twitter:title',
+          name: 'twitter:title',
           content: 'Privacy Policy — Billinox',
         },
         {
-          property: 'twitter:description',
+          name: 'twitter:description',
           content:
             'Privacy-first, offline-first invoicing. Read how Billinox handles your data under GDPR, DSA, and NDPA.',
         },

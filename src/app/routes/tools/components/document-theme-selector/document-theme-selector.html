@@ -1,6 +1,7 @@
 <div class="flex gap-3">
   @for (color of colors; track $index) {
     <button
+      aria-label="Switch theme"
       class="w-[30px] h-[30px] border rounded-full cursor-pointer flex items-center justify-center text-white"
       [style.backgroundColor]="color"
       (click)="select(color)"

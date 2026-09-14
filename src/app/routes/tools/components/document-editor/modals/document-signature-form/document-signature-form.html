@@ -13,12 +13,12 @@
     <canvas class="w-full h-full touch-none block" #canvasElement></canvas>
   </div>
 
-  <p class="text-xs text-secondary/50 text-center">Sign in the box</p>
+  <p class="text-xs text-muted-foreground text-center">Sign in the box</p>
 </div>
 
 <hlm-dialog-footer>
-  <button hlmBtn variant="secondary" type="button" (click)="clear()">
+  <button hlmBtn aria-label="Clear signature" variant="secondary" type="button" (click)="clear()">
     Clear
   </button>
-  <button class="w-100" hlmBtn (click)="save()">Save</button>
+  <button aria-label="Save signature" class="w-100" hlmBtn (click)="save()">Save</button>
 </hlm-dialog-footer>

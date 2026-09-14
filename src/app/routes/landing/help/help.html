@@ -58,6 +58,7 @@
         <div class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
           @for (p of popularTopics.slice(0, 6); track $index) {
             <button
+              [attr.aria-label]="p.title"
               key="{title}"
               (click)="setQuery(''); setActive(p.category); scrollInto()"
               class="group flex flex-col items-center gap-2 rounded-xl border border-border bg-card p-4 text-left transition hover:border-primary/40 hover:shadow-soft"
@@ -92,6 +93,7 @@
                 @let isActive = active$.value === c.id && !query$.value;
 
                 <button
+                  [attr.aria-label]="c.label"
                   (click)="setQuery(''); setActive(c.id)"
                   class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-medium transition"
                   [ngClass]="
@@ -138,7 +140,7 @@
                 class="rounded-2xl border border-border bg-card px-4 shadow-soft"
               >
                 @for (f of filtered; track $index) {
-                     @let query = query$ | async;
+                  @let query = query$ | async;
                   <hlm-accordion-item
                     value="{`item-${i}`}"
                     class="border-border"
@@ -207,7 +209,7 @@
         <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           @for (p of popularTopics; track $index) {
             <button
-              key="{title}"
+              [attr.aria-label]="p.title"
               (click)="setQuery(''); setActive(p.category); scrollInto()"
               class="group flex items-center justify-between rounded-2xl border border-border bg-card p-5 text-left transition hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-elevated"
             >
@@ -245,6 +247,7 @@
           <div class="mt-8 flex flex-wrap justify-center gap-3">
             <button
               hlmBtn
+              aria-label="Contact support"
               size="lg"
               class="bg-secondary text-secondary-foreground hover:bg-secondary/90"
             >
@@ -252,7 +255,7 @@
                 <svg lucideMail class="h-4 w-4 inline" /> Contact support
               </a>
             </button>
-            <button hlmBtn size="lg" variant="outline">
+            <button hlmBtn aria-label="Browse guides" size="lg" variant="outline">
               <a routerLink="/guides">
                 <svg lucideBookOpen class="h-4 w-4 inline" /> Browse guides
               </a>

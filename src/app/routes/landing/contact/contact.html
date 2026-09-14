@@ -254,6 +254,7 @@
 
           <div class="sm:col-span-2">
             <button
+              aria-label="Send message"
               hlmBtn
               type="submit"
               [disabled]="status === 'submitting'"
@@ -267,7 +268,9 @@
               }
             </button>
             <div class="py-3">
-              <p class="text-xs text-muted-foreground">This site is protected by reCAPTCHA.</p>
+              <p class="text-xs text-muted-foreground">
+                This site is protected by reCAPTCHA.
+              </p>
             </div>
           </div>
         </form>

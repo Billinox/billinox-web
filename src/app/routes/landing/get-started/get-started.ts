@@ -169,14 +169,14 @@ export class GetStartedPage {
           property: 'og:description',
           content: 'Download the app and start invoicing in minutes.',
         },
-        { property: 'twitter:title', content: 'Get Started with Billinox' },
-        {
-          property: 'twitter:description',
-          content: 'Download the app and start invoicing in minutes.',
-        },
         {
           property: 'og:url',
           content: `${environment.baseUrl}/get-started`,
+        },
+        { name: 'twitter:title', content: 'Get Started with Billinox' },
+        {
+          name: 'twitter:description',
+          content: 'Download the app and start invoicing in minutes.',
         },
       ],
     });

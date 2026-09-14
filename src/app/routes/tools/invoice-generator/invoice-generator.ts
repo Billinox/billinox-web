@@ -4,8 +4,6 @@ import {
   DocumentItemData,
   DocumentStateDataModel,
   DocumentTaxData,
-  DocumentTemplateModel,
-  DocumentTemplateTheme,
 } from '@billinox/src/app/models/document.model';
 import { DocumentStateService } from '@billinox/src/app/services/document-state.service';
 import generateDocumentNo from '@billinox/src/app/utils/generate-document-no';
@@ -21,7 +19,7 @@ import { FaqItem } from '@billinox/src/app/models/faq.model';
 import { SchemaService } from '@billinox/src/app/services/schema.service';
 import { DocumentThemeSelector } from '@billinox/src/app/routes/tools/components/document-theme-selector/document-theme-selector';
 import { templates } from '@billinox/src/app/data/template.data';
-import { ThemeColor } from '@billinox/src/app/data/themes.data';
+import { SeoService } from '@billinox/src/app/services/seo.service';
 
 @Component({
   selector: 'app-invoice-generator',
@@ -93,7 +91,50 @@ export class InvoiceGenerator implements OnInit {
   public state!: Signal<DocumentStateDataModel>;
 
   private _documentStateService = inject(DocumentStateService);
+  private _seoService = inject(SeoService);
   private _schemaService = inject(SchemaService);
+
+  constructor() {
+    this._seoService.optimize({
+      title:
+        'Free Printable Invoice Generator - Create Invoices Online | Billinox',
+      meta: [
+        {
+          property: 'keywords',
+          content: 'free printable invoice generator',
+        },
+        {
+          name: 'description',
+          content:
+            'Create professional invoices online for free with Billinox. Customize, download, and print clean invoices ready to send to your customers.',
+        },
+        {
+          property: 'og:title',
+          content:
+            'Free Printable Invoice Generator - Create Invoices Online | Billinox',
+        },
+        {
+          property: 'og:description',
+          content:
+            'Create professional invoices online for free with Billinox. Customize, download, and print clean invoices ready to send to your customers.',
+        },
+         {
+          property: 'og:url',
+          content: `${environment.baseUrl}/invoice-generator`,
+        },
+        {
+          name: 'twitter:title',
+          content:
+            'Free Printable Invoice Generator - Create Invoices Online | Billinox',
+        },
+        {
+          name: 'twitter:description',
+          content:
+            'Create professional invoices online for free with Billinox. Customize, download, and print clean invoices ready to send to your customers.',
+        },
+      ],
+    });
+  }
 
   ngOnInit(): void {
     this._documentStateService.reset(

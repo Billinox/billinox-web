@@ -189,9 +189,9 @@ export class ContactPage {
           property: 'og:url',
           content: `${environment.baseUrl}/contact`,
         },
-        { property: 'twitter:title', content: 'Contact Billinox' },
+        { name: 'twitter:title', content: 'Contact Billinox' },
         {
-          property: 'twitter:description',
+          name: 'twitter:description',
           content: 'Talk to the Billinox team — support',
         },
       ],

@@ -134,6 +134,7 @@
         <div class="flex gap-2 overflow-x-auto sm:pb-1 pb-2">
           @for (c of categories; track $index) {
             <button
+              [attr.ariaLabel]="'Category: ' + c"
               (click)="setCategory(c); setVisible(6)"
               class="whitespace-nowrap rounded-full border px-4 py-1.5 text-sm font-medium transition"
               [ngClass]="

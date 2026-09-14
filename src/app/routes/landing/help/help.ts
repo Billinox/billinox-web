@@ -214,9 +214,9 @@ export class HelpPage implements OnInit, OnDestroy {
           property: 'og:url',
           content: `${environment.baseUrl}/help-center`,
         },
-        { property: 'twitter:title', content: 'Billinox Help Center' },
+        { name: 'twitter:title', content: 'Billinox Help Center' },
         {
-          property: 'twitter:description',
+          name: 'twitter:description',
           content: 'Answers, guides, and support for the Billinox platform.',
         },
       ],
