@@ -17,7 +17,7 @@ import { ToolFaq } from '../components/tool-faq/tool-faq';
 import { environment } from '@billinox/src/environments/environment';
 import { FaqItem } from '@billinox/src/app/models/faq.model';
 import { SchemaService } from '@billinox/src/app/services/schema.service';
-import { DocumentThemeSelector } from '@billinox/src/app/routes/tools/components/document-theme-selector/document-theme-selector';
+import { DocumentThemeSelector } from '@billinox/src/app/routes/tools/components/document-editor/components/document-theme-selector/document-theme-selector';
 import { templates } from '@billinox/src/app/data/template.data';
 import { SeoService } from '@billinox/src/app/services/seo.service';
 

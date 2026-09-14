@@ -10,6 +10,7 @@
 
   <a
     [href]="playStore"
+    aria-label="More templates"
     target="_blank"
     rel="noopener noreferrer"
     class="group rounded-md border border-border bg-surface-elevated flex flex-col justify-center items-center cursor-pointer text-[10px] select-none"
@@ -24,21 +25,13 @@
   <div
     class="group rounded-md border border-border bg-surface-elevated flex justify-between items-center cursor-pointer select-none"
     role="button"
-    aria-roledescription="Choose template"
+    aria-label="Choose template"
     [ngClass]="{
       'border-primary': state().template.id == data.id,
     }"
     [style.color]="state().template.theme.primaryColor"
     (click)="select(data)"
   >
-    <!-- <img
-      [src]="data.theme.template"
-      width="1241"
-      height="1754"
-      [alt]="data.name"
-      class="object-fill w-full h-full"
-    /> -->
-
     <div class="object-fill w-full h-full" [innerHTML]="data.theme.template | safeHtml"></div>
   </div>
 </ng-template>
