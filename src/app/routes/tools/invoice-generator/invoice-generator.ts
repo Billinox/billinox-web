@@ -1,11 +1,11 @@
 import { Component, inject, OnInit, Signal } from '@angular/core';
 import { StorePromo } from '@billinox/src/app/components/shared/store-promo/store-promo';
-import { invoiceTemplates } from '@billinox/src/app/data/template.data';
 import {
   DocumentItemData,
   DocumentStateDataModel,
   DocumentTaxData,
   DocumentTemplateModel,
+  DocumentTemplateTheme,
 } from '@billinox/src/app/models/document.model';
 import { DocumentStateService } from '@billinox/src/app/services/document-state.service';
 import generateDocumentNo from '@billinox/src/app/utils/generate-document-no';
@@ -19,6 +19,9 @@ import { ToolFaq } from '../components/tool-faq/tool-faq';
 import { environment } from '@billinox/src/environments/environment';
 import { FaqItem } from '@billinox/src/app/models/faq.model';
 import { SchemaService } from '@billinox/src/app/services/schema.service';
+import { DocumentThemeSelector } from '@billinox/src/app/routes/tools/components/document-theme-selector/document-theme-selector';
+import { templates } from '@billinox/src/app/data/template.data';
+import { ThemeColor } from '@billinox/src/app/data/themes.data';
 
 @Component({
   selector: 'app-invoice-generator',
@@ -29,12 +32,12 @@ import { SchemaService } from '@billinox/src/app/services/schema.service';
     DocumentTemplateSelector,
     DocumentCTA,
     ToolFaq,
+    DocumentThemeSelector,
   ],
   templateUrl: './invoice-generator.html',
   styleUrl: './invoice-generator.css',
 })
 export class InvoiceGenerator implements OnInit {
-  public templates = invoiceTemplates;
   public faqs: FaqItem[] = [
     {
       id: 1,
@@ -95,7 +98,7 @@ export class InvoiceGenerator implements OnInit {
   ngOnInit(): void {
     this._documentStateService.reset(
       new DocumentStateDataModel(
-        invoiceTemplates[0],
+        templates[0],
         'INVOICE',
         new Date(),
         addDays(new Date(), 2),
@@ -115,9 +118,5 @@ export class InvoiceGenerator implements OnInit {
     this.state = this._documentStateService.state;
 
     this._schemaService.injectFaqSchema(this.faqs);
-  }
-
-  selectTemplate(template: DocumentTemplateModel) {
-    this._documentStateService.saveTemplate(template);
   }
 }

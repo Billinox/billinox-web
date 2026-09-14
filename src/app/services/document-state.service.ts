@@ -1,5 +1,4 @@
 import { Injectable, signal } from '@angular/core';
-import { invoiceTemplates } from '../data/template.data';
 import {
   DocumentBusinessData,
   DocumentCustomerData,
@@ -8,10 +7,12 @@ import {
   DocumentStateDataModel,
   DocumentTaxData,
   DocumentTemplateModel,
+  DocumentTemplateTheme,
 } from '../models/document.model';
 import generateDocumentNo from '../utils/generate-document-no';
 import { currencies } from '../data/currency.data';
 import { CurrencyModel } from '../models/currency.model';
+import { templates } from '../data/template.data';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +24,7 @@ export class DocumentStateService {
 
   private _state = signal(
     new DocumentStateDataModel(
-      invoiceTemplates[0],
+      templates[0],
       'INVOICE',
       new Date(),
       new Date(),
@@ -40,6 +41,12 @@ export class DocumentStateService {
 
   public saveTemplate(template: DocumentTemplateModel) {
     this._state.update((value) => value.copyWith({ template }));
+  }
+
+  public saveTheme(theme: DocumentTemplateTheme) {
+    this._state.update((value) =>
+      value.copyWith({ template: { ...value.template, theme } }),
+    );
   }
 
   public saveInfo({

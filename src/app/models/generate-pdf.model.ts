@@ -50,6 +50,8 @@ export interface GeneratePDFRequest {
       table: {
         totalRowBackgroundColor?: string;
         totalRowTextColor?: string;
+        headerTextColor?: string;
+        headerBackgroundColor?: string;
       };
       background: {
         image?: string;

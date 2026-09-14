@@ -1,8 +1,9 @@
 import { PointGroup } from 'signature_pad';
 import { CurrencyModel } from './currency.model';
+import { ThemeColor, ThemeType } from '../data/themes.data';
 
 export interface DocumentTemplateTheme {
-  primaryColor: string;
+  primaryColor: ThemeColor;
   background: { type: 'color' | 'image'; value: string };
   table: {
     headerBackgroundColor: string;
@@ -10,6 +11,8 @@ export interface DocumentTemplateTheme {
     totalBackgroundColor?: string;
     totalTextColor?: string;
   };
+  template: string;
+  type: ThemeType;
 }
 
 export interface DocumentTemplateModel {
@@ -39,7 +42,7 @@ export interface DocumentCustomerData {
 export interface DocumentSignatureData {
   label: string;
   image: string;
-  points: PointGroup[]
+  points: PointGroup[];
 }
 
 export class DocumentTaxData {
@@ -150,7 +153,7 @@ export class DocumentStateDataModel {
     currency?: CurrencyModel;
     business?: DocumentBusinessData;
     customer?: DocumentCustomerData;
-      signature?: DocumentSignatureData | null;
+    signature?: DocumentSignatureData | null;
     paymentAccount?: {
       description: string;
     };

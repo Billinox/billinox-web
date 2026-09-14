@@ -26,16 +26,19 @@
     role="button"
     aria-role="button"
     [ngClass]="{
-      'border-primary': selected?.id == data.id,
+      'border-primary': state().template.id == data.id,
     }"
+    [style.color]="state().template.theme.primaryColor"
     (click)="select(data)"
   >
-    <img
-      [src]="data.thumbnail"
+    <!-- <img
+      [src]="data.theme.template"
       width="1241"
       height="1754"
       [alt]="data.name"
-      class="object-fill w-full h-full rounded-md"
-    />
+      class="object-fill w-full h-full"
+    /> -->
+
+    <div class="object-fill w-full h-full" [innerHTML]="data.theme.template | safeHtml"></div>
   </div>
 </ng-template>

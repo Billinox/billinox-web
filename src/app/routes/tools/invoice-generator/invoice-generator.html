@@ -1,20 +1,22 @@
 <app-tool-layout>
   <section class="py-24">
     <div class="mx-auto max-w-7xl px-4">
-      <div class="grid grid-cols-12 lg:gap-10 mb-10">
+      <div class="grid grid-cols-12 lg:gap-10 mb-10 items-start">
         <div class="col-span-12 lg:col-span-8 mb-10 lg:mb-0">
           <app-document-editor />
         </div>
 
-        <div class="col-span-12 lg:col-span-4 sticky top-0">
+        <div class="col-span-12 lg:col-span-4 sticky top-20 ...">
+          <!-- Themes -->
+          <div class="mb-15">
+            <p class="font-bold mb-3">Themes</p>
+            <app-document-theme-selector />
+          </div>
+
           <!-- Templates -->
           <div class="mb-15">
             <p class="font-bold mb-3">Templates</p>
-            <app-document-template-selector
-              [templates]="templates"
-              [selected]="state().template"
-              (onSelect)="selectTemplate($event)"
-            />
+            <app-document-template-selector />
           </div>
 
           <!-- CTA -->

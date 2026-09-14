@@ -146,6 +146,8 @@ export class DocumentCTA {
           table: {
             totalRowBackgroundColor: theme.table.totalBackgroundColor,
             totalRowTextColor: theme.table.totalTextColor,
+            headerBackgroundColor: theme.table.headerBackgroundColor,
+            headerTextColor: theme.table.headerTextColor,
           },
         },
         title: state.title,
@@ -174,7 +176,6 @@ export class DocumentCTA {
         )
         .subscribe({
           next: (response) => {
-            console.log(response);
             switch (context) {
               case 'download':
                 this.download(response.pdf, filename);
@@ -221,6 +222,7 @@ export class DocumentCTA {
       }
     } catch (error) {
       console.error('An error occurred during native sharing:', error);
+      toast.error('Failed to share');
     }
   }
 }
