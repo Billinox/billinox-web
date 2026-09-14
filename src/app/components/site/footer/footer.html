@@ -38,22 +38,17 @@
 
       @for (c of cols; track $index) {
         <div>
-          <p class="text-xs font-bold uppercase tracking-wider text-foreground">
-            {{ c.title }}
-          </p>
-          <ul class="mt-4 space-y-2.5">
-            @for (l of c.links; track $index) {
-              <li>
-                <a
-                  [routerLink]="l.link"
-                  [fragment]="l.fragment"
-                  class="text-sm text-muted-foreground transition hover:text-foreground"
-                >
-                  {{ l.label }}
-                </a>
-              </li>
-            }
-          </ul>
+          @if (isArray(c)) {
+            <ng-container
+              [ngTemplateOutlet]="list"
+              [ngTemplateOutletContext]="{ items: c }"
+            />
+          } @else {
+            <ng-container
+              [ngTemplateOutlet]="listItem"
+              [ngTemplateOutletContext]="{ data: c }"
+            />
+          }
         </div>
       }
     </div>
@@ -72,3 +67,35 @@
     </div>
   </div>
 </footer>
+
+<ng-template let-items="items" #list>
+  @for (item of items; track $index) {
+    <div [class.mb-10]="!$last">
+      <ng-container
+        [ngTemplateOutlet]="listItem"
+        [ngTemplateOutletContext]="{ data: item }"
+      />
+    </div>
+  }
+</ng-template>
+
+<ng-template let-data="data" #listItem>
+  <div>
+    <p class="text-xs font-bold uppercase tracking-wider text-foreground">
+      {{ data.title }}
+    </p>
+    <ul class="mt-4 space-y-2.5">
+      @for (l of data.links; track $index) {
+        <li>
+          <a
+            [routerLink]="l.link"
+            [fragment]="l.fragment"
+            class="text-sm text-muted-foreground transition hover:text-foreground"
+          >
+            {{ l.label }}
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</ng-template>
