@@ -43,7 +43,7 @@ export class QuotationGenerator {
       id: 1,
     },
     {
-      question: "Is Billinox's quotation generator free?",
+      question: 'Is Billinox Quotation Generator free?',
       answer:
         "Yes. Billinox's quotation generator lets you create professional quotations for free, making it easy to prepare quotes for your customers without starting from scratch.",
       id: 2,
@@ -100,7 +100,7 @@ export class QuotationGenerator {
   public state!: Signal<DocumentStateDataModel>;
   public tag = 'Quotation Generator';
   public title = `<span class="text-gradient-gold">Create quotations</span> that make your business stand out`;
-  public description = `Use Billinox's free quotation generator to create professional quotes online in seconds. Add your business and customer details, list products or services, set prices, discounts, taxes, and terms, then download, print, or share your quotation with ease.`;
+  public description = `Use Billinox free quotation generator to create professional quotes online in seconds. Add your business and customer details, list products or services, set prices, discounts, taxes, and terms, then download, print, or share your quotation with ease.`;
 
   private _documentStateService = inject(DocumentStateService);
   private _seoService = inject(SeoService);
