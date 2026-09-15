@@ -1,6 +1,14 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { HlmDialogHeader } from '@billinox/src/app/components/uis/dialog/src';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import {
+  HlmDialogHeader,
+  HlmDialogFooter,
+} from '@billinox/src/app/components/uis/dialog/src';
 import { HlmFieldImports } from '@billinox/src/app/components/uis/field/src';
 import { DocumentStateService } from '@billinox/src/app/services/document-state.service';
 import { BrnDialogRef, injectBrnDialogContext } from '@spartan-ng/brain/dialog';
@@ -15,6 +23,7 @@ import { HlmTextarea } from '@spartan-ng/helm/textarea';
     HlmTextarea,
     HlmDialogHeader,
     HlmFieldImports,
+    HlmDialogFooter,
   ],
   templateUrl: './document-term-form.html',
   styleUrl: './document-term-form.css',
@@ -32,11 +41,19 @@ export class DocumentTermForm implements OnInit {
     index?: number;
   }>();
 
+  get index() {
+    return this._dialogContext.index;
+  }
+
+  get term() {
+    return this._dialogContext.term;
+  }
+
   ngOnInit(): void {
     const description = this._dialogContext.term;
     if (description) {
       this.termForm.patchValue({
-        description
+        description,
       });
     }
   }
@@ -48,7 +65,15 @@ export class DocumentTermForm implements OnInit {
     }
 
     const formData = this.termForm.value;
-    this._documentStateService.saveTerm({ term: formData.description!, index: this._dialogContext.index });
+    this._documentStateService.saveTerm({
+      term: formData.description!,
+      index: this._dialogContext.index,
+    });
+    this._dialogRef.close();
+  }
+
+  remove() {
+    this._documentStateService.removeTerm(this.index!);
     this._dialogRef.close();
   }
 }

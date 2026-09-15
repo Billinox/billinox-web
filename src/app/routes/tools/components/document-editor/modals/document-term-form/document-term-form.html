@@ -2,7 +2,7 @@
   <h3 hlmDialogTitle>Terms & Conditions</h3>
 </hlm-dialog-header>
 
-<form class="mt-3" [formGroup]="termForm" hlmFieldGroup>
+<form class="my-3" [formGroup]="termForm" hlmFieldGroup>
   <div hlmField>
     <textarea
       hlmTextarea
@@ -12,6 +12,31 @@
       class="resize-none"
     ></textarea>
   </div>
-
-  <button aria-label="Save term & condition" type="submit" class="w-full" size="lg" hlmBtn (click)="save()">Save</button>
 </form>
+
+<hlm-dialog-footer>
+  @if (term) {
+    <button
+      aria-label="Delete term & condition"
+      type="button"
+      size="lg"
+      variant="destructive"
+      hlmBtn
+      (click)="remove()"
+    >
+      Delete
+    </button>
+  }
+  
+  <button
+    aria-label="Save term & condition"
+    type="button"
+    size="lg"
+    hlmBtn
+    [class.w-full]="!term"
+    [class.w-100]="term"
+    (click)="save()"
+  >
+    Save
+  </button>
+</hlm-dialog-footer>

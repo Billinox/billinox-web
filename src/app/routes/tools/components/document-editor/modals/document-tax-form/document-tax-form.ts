@@ -5,7 +5,10 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { HlmDialogHeader } from '@billinox/src/app/components/uis/dialog/src';
+import {
+  HlmDialogHeader,
+  HlmDialogFooter,
+} from '@billinox/src/app/components/uis/dialog/src';
 import { HlmFieldImports } from '@billinox/src/app/components/uis/field/src';
 import { DocumentTaxData } from '@billinox/src/app/models/document.model';
 import { DocumentStateService } from '@billinox/src/app/services/document-state.service';
@@ -21,6 +24,7 @@ import { HlmInput } from '@spartan-ng/helm/input';
     HlmFieldImports,
     HlmButton,
     ReactiveFormsModule,
+    HlmDialogFooter,
   ],
   templateUrl: './document-tax-form.html',
   styleUrl: './document-tax-form.css',
@@ -38,6 +42,14 @@ export class DocumentTaxForm {
     tax?: DocumentTaxData;
     index?: number;
   }>();
+
+  get tax() {
+    return this._dialogContext.tax;
+  }
+
+  get index() {
+    return this._dialogContext.index;
+  }
 
   ngOnInit(): void {
     const tax = this._dialogContext.tax;
@@ -60,6 +72,11 @@ export class DocumentTaxForm {
       tax: new DocumentTaxData(formData.name!, formData.percent!),
       index: this._dialogContext.index,
     });
+    this._dialogRef.close();
+  }
+
+  remove() {
+    this._documentStateService.removeTax(this.index!);
     this._dialogRef.close();
   }
 }

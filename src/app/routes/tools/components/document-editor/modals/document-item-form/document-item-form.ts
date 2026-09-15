@@ -5,7 +5,10 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { HlmDialogHeader } from '@billinox/src/app/components/uis/dialog/src';
+import {
+  HlmDialogHeader,
+  HlmDialogFooter,
+} from '@billinox/src/app/components/uis/dialog/src';
 import { HlmFieldImports } from '@billinox/src/app/components/uis/field/src';
 import { DocumentItemData } from '@billinox/src/app/models/document.model';
 import { DocumentStateService } from '@billinox/src/app/services/document-state.service';
@@ -23,6 +26,7 @@ import { HlmTextarea } from '@spartan-ng/helm/textarea';
     HlmButton,
     HlmFieldImports,
     HlmDialogHeader,
+    HlmDialogFooter,
   ],
   templateUrl: './document-item-form.html',
   styleUrl: './document-item-form.css',
@@ -47,6 +51,10 @@ export class DocumentItemForm implements OnInit {
     item?: DocumentItemData;
     index?: number;
   }>();
+
+  get item() {
+    return this._dialogContext.item;
+  }
 
   ngOnInit(): void {
     const item = this._dialogContext.item;
@@ -74,6 +82,11 @@ export class DocumentItemForm implements OnInit {
       ),
       index: this._dialogContext.index,
     });
+    this._dialogRef.close();
+  }
+
+  remove() {
+    this._documentStateService.removeItem(this._dialogContext.index!);
     this._dialogRef.close();
   }
 }

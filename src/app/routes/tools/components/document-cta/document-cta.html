@@ -1,19 +1,37 @@
 <div class="grid grid-cols-2 gap-4">
-  <button
-    hlmBtn
-    aria-label="Send invoice"
-    [size]="'lg'"
-    type="button"
-    class="w-full gap-3"
-    (click)="submit('share')"
-  >
-    @if (processing && selectedContext === "share") {
-      <hlm-spinner />
-    } @else {
-      <ng-icon [svg]="lucideSend" size="20px" />
-    }
-    <span>Send Invoice</span>
-  </button>
+  @if (documentData) {
+    <button
+      size="lg"
+      hlmBtn
+      aria-label="Share"
+      type="button"
+      class="w-full gap-3"
+      (click)="share()"
+    >
+      @if (processing && selectedContext === "share") {
+        <hlm-spinner />
+      } @else {
+        <ng-icon [svg]="lucideShare" size="20px" />
+      }
+      <span>Share</span>
+    </button>
+  } @else {
+    <button
+      hlmBtn
+      aria-label="Generate"
+      size="lg"
+      type="button"
+      class="w-full gap-3"
+      (click)="submit('share')"
+    >
+      @if (processing && selectedContext === "share") {
+        <hlm-spinner />
+      } @else {
+        <ng-icon [svg]="lucideReceiptText" size="20px" />
+      }
+      <span>Generate</span>
+    </button>
+  }
 
   <button
     hlmBtn

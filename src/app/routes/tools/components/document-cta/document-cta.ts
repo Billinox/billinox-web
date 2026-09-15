@@ -1,8 +1,13 @@
-import { Component, DOCUMENT, inject } from '@angular/core';
+import { Component, DOCUMENT, inject, Input } from '@angular/core';
 import { GeneratePDFRequest } from '@billinox/src/app/models/generate-pdf.model';
 import { DocumentStateService } from '@billinox/src/app/services/document-state.service';
 import { NgIcon } from '@ng-icons/core';
-import { lucideCloudDownload, lucideSend } from '@ng-icons/lucide';
+import {
+  lucideCloudDownload,
+  lucideReceiptText,
+  lucideSend,
+  lucideShare,
+} from '@ng-icons/lucide';
 import { HlmButton } from '@spartan-ng/helm/button';
 import { toast } from '@spartan-ng/brain/sonner';
 import { CurrencyPipe } from '@angular/common';
@@ -19,10 +24,13 @@ import { formatDate } from 'date-fns';
   styleUrl: './document-cta.css',
 })
 export class DocumentCTA {
-  public lucideSend = lucideSend;
+  @Input() label!: string;
+  public lucideReceiptText = lucideReceiptText;
   public lucideCloudDownload = lucideCloudDownload;
+  public lucideShare = lucideShare;
   public processing = false;
   public selectedContext?: 'download' | 'share' | null;
+  public documentData?: { filename: string; pdf: string };
 
   private _document = inject(DOCUMENT);
   private _documentStateService = inject(DocumentStateService);
@@ -176,12 +184,16 @@ export class DocumentCTA {
         )
         .subscribe({
           next: (response) => {
+            this.documentData = { pdf: response.pdf, filename };
+
             switch (context) {
               case 'download':
-                this.download(response.pdf, filename);
+                this.download();
                 break;
-              case 'share':
-                this.share(response.pdf, filename);
+              // case 'share':
+              //   this.share(response.pdf, filename);
+              //   break;
+              default:
                 break;
             }
           },
@@ -196,19 +208,30 @@ export class DocumentCTA {
     }
   }
 
-  download(data: string, filename: string): void {
+  download(): void {
+    if (!this.documentData) {
+      return;
+    }
+
     const anchor = this._document.createElement('a');
-    anchor.href = data;
-    anchor.download = filename;
+    anchor.href = this.documentData.pdf;
+    anchor.download = this.documentData.filename;
 
     this._document.body.appendChild(anchor);
     anchor.click();
     this._document.body.removeChild(anchor);
   }
 
-  async share(data: string, filename: string) {
+  async share() {
+    if (!this.documentData) {
+      return;
+    }
+
     try {
-      const file = this.dataUriToFile(data, filename);
+      const file = this.dataUriToFile(
+        this.documentData.pdf,
+        this.documentData.filename,
+      );
       const filesArray = [file];
 
       if (navigator.canShare && navigator.canShare({ files: filesArray })) {
@@ -218,7 +241,7 @@ export class DocumentCTA {
           text: 'Here is your invoice. thanks for your patronage.',
         });
       } else {
-        this.download(data, filename);
+        this.download();
       }
     } catch (error) {
       console.error('An error occurred during native sharing:', error);
