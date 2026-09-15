@@ -89,6 +89,13 @@ export class InvoiceGenerator implements OnInit {
     },
   ];
   public state!: Signal<DocumentStateDataModel>;
+  public tag = 'Invoice Generator';
+  public title = `<span class="text-gradient-gold">Create invoices</span> that make your business stand out`;
+  public description = `Create professional, personalized invoices in seconds with Billinox. Add
+        your business and customer details, include your products or services,
+        set your prices, discounts, taxes, and payment terms, then generate a
+        polished invoice ready to download, print, or share directly with your
+        customers.`;
 
   private _documentStateService = inject(DocumentStateService);
   private _seoService = inject(SeoService);
@@ -118,7 +125,7 @@ export class InvoiceGenerator implements OnInit {
           content:
             'Create professional invoices online for free with Billinox. Customize, download, and print clean invoices ready to send to your customers.',
         },
-         {
+        {
           property: 'og:url',
           content: `${environment.baseUrl}/invoice-generator`,
         },

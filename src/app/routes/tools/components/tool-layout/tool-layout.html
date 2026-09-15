@@ -11,18 +11,17 @@
         class="animate-fade-up mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface-elevated px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-soft"
       >
         <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-primary"></span>
-        Invoice Generator
+        {{ tag }}
       </div>
       <h1
         class="animate-fade-up font-display text-3xl font-bold leading-[1.05] tracking-tight sm:text-6xl"
-      >
-        <span class="text-gradient-gold">Create invoices</span> that make your business stand out
-      </h1>
+        [innerHTML]="title | safeHtml"
+      ></h1>
       <p
         class="animate-fade-up mt-6 text-base text-muted-foreground sm:text-md"
         [style.animationDelay]="'120ms'"
       >
-        Create professional, personalized invoices in seconds with Billinox. Add your business and customer details, include your products or services, set your prices, discounts, taxes, and payment terms, then generate a polished invoice ready to download, print, or share directly with your customers.
+        {{ description }}
       </p>
     </div>
   </section>
