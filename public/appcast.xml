@@ -10,11 +10,9 @@
                 <sparkle:criticalUpdate />
             </sparkle:tags>
             <description><![CDATA[
-                <ul>
-                    <li>Convert Quotation to invoice</li>
-                    <li>Fixed missing data on document</li>
-                    <li>Optimised User interface</li>
-                </ul>
+• Convert Quotation to Invoice
+• Fixed missing data on document
+• Optimised User Interface
             ]]>
             </description>
             <pubDate>Mon, 21 Sep 2026 11:00:00 +0000</pubDate>
