@@ -2,6 +2,24 @@
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
     <channel>
         <title>Billinox - Invoice App</title>
+         <item>
+            <title>Version 1.1.2+18</title>
+            <sparkle:version>1.1.2</sparkle:version>
+            <sparkle:shortVersionString>1.1.2</sparkle:shortVersionString>
+            <sparkle:tags>
+                <sparkle:criticalUpdate />
+            </sparkle:tags>
+            <description><![CDATA[
+                <ul>
+                    <li>Convert Quotation to invoice</li>
+                    <li>Fixed missing data on document</li>
+                    <li>Optimised User interface</li>
+                </ul>
+            ]]>
+            </description>
+            <pubDate>Mon, 21 Sep 2026 11:00:00 +0000</pubDate>
+            <enclosure url="https://play.google.com/store/apps/details?id=com.braindam.billinox" sparkle:os="android" />
+        </item>
         <item>
             <title>Version 1.0.1+15</title>
             <sparkle:version>1.0.1</sparkle:version>
