@@ -2,6 +2,21 @@
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
     <channel>
         <title>Billinox: Invoice Maker and PDF</title>
+          <item>
+            <title>Version 2.0.0+21</title>
+            <sparkle:version>2.0.0</sparkle:version>
+            <sparkle:shortVersionString>2.0.0</sparkle:shortVersionString>
+            <sparkle:tags>
+                <sparkle:criticalUpdate />
+            </sparkle:tags>
+            <description><![CDATA[
+• Auto generate message when sharing invoice via Email and Whatsapp
+• Convert Quotation to Invoice
+            ]]>
+            </description>
+            <pubDate>Sat, 26 Sep 2026 03:30:00 +0000</pubDate>
+            <enclosure url="https://play.google.com/store/apps/details?id=com.braindam.billinox" sparkle:os="android" />
+        </item>
          <item>
             <title>Version 1.1.2+18</title>
             <sparkle:version>1.1.2</sparkle:version>
