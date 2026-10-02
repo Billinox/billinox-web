@@ -18,12 +18,6 @@ import { RouterLink } from '@angular/router';
 export class LegalSection implements OnInit {
   @Input({ required: true }) id!: string;
   @Input({ required: true }) title!: string;
-  @ViewChild('content', { static: true }) contentRef!: TemplateRef<any>;
 
-  public containerRef = inject(ViewContainerRef);
-
-  ngOnInit() {
-    this.containerRef.createEmbeddedView(this.contentRef);
-    this.containerRef.element.nativeElement.remove();
-  }
+  ngOnInit() {}
 }

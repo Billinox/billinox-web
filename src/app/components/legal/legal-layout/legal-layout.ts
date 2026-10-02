@@ -92,7 +92,7 @@ export class LegalLayout implements OnInit, OnDestroy, AfterViewInit {
           s.title.toLowerCase().includes(query.toLowerCase()) ||
           s.id.toLowerCase().includes(query.toLowerCase()),
       );
-      this.cdr.markForCheck();
+      this.cdr.detectChanges();
     });
   }
 
